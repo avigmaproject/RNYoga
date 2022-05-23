@@ -60,8 +60,15 @@ export default class Detailbadfood extends Component {
                     fontSize: 18,
                     color: "#fff",
                     lineHeight: 20,
+                    textTransform:"capitalize"
                 }}>{item.BF_Name}</Text>
-                <Text style={{ marginTop: 20, color: '#ccc', fontSize: 13,lineHeight:20,}}>{item.BF_Description}</Text>
+                <Text style={{ 
+                     marginTop: 20, 
+                     color: '#ccc', 
+                     fontSize: 13,
+                     lineHeight:20,  
+                     textTransform:"capitalize"
+                }}>{item.BF_Description}</Text>
             </View>
         )
     }

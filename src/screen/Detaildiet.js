@@ -60,6 +60,7 @@ export default class Detaildiet extends Component {
           fontSize: 18,
           color: "#fff",
           lineHeight: 20,
+           textTransform:"capitalize"
         }}>{item.DT_Name}</Text>
         <Text style={{ marginTop: 20,color: '#ccc',fontSize:13,lineHeight:20,}}>{item.DT_Description}</Text>
       </View>

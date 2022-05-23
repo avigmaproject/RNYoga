@@ -206,6 +206,20 @@ export const GetGroceryList = async (data, access_token) => {
       throw error;
     });Detaildiet
 };
+export const GetUserYoga = async (data, access_token) => {
+  return axios(API.GET_USER_YOGA, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + access_token,
+    },
+    data,
+  })
+    .then((response) => response.data)
+    .catch((error) => {
+      throw error;
+    });Detaildiet
+};
 export function normalize(size) {
   const newSize = size * scale;
   if (Platform.OS === "ios") {

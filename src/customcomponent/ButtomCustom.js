@@ -17,14 +17,14 @@ export default class ButtomCustom extends Component {
           marginHorizontal: this.props.margin ? null : 20,
           borderRadius: 10,
           flexDirection: 'row',
-          marginTop: 20,
-          height:50,
-          marginBottom: this.props.marginBottom
+          height:40,
+          marginBottom: this.props.marginBottom,
+          marginTop:25
         }}
       >
         <AntDesign name={this.props.name} size={25} color='#FFF' />
         <Text
-          style={{ marginStart:10,color: '#fff', fontSize: 17, fontFamily:CustomeFont.Poppins_SemiBold }}
+          style={{ color: '#fff', fontSize: 17, fontFamily:CustomeFont.Poppins_SemiBold }}
         >
           {this.props.title}
         </Text>

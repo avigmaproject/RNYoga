@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="60" viewBox="0 0 60 60">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ed6bfd"/>
+      <stop offset="1" stop-color="#ab29fc"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.942" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff0ff"/>
+      <stop offset="1" stop-color="#febdfa"/>
+    </linearGradient>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_32" data-name="Rectangle 32" width="21.657" height="23.786" stroke="rgba(0,0,0,0)" stroke-width="1" fill="url(#linear-gradient)"/>
+    </clipPath>
+  </defs>
+  <g id="play" transform="translate(-155.5 11.871)">
+    <circle id="Ellipse_16" data-name="Ellipse 16" cx="30" cy="30" r="30" transform="translate(155.5 -11.871)" fill="url(#linear-gradient-2)"/>
+    <g id="Group_92" data-name="Group 92" transform="translate(175.604 6.436)">
+      <g id="Group_91" data-name="Group 91" transform="translate(0 0)" clip-path="url(#clip-path)">
+        <path id="Path_465" data-name="Path 465" d="M.021,11.807c0-2.75-.009-5.5,0-8.249C.036.677,2.486-.875,4.993.517q7.5,4.164,14.9,8.5c2.424,1.419,2.329,4.431-.147,5.878-4.139,2.418-8.313,4.778-12.474,7.158-.8.455-1.586.923-2.405,1.331a3.259,3.259,0,0,1-4.853-3c-.026-2.86-.006-5.72-.006-8.579Z" transform="translate(0 0)" stroke="rgba(0,0,0,0)" stroke-width="1" fill="url(#linear-gradient)"/>
+      </g>
+    </g>
+  </g>
+</svg>

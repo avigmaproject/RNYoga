@@ -6,38 +6,80 @@ import {
   Image,
   FlatList,
   ScrollView,
-  SafeAreaView
+  SafeAreaView,
+  StyleSheet,
+Button
 } from "react-native"
 import { basecolor } from "../services/constant"
 import VideoPlayer from "react-native-video-player"
 import Video from "react-native-video"
 import CustomeFont from "../CustomeFont"
-
+import HTMLView from "react-native-htmlview";
+import Right from "../assets/Right.svg";
+import Play from "../assets/Play.svg";
+import Left from "../assets/Left.svg"
 export default class FullScreenVideo extends Component {
   constructor() {
     super()
     this.state = {
-      videosArray: [
-        "https://musicsvideosfiles.s3.amazonaws.com/WhatsApp+Video+2022-04-28+at+4.09.10+PM.mp4",
-        "https://musicsvideosfiles.s3.amazonaws.com/WhatsApp+Video+2022-04-28+at+4.09.10+PM.mp4",
-        "https://musicsvideosfiles.s3.amazonaws.com/WhatsApp+Video+2022-04-28+at+4.09.10+PM.mp4",
-        "https://musicsvideosfiles.s3.amazonaws.com/WhatsApp+Video+2022-04-28+at+4.09.10+PM.mp4"
-      ]
+      data:[],
+      videosArray: ["https://musicsvideosfiles.s3.amazonaws.com/Yoga/1+-+Find+your+Centre.mp4",
+        "https://musicsvideosfiles.s3.amazonaws.com/Yoga/1+-+Find+your+Centre.mp4",
+        "https://musicsvideosfiles.s3.amazonaws.com/Yoga/1+-+Find+your+Centre.mp4",
+        "https://musicsvideosfiles.s3.amazonaws.com/Yoga/1+-+Find+your+Centre.mp4"]
     }
   }
 
+componentDidMount(){
+this.setState({data:this.props.route.params.item})
+console.log("minallll",this.props.route.params.item)
+}
+
   render() {
+const {data} = this.state
     return (
       <View style={{ backgroundColor: basecolor, flex: 1 }}>
-        <SafeAreaView>
+        {/* <SafeAreaView> */}
+          <View style={{justifyContent:"center",alignItems:"center",}}>
+       <View style={{width:"100%"}}>
           <VideoPlayer
             video={{
               uri:
-                "https://musicsvideosfiles.s3.amazonaws.com/WhatsApp+Video+2022-04-28+at+4.09.10+PM.mp4"
+                data.YG_File_Path
             }}
-            resizeMode={"stretch"}
-            // style={{ position: "absolute", top: 10, height: 250 }}
+            resizeMode={"cover"}
+            showDuration	
+            style={{  height: 300,}}
+            ref={r => this.player = r}
           />
+          </View>
+        {/* <View style={{position:"absolute",zIndex:11,}}>   
+          <View style={{ flexDirection: 'row', alignItems: 'center' ,width:"80%"}}>
+                  <TouchableOpacity style={{marginRight:20}} onPress={() => this.player.seek(-10)} >
+                      <Left height="50" width="50"/>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => this.player.resume()} style={{marginHorizontal:20}}>
+                      <Play height="70" width="70"/>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={{marginLeft:20}}  onPress={() => this.player.seek(10)}>
+                      <Right height="50" width="50"/>
+                  </TouchableOpacity>
+                </View>
+</View> */}
+        {/* <Button
+          onPress={() => this.player.stop()}
+          title="Stop"
+        />
+        <Button
+          onPress={() => this.player.pause()}
+          title="Pause"
+        />
+        <Button
+          onPress={() => this.player.resume()}
+          title="Resume"
+        /> */}
+      </View>
+
           <ScrollView style={{}}>
             <Text
               style={{
@@ -48,9 +90,16 @@ export default class FullScreenVideo extends Component {
                 marginTop: 10
               }}
             >
-              The name of yoga lessions #1
+            {data.YG_Name}
+             {/* // The name of yoga lessions #1 */}
             </Text>
-            <Text
+                <View style={{marginHorizontal: 25,marginTop:5,margin:20}}>
+                  <HTMLView
+                      value={data.YG_Description}
+                      stylesheet={styles}
+                      />
+                  </View>
+            {/* <Text
               style={{
                 fontSize: 12,
                 fontFamily: CustomeFont.Poppins_Light,
@@ -63,7 +112,7 @@ export default class FullScreenVideo extends Component {
               In publishing and graphic design, Lorem ipsum is a placeholder
               text commonly used to demonstrate the visual form of a document or
               a typeface without relying on meaningful content.{" "}
-            </Text>
+            </Text> */}
             <FlatList
               data={this.state.videosArray}
               renderItem={(item) => {
@@ -136,8 +185,78 @@ export default class FullScreenVideo extends Component {
               source={require("../assets/backarrow.png")}
             />
           </TouchableOpacity>
-        </SafeAreaView>
+        {/* </SafeAreaView> */}
       </View>
     )
   }
 }
+const styles = StyleSheet.create({
+  text: {
+    fontSize: 20,
+color:"white"
+  },
+  a: {
+    fontWeight: "300",
+    color: "blue", // make links coloured pink
+  },
+p:{
+color:"white",  fontFamily: CustomeFont.Poppins_Light,
+},ol:{
+color:"white"
+},
+ul:{
+color:"white"
+},  bottomText: {
+    color: '#fff',
+    fontWeight: '700',
+    fontSize: 20
+  },
+  bottomText2: {
+    color: 'gray',
+    fontWeight: '600',
+    fontSize: 16
+  },
+  Imagebtn: {
+    height: 50,
+    width: 50,
+    // tintColor: '#fff'
+  },
+  Image: {
+    height: 25,
+    width: 25,
+    tintColor: '#AB29FC'
+  },
+  Touchableprev: {
+    backgroundColor: '#AB29FC',
+    padding: 12,
+    borderRadius: 35
+  },
+  Touchablecenter: {
+    backgroundColor: '#fff',
+    padding: 15,
+    borderRadius: 100,
+    marginHorizontal: 10
+  }
+});
+
+//  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+//                   <TouchableOpacity style={styles.Touchableprev}>
+//                     <Image
+//                       style={[styles.Imagebtn, { rotation: 180 }]}
+//                       source={require('../assets/next.png')}
+//                     />
+//                   </TouchableOpacity>
+//                   <TouchableOpacity style={styles.Touchablecenter}>
+//                     <Image
+//                       style={styles.Image}
+//                       source={require('../assets/pause.png')}
+//                     />
+//                   </TouchableOpacity>
+//                   <TouchableOpacity style={styles.Touchableprev}>
+//                     <Image
+//                       style={styles.Imagebtn}
+//                       source={require('../assets/next.png')}
+//                     />
+//                   </TouchableOpacity>
+//                 </View>
+//               </View>

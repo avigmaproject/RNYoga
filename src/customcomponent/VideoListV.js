@@ -1,7 +1,8 @@
 import React, { Component } from "react"
-import { Text, View, Image, TouchableOpacity } from "react-native"
+import { Text, View, Image, TouchableOpacity ,StyleSheet} from "react-native"
 import LinearGradient from "react-native-linear-gradient"
 import CustomeFont from "../CustomeFont"
+import HTMLView from "react-native-htmlview";
 
 export default class VideoListV extends Component {
   render() {
@@ -34,7 +35,8 @@ export default class VideoListV extends Component {
               position: "absolute",
               bottom: 10,
               left: 30,
-              padding: 2,
+              paddingHorizontal: 10,
+              paddingHorizontal:10,
               borderRadius: 20
             }}
           >
@@ -46,7 +48,7 @@ export default class VideoListV extends Component {
                 textAlign: "center"
               }}
             >
-              30:00{" "}
+            {this.props.data.YG_Timer}{".00 "}
             </Text>
           </LinearGradient>
         </View>
@@ -59,9 +61,15 @@ export default class VideoListV extends Component {
             marginTop: 15
           }}
         >
-          The name of yoga lessions #1
+          {this.props.data.YG_Name}
         </Text>
-        <Text
+      <View style={{marginHorizontal: 25,marginTop:5,margin:20}}>
+       <HTMLView
+          value={this.props.data.YG_Description}
+          stylesheet={styles}
+          />
+      </View>
+        {/* <Text
           style={{
             fontSize: 12,
             fontFamily: CustomeFont.Poppins_Light,
@@ -71,11 +79,27 @@ export default class VideoListV extends Component {
             marginBottom: 30
           }}
         >
-          In publishing and graphic design, Lorem ipsum is a placeholder text
-          commonly used to demonstrate the visual form of a document or a
-          typeface without relying on meaningful content.{" "}
-        </Text>
+         {this.props.data.YG_Description}
+        </Text> */}
       </TouchableOpacity>
     )
   }
 }
+const styles = StyleSheet.create({
+  text: {
+    fontSize: 20,
+color:"white"
+  },
+  a: {
+    fontWeight: "300",
+    color: "blue", // make links coloured pink
+  },
+p:{
+color:"white",  fontFamily: CustomeFont.Poppins_Light,
+},ol:{
+color:"white"
+},
+ul:{
+color:"white"
+}
+});

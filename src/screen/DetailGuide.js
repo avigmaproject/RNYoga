@@ -59,8 +59,9 @@ export default class DetailGuide extends Component {
           fontSize: 18,
           color: "#fff",
           lineHeight:30,
+          textTransform:"capitalize"
         }}>{item.GU_Name}</Text>
-        <Text style={{ marginTop: 20,color: '#ccc',fontSize:13,lineHeight:20,}}>{item.GU_Description}</Text>
+        <Text style={{ marginTop: 20,color: '#ccc',fontSize:13,lineHeight:20,  textTransform:"capitalize"}}>{item.GU_Description}</Text>
       </View>
     )
   }

@@ -15,4 +15,6 @@ export const API = {
   GET_BRAIN_FOOD:BASE_URL + "/api/Music/GetBrainFood",
   GET_USER_RECIPES:BASE_URL + "/api/Music/GetUserRecipes",
   GET_GROCERY_LIST:BASE_URL + "/api/Music/GetGroceryList",
+  GET_USER_YOGA:BASE_URL + "/api/Music/GetUserYoga",
+
 };

@@ -36,7 +36,7 @@ export default class Meditation extends Component {
             <Header title={'Set Duration'} navigation={this.props.navigation} />
             <ButtomCustom
               onPress={() => this.props.navigation.navigate('musicplayer')}
-              title={'30 mint'}
+              title={'30 min'}
               backgroundColor={'#C441FD'}
             />
           </View>
@@ -45,30 +45,30 @@ export default class Meditation extends Component {
             <ScrollView style={{ width:"100%"}}>
             <ViewComp
               title={'Type of meditation'}
-              iconpath={require('../assets/flower.png')}
+              iconpath={"Meditation"}
             />
             <ViewComp
               title={'Type of meditation'}
-              iconpath={require('../assets/flower.png')}
+              iconpath={"Meditation"}
             />
             <ViewComp
               title={'Type of meditation'}
-              iconpath={require('../assets/flower.png')}
+              iconpath={"Meditation"}
             />
             <ViewComp
               title={'Type of meditation'}
-              iconpath={require('../assets/flower.png')}
+              iconpath={"Meditation"}
             />
             <ViewComp
               title={'Type of meditation'}
-              iconpath={require('../assets/flower.png')}
+              iconpath={"Meditation"}
             />
             <ViewComp
               title={'Type of meditation'}
-              iconpath={require('../assets/flower.png')}
+              iconpath={"Meditation"}
             />
             <View style={{height:140}}></View>
-</ScrollView>
+        </ScrollView>
             <BottomSheet
               isOpen
               wrapperStyle={{

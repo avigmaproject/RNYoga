@@ -7,12 +7,16 @@ import {
   TouchableOpacity,
   ScrollView,
   StyleSheet,
+FlatList
 } from "react-native";
 import Header from "../customcomponent/Header";
 import ButtomCustom from "../customcomponent/ButtomCustom";
 import BottomSheet from "react-native-simple-bottom-sheet";
 import { basecolor } from "../services/constant";
 import VideoListV from "../customcomponent/VideoListV";
+import { GetUserYoga } from "../services/api.function";
+import Spinner from "react-native-loading-spinner-overlay"
+
 const DATA = [
   {
     id: "1",
@@ -29,25 +33,20 @@ const DATA = [
 
 ];
 export default class Yoga extends Component {
-  constructor() {
+  constructor({item}) {
     super();
     this.state = {
-      ErrorPassword: null,
-      ErrorEmail: null,
-      ErrorUserEmail: null,
-      form: [],
-      grant_type: "password",
-      access_token: "",
-      clientid: 1,
-      isLoading: false,
-      fcmtoken: "",
+      Yoga: [],
+        TimerNinty:[],
+     TimerSixty:[],
+     TimerThirty:[],
       visible: false,
       message: "",
       timer: "30 min",
-      videosArray :["https://musicsvideosfiles.s3.amazonaws.com/WhatsApp+Video+2022-04-28+at+4.09.10+PM.mp4",
-      "https://musicsvideosfiles.s3.amazonaws.com/WhatsApp+Video+2022-04-28+at+4.09.10+PM.mp4",
-      "https://musicsvideosfiles.s3.amazonaws.com/WhatsApp+Video+2022-04-28+at+4.09.10+PM.mp4",
-      "https://musicsvideosfiles.s3.amazonaws.com/WhatsApp+Video+2022-04-28+at+4.09.10+PM.mp4"]
+      videosArray: ["https://musicsvideosfiles.s3.amazonaws.com/Yoga/1+-+Find+your+Centre.mp4",
+        "https://musicsvideosfiles.s3.amazonaws.com/Yoga/1+-+Find+your+Centre.mp4",
+        "https://musicsvideosfiles.s3.amazonaws.com/Yoga/1+-+Find+your+Centre.mp4",
+        "https://musicsvideosfiles.s3.amazonaws.com/Yoga/1+-+Find+your+Centre.mp4"]
     };
     this.panelRef = React.createRef();
   }
@@ -55,6 +54,60 @@ export default class Yoga extends Component {
     this.panelRef.current.togglePanel();
     this.setState({ timer: item.title });
   };
+
+  componentDidMount() {
+    this.onHandleGetUserYoga()
+  }
+
+  onHandleGetUserYoga = async () => {
+    let data = {
+      Type: 1
+    }
+    this.setState({ isLoading: true })
+    await GetUserYoga(data)
+      .then((res) => {
+        console.log('res', res)
+          for(let i = 0; i < res[0].length ; i++){
+            if(res[0][i].YG_Timer === 30){
+              this.setState({TimerThirty:  [...this.state.TimerThirty ,res[0][i]], isLoading: false })
+            }else  if(res[0][i].YG_Timer === 60){
+              this.setState({ TimerSixty: [...this.state.TimerSixty ,res[0][i]], isLoading: false })
+            }else  if(res[0][i].YG_Timer === 90){
+              this.setState({ TimerNinty:  [...this.state.TimerNinty ,res[0][i]], isLoading: false })
+            }
+          }
+       
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.log('responce_error', error.response)
+          this.setState({
+            isLoading: false,
+            color: 'red',
+            visible: true,
+            message: 'Some Response Error'
+          })
+        } else if (error.request) {
+          this.setState({
+            isLoading: false,
+            color: 'red',
+            visible: true,
+            message: 'Some Request Error'
+          })
+          console.log('request error', error.request)
+        }
+      })
+  }
+onrender  = ({item})=>{
+return( 
+    <VideoListV 
+      data={item}
+      onPress={() => {
+      this.props.navigation.navigate('FullScreenVideo',{item})
+       }}
+    />
+)
+}
   render() {
     return (
       <ImageBackground
@@ -62,10 +115,11 @@ export default class Yoga extends Component {
         resizeMode="stretch"
         style={{ height: "100%" }}
       >
+          <Spinner visible={this.state.isLoading}  />
+
         <SafeAreaView>
-          <ScrollView>
-            <View
-              style={{ flexDirection: "row", justifyContent: "space-between"}}
+          <View
+              style={{ flexDirection: "row", justifyContent: "space-between" ,alignItems:"center"}}
             >
               <Header
                 title={"Set Duration"}
@@ -77,66 +131,60 @@ export default class Yoga extends Component {
                 onPress={() => this.panelRef.current.togglePanel()}
               />
             </View>
+          <ScrollView>
+            
             <View>
               <View
                 style={{
-                  marginHorizontal:20,
-                  marginVertical: 20,
+                  marginHorizontal: 20,
+                  // marginVertical: 20,
                   borderBottomColor: "#472f67",
                   borderBottomWidth: 1,
                 }}
               >
-                <Text
+              <Text
                   style={{
                     fontWeight: "bold",
-                    fontSize: 30,
+                    fontSize: 25,
                     color: "#fff",
                     marginVertical: 20,
                   }}
                 >
-                  What is Lorem Ipsum?{" "}
+                 {"Why yoga is good for anxiety? "}
                 </Text>
-                <Text
+              <Text
                   style={{
-                    fontWeight: "300",
+                   fontWeight: "300",
                     fontSize: 15,
                     color: "#fff",
                     lineHeight: 20,
                   }}
                 >
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic typesetting, remaining
-                  essentially unchanged. It was popularised in the 1960s with
-                  the release of Letraset sheets containing Lorem Ipsum
-                  passages, and more recently with desktop publishing software
-                  like Aldus PageMaker including versions of Lorem Ipsum.{" "}
+                 {"Anxiety is the body’s response to stress and is part of the natural fight, flight, or freeze reflex.  Anxiety might resemble a feeling of distress, unease, or dread. Its intention is to keep a person alert or aware during times of threat.  Sometimes, anxiety can get in the way of everyday life..."}
                 </Text>
+               
                 <Text
                   style={{
                     fontWeight: "500",
                     fontSize: 15,
                     color: "#fff",
                     lineHeight: 20,
-                    marginBottom:20,
-                    marginTop:20
+                    marginBottom: 20,
+                    marginTop: 20
                   }}
                 >
                   Learn more
                 </Text>
-
-              
               </View>
             </View>
-            {this.state.videosArray.map((item)=>{
-             return <VideoListV onPress={()=>{
-              this.props.navigation.navigate('FullScreenVideo') 
-             }}/>
-            })}
-            <View style={{height:40}}></View>
+          <View style={{ height: 20 }}></View>
+            <ScrollView contentContainerStyle={{paddingBottom:100}}>
+              <FlatList
+                renderItem={this.onrender}
+                data={this.state.timer === "30 min" ? this.state.TimerThirty :this.state.timer === "60 min"? this.state.TimerSixty: this.state.TimerNinty }
+              />
+            </ScrollView>
+            
           </ScrollView>
         </SafeAreaView>
         <BottomSheet
@@ -156,7 +204,7 @@ export default class Yoga extends Component {
                 justifyContent: "center",
                 alignItems: "center",
                 padding: 10,
-               
+
               }}
             >
               <Text style={styles.text}>Select Time</Text>
@@ -185,7 +233,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 10,
     borderRadius: 10,
-    
+
   },
   text: { color: "#fff", fontWeight: "bold", fontSize: 20 },
 });

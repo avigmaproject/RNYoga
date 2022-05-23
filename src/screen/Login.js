@@ -209,26 +209,14 @@ class Login extends Component {
                 marginTop: 20
               }}
             >
-              Sign In
-            </Text>
-            <Text
-              style={{
-                color: '#fff',
-                fontSize: 16,
-                textAlign: 'center',
-                lineHeight: 25,
-                marginTop:4,
-               fontFamily:CustomeFont.Poppins_Light
-              }}
-            >
-              We'll personalize your usage across all our platform with your
-              login
+              Sign in
             </Text>
           </View>
           <View
             style={{
               marginHorizontal: 20,
-               marginBottom: 5
+               marginBottom: 5,
+               marginTop:20
             }}
           >
             <InputText
@@ -257,13 +245,13 @@ class Login extends Component {
               }}
             >
               By continuing you are agreeing Relanxie{' '}
-              <Text style={{ color: '#C441FD' }}>terms</Text> of service and{' '}
+              <Text style={{ color: '#C441FD' }}>terms</Text> of services and{' '}
               <Text style={{ color: '#C441FD' }}>privacy policy</Text>
             </Text>
           </View>
           <GradientButton
             backgroundColor={'#C441FD'}
-            title={'Sign In'}
+            title={'Sign in'}
             onPress={() => this._handleLogin()}
           />
 
@@ -320,7 +308,7 @@ class Login extends Component {
                 fontFamily:CustomeFont.Poppins_SemiBold
               }}
             >
-              Don't have an account ?{' '}
+              Don't have an account?{' '}
             </Text>
 
             <TouchableOpacity
@@ -361,7 +349,7 @@ class Login extends Component {
                 fontFamily:CustomeFont.Poppins_SemiBold
               }}
             >
-              Forgot Your password?{' '}
+              Forgot your password?{' '}
             </Text>
 
             <TouchableOpacity

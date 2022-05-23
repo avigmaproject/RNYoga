@@ -111,7 +111,7 @@ class Forgotpassword extends Component {
             }
             if (res[0].UserCode === 'Error') {
               this.setState({
-                color: 'red',
+                color: 'black',
                 visible: true,
                 message: 'Please check your email.'
               })
@@ -122,14 +122,14 @@ class Forgotpassword extends Component {
               console.log('responce_error', error.response)
               this.setState({
                 isLoading: false,
-                color: 'red',
+                color: 'black',
                 visible: true,
                 message: 'Some Response Error'
               })
             } else if (error.request) {
               this.setState({
                 isLoading: false,
-                color: 'red',
+                color: 'black',
                 visible: true,
                 message: 'Some Request Error'
               })
@@ -138,14 +138,14 @@ class Forgotpassword extends Component {
           })
       } else {
         this.setState({
-          color: 'red',
+          color: 'black',
           visible: true,
           message: 'Check email format.'
         })
       }
     } else {
       this.setState({
-        color: 'red',
+        color: 'black',
         visible: true,
         message: 'Empty Fields.'
       })

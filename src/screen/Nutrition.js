@@ -6,21 +6,31 @@ import {
   SafeAreaView,
   TouchableOpacity,
   ScrollView,
+  StyleSheet,
+
 } from "react-native";
 import ViewComp from "../customcomponent/ViewComp";
 import Header from "../customcomponent/Header";
 import { getnutrition } from "../services/api.function";
+import Svg, {
+  Use,
+  Image,
+} from 'react-native-svg';
+import ButtomCustom from "../customcomponent/ButtomCustom";
+import Background from "../assets/Background.svg"
+
+
 
 export default class Nutrition extends Component {
- 
+
   constructor() {
     super();
     this.state = {
-    nutrition:[]
+      nutrition: []
     };
   }
   componentDidMount() {
-   this.onHandlegetnutrition()
+    this.onHandlegetnutrition()
   }
 
   onHandlegetnutrition = async () => {
@@ -33,7 +43,7 @@ export default class Nutrition extends Component {
       .then((res) => {
         console.log('res', JSON.stringify(res))
         console.log('resUSRDATA', res)
-        this.setState({ nutrition:res, isLoading: false })
+        this.setState({ nutrition: res, isLoading: false })
       })
       .catch((error) => {
         if (error.response) {
@@ -55,10 +65,10 @@ export default class Nutrition extends Component {
         }
       })
   }
-  
- 
- 
- 
+
+
+
+
   render() {
     return (
       <ImageBackground
@@ -67,59 +77,48 @@ export default class Nutrition extends Component {
         style={{ height: "100%" }}
       >
         <SafeAreaView>
+        <Header title={"Nutrition"} navigation={this.props.navigation} />
           <ScrollView>
-          <Header title={"Nutrition"} navigation={this.props.navigation} />
-          <View
-            style={{
-              marginHorizontal: 10,
-              paddingBottom:20
-            }}
-          >
-            {/* <ViewComp
-              onPress={() =>
-                this.props.navigation.navigate("DetailPageScreen", {
-                  title: "Guide",
-                })
-              }
-              title={"Guide"}
-              iconpath={require("../assets/flower.png")}
-            /> */}
-             <ViewComp
+            <View
+              style={{
+                marginHorizontal: 10,
+                paddingBottom: 20
+              }}
+            >
+              <ViewComp
                 onPress={() =>
                   this.props.navigation.navigate("DetailGuide", {
                     title: "Guide",
                   })
                 }
                 title={"Guide"}
-                iconpath={require("../assets/icon-guide.png")}
+                iconpath={"Guide"}
+
               />
-            <ViewComp
+              <ViewComp
                 onPress={() =>
                   this.props.navigation.navigate("Detaildiet", {
                     title: "Diet tips",
                   })
                 }
                 title={"Diet tips"}
-                iconpath={require("../assets/icon-diet-tips.png")}
-              />
-            <ViewComp
+                iconpath={"Diettips"} />
+              <ViewComp
                 onPress={() =>
                   this.props.navigation.navigate("Detailbadfood", {
                     title: "Bad foods",
                   })
                 }
                 title={"Bad food"}
-                iconpath={require("../assets/icon-bad-food.png")}
-              />
-             <ViewComp
+                iconpath={"Badfood"} />
+              <ViewComp
                 onPress={() =>
                   this.props.navigation.navigate("Detailbrainfood", {
                     title: "Brain food",
                   })
                 }
                 title={"Brain food"}
-                iconpath={require("../assets/icon-brain-food.png")}
-              />
+                iconpath={"Brainfood"} />
               <ViewComp
                 onPress={() =>
                   this.props.navigation.navigate("DetailRecipes", {
@@ -127,8 +126,7 @@ export default class Nutrition extends Component {
                   })
                 }
                 title={"Recipes"}
-                iconpath={require("../assets/Guide.png")}
-              />
+                iconpath={"Recipes"} />
               <ViewComp
                 onPress={() =>
                   this.props.navigation.navigate("DetailGroceryList", {
@@ -136,13 +134,57 @@ export default class Nutrition extends Component {
                   })
                 }
                 title={"Grocery list"}
-                iconpath={require("../assets/flower.png")}
-              />
-           
-          </View>
+                iconpath={"Grocery"} />
+
+            </View>
+            <View style={{ padding: 15 }}>
+              <View style={{ alignItems: 'center', marginTop: 20 }}>
+                <Background height={"120"} width={"90%"} />
+              </View>
+
+              <View style={{ marginTop: 30 }}>
+                <Text style={styles.calltext}>Do you want to make</Text>
+                <Text style={styles.calltext}>a call with our psychologist?</Text>
+              </View>
+
+              <View style={{ width: '100%', marginTop: 40 }}>
+                <ButtomCustom
+                  margin={true}
+                  backgroundColor={'#C441FD'}
+                  title={'Schedule a call'}
+                  onPress={() =>
+                    this.props.navigation.navigate('ChatofflineScreen')
+                  }
+                />
+              </View>
+              <View style={{marginTop:25}}>
+                <Text  style={styles.calltext2}>
+                  You cannot book an appointment with our
+                </Text>
+                <Text  style={styles.calltext2}>
+                  dietician beacause you are not a member of our
+                </Text>
+                <Text  style={styles.calltext2}>
+                  membership
+                </Text>
+
+               <View style={{marginTop:15}}>
+               <Text  style={styles.calltext2}>
+                  if you want,you can do it right<Text style={{textDecorationLine: 'underline',color:'#fff',marginLeft:10,fontSize:12,marginTop:20}}>  here</Text>
+                </Text>
+               </View>
+
+              </View>
+            </View>
           </ScrollView>
         </SafeAreaView>
       </ImageBackground>
     );
   }
 }
+const styles = StyleSheet.create({
+
+  calltext: { fontSize: 19, color: '#fff', fontWeight: 'bold', fontFamily: 'Poppins-Medium' },
+  calltext2: { fontSize:12, color: '#ccc',fontFamily: 'Poppins-Medium' }
+
+})

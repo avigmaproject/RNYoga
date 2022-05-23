@@ -175,7 +175,7 @@ class Register extends Component {
 
               }}
             >
-              Sign Up
+              Sign up
             </Text>
             <Text
               style={{
@@ -232,7 +232,7 @@ class Register extends Component {
               }}
             >
               By continuing you are agreeing Relanxie{' '}
-              <Text style={{ color: '#C441FD' }}>terms</Text> of service and{' '}
+              <Text style={{ color: '#C441FD' }}>terms</Text> of services and{' '}
               <Text style={{ color: '#C441FD', }}>privacy policy</Text>
             </Text>
           </View>
@@ -268,7 +268,7 @@ class Register extends Component {
           {Platform.OS === 'ios' && (
             <ButtomCustom
               backgroundColor={'#3D265E'}
-              title={' Sign in with Apple'}
+              title={' Sign up with Apple'}
               name={'apple1'}
               onPress={() => this._handleApple()}
             />

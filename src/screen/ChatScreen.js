@@ -27,36 +27,29 @@ export default class ChatScreen extends Component {
                 style={styles.chatbackgroundimage}
                 source={require('../assets/chatbackground.png')}
               />
-
               <View style={styles.container1}>
                 <Text style={styles.chattext}>Chat with</Text>
                 <Text style={styles.chattext}>an expert of our team</Text>
               </View>
-
               <Image
                 style={styles.chatmaskimage}
                 source={require('../assets/chatmask.png')}
               />
-
               <Image
                 style={styles.arrowiconimage}
                 source={require('../assets/arrow-icon.png')}
               />
             </View>
-
             <View style={styles.borders}></View>
-
             <Image
               style={styles.phonecallimage}
               resizeMode='stretch'
               source={require('../assets/icon-phone-call.png')}
             />
-
             <View style={{ marginTop: 30 }}>
               <Text style={styles.calltext}>Do you want to make</Text>
               <Text style={styles.calltext}>a call with our psychologist?</Text>
             </View>
-
             <View style={{ width: '100%', marginTop: 40 }}>
               <ButtomCustom
                 margin={true}

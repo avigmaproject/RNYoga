@@ -9,7 +9,8 @@ import {
   ScrollView,
   Keyboard,
   AppState,
-  Image
+  Image,
+  ImageBackground
 } from 'react-native'
 import { basecolor } from '../services/constant'
 import InputText from '../customcomponent/InputText'
@@ -98,41 +99,28 @@ class LandingScreen extends Component {
   render() {
     console.log(this.state.form)
     return (
-      <SafeAreaView style={{ backgroundColor: basecolor }}>
-        <Spinner visible={this.state.isLoading} />
-        <ScrollView
-          keyboardShouldPersistTaps={'handled'}
-          contentContainerStyle={{ backgroundColor: basecolor, height: '100%' }}
-        >
-          <View
+ <ImageBackground
+        source={require("../assets/backgroundillustration.jpg")}
+        resizeMode="stretch"
+        style={{ height: "100%" }}
+      >
+  <SafeAreaView>
+    <View style={{ flexDirection:"column",justifyContent:"space-between",height:"100%"}}>
+      <View> 
+        <View style={{ alignItems: 'center',paddingVertical: 4}}>
+          <Text
             style={{
-              alignItems: 'center',
-              paddingVertical: 4
-              // height: "20%",
-              // backgroundColor: "pink",
-            }}
-          >
-            <Text
-              style={{
-                color: '#fff',
-                fontSize: 24,
-                fontFamily:CustomeFont.Poppins_SemiBold,
-                lineHeight: 30,
-                marginTop: 20
-              }}
-            >
-              Relieve Anxiety
-            </Text>
-          </View>
-          
-          <View
-            style={{
+            color: '#fff',
+            fontSize: 24,
+            fontFamily:CustomeFont.Poppins_SemiBold,
+            lineHeight: 30, marginTop: 20 }}>Relieve Anxiety</Text>
+        </View>
+          <View style={{
               paddingHorizontal: 25,
               marginTop:10,
               justifyContent:'center',
               alignItems:'center'
-            }}
-          >
+            }}>
             <Text
               style={{
                 color: '#fff',
@@ -140,25 +128,12 @@ class LandingScreen extends Component {
                 textAlign: 'center',
                 lineHeight: 25,
                  fontFamily:CustomeFont.Poppins_Light
-              }}
-            >
-        All-in-One app to help you feel better, live well and stop worrying about anxiety.</Text>
+              }}>All-in-One app to help you feel better, live well and stop worrying about anxiety.</Text>
           </View>
-          <Image  
-          style={{flex:1,alignSelf:'center'}}
-          resizeMode={'cover'}
-           source={require('../assets/bg1.png')}
-          />
-          <View
-            style={{
-              paddingHorizontal: 20,
-              marginTop:20
-            }}
-          >
-           <TouchableOpacity
-           onPress={() => this.props.navigation.navigate('Login')}
-
-           >
+        </View>
+        <View>
+        <View style={{paddingHorizontal: 20,marginTop:20}}>
+           <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
            <Text
               style={{
                 color: '#fff',
@@ -166,10 +141,7 @@ class LandingScreen extends Component {
                 textAlign: 'center',
                 lineHeight: 25,
                 fontFamily:CustomeFont.Poppins_Light
-              }}
-            >
-              Sign into an existing account
-             </Text>
+              }}>Sign into an existing account</Text>
            </TouchableOpacity>
           </View>
          <View style={{marginBottom:20}}>
@@ -179,25 +151,10 @@ class LandingScreen extends Component {
             onPress={() => this.props.navigation.navigate('Register')}
             />
          </View>
-
-          {this.state.isLoading && <ActivityIndicatorApp />}
-
-          <KeyboardSpacer />
-          <Snackbar
-            duration={100000}
-            visible={this.state.visible}
-            onDismiss={() => this.onDismissSnackBar()}
-            action={{
-              label: 'close',
-              onPress: () => {
-                this.setState({ visible: false })
-              }
-            }}
-          >
-            {this.state.message}
-          </Snackbar>
-        </ScrollView>
-      </SafeAreaView>
+        </View>
+      </View>
+    </SafeAreaView>
+      </ImageBackground>
     )
   }
 }

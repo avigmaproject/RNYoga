@@ -61,8 +61,10 @@ export default class Detailbrainfood extends Component {
                     fontSize: 18,
                     color: "#fff",
                     lineHeight: 20,
+                    textTransform:"capitalize"
                 }}>{item.BRF_Name}</Text>
-                <Text style={{ marginTop: 20, color: '#ccc', fontSize: 13,lineHeight:20,}}>{item.BRF_Description}</Text>
+                <Text style={{ marginTop: 20, color: '#ccc', fontSize: 13,lineHeight:20,  
+                     textTransform:"capitalize"}}>{item.BRF_Description}</Text>
             </View>
         )
     }

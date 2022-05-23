@@ -21,7 +21,7 @@ export default class GradientButton extends Component {
               borderRadius: 10,
              
               marginTop: 20,
-              height: 60,
+              height: 50,
               marginBottom: this.props.marginBottom
             }}>
       <TouchableOpacity

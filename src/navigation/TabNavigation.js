@@ -29,20 +29,40 @@ export default function MyTabs() {
               : require("../assets/calendardeactive.png")
           }
           return (
-            <View
-              style={{
-                borderTopColor: focused ? "#EA68FD" : "",
-                borderTopWidth: focused ? 3 : 0,
-                paddingHorizontal: focused ? 2 : 0,
-                backgroundColor: focused ? "rgba(234, 104, 253,0.2)" : ""
-              }}
-            >
-              <Image
+            <View style={{
+              marginTop:-13,
+              borderTopColor: focused ? "#EA68FD" : "", 
+              borderTopWidth: focused ? 1 : 0}}>
+          {focused &&(
+          <View style={{ position:"absolute",marginTop:-11,marginLeft:-4,}}>
+            <Image
+                resizeMode="center"
+                style={{ width: 70, height: 100,}}
+                source={require('../assets/hover(circle).png')}
+             />
+           </View>)}
+           <View style={{paddingTop:15, height: 54, width: 60,}} >
+            <Image
                 resizeMode="contain"
                 source={image}
-                style={{ height: 50, width: 50, marginTop: 5 }}
+                style={{ height: 55, width: 55, marginLeft:2.4 }}
               />
-            </View>
+          </View>
+          </View>
+            // <View
+            //   style={{
+            //     borderTopColor: focused ? "#EA68FD" : "",
+            //     borderTopWidth: focused ? 3 : 0,
+            //     paddingHorizontal: focused ? 2 : 0,
+            //     backgroundColor: focused ? "rgba(234, 104, 253,0.2)" : ""
+            //   }}
+            // >
+            //   <Image
+            //     resizeMode="contain"
+            //     source={image}
+            //     style={{ height: 50, width: 50, marginTop: 5 }}
+            //   />
+            // </View>
           )
         },
 
@@ -50,7 +70,7 @@ export default function MyTabs() {
         tabBarStyle: {
           backgroundColor: basecolor,
           borderTopColor: "#472f67",
-          height: hasNotch ? 84 : 64
+          height: hasNotch ? 100 : 64
           // paddingBottom: 5
         },
         tabBarShowLabel: false

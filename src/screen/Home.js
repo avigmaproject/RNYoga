@@ -12,6 +12,7 @@ import { connect } from "react-redux"
 import Spinner from "react-native-loading-spinner-overlay"
 import DeviceInfo from "react-native-device-info"
 
+
 import CustomeFont from "../CustomeFont"
 let hasNotch = DeviceInfo.hasNotch()
 
@@ -78,45 +79,46 @@ class Home extends Component {
         resizeMode="stretch"
         style={{ height: "100%" }}
       >
-        <SafeAreaView>
-          <ScrollView>
-            <Spinner visible={this.state.isLoading} />
+      <Spinner visible={this.state.isLoading} />
+        <SafeAreaView style={{flex:1,}}>
             <View
               style={{
                 flex: 1,
-                marginHorizontal: 10,
-                marginTop: 20,
-                paddingBottom: 20
-                //justifyContent: "space-evenly",
+                marginHorizontal: 10, 
+                justifyContent: "space-evenly",
               }}
             >
               <View>
                 <Text
                   style={{
-                    color: "#fff",
-                    fontSize: 24,
+                     color: "rgba(255,255,255,0.8)",
+                    fontSize: 25,
                     fontFamily: CustomeFont.Poppins_Medium,
-                    textTransform: "capitalize"
+                    textTransform: "capitalize",
+                    
+                    marginTop:3     
                   }}
                 >
                   {this.state.time}, {this.state.firstname}
                 </Text>
                 <Text
                   style={{
-                    color: "#fff",
+                    color: "rgba(255,255,255,0.5)",
                     fontFamily: CustomeFont.Poppins_Light,
-                    fontSize: 16,
-                    marginTop: 10
+                    fontSize: 17,
+                    marginTop: 10,
+                    fontWeight:"normal"
                   }}
                 >
-                  let's start this day together properly
+                  Let's start this day together properly
                 </Text>
                 <Text
                   style={{
-                    color: "#fff",
+                    color: "rgba(255,255,255,0.8)",
                     fontFamily: CustomeFont.Poppins_Medium,
-                    fontSize:20,
-                    marginTop: 20
+                    fontSize:17,
+                    marginTop: 30,
+                    marginBottom:5
                   }}
                 >
                   Select a state
@@ -125,27 +127,27 @@ class Home extends Component {
               <ViewComp
                 onPress={() => this.props.navigation.navigate("Meditation")}
                 title={"Meditation"}
-                iconpath={require("../assets/flower.png")}
+                iconpath={"Meditation"}
               />
               <ViewComp
                 onPress={() =>
                   this.props.navigation.navigate("NutritionScreen")
                 }
                 title={"Nutrition"}
-                iconpath={require("../assets/nutrition-icon.png")}
+                iconpath={"Nutrition"}
               />
               <ViewComp
                 onPress={() => this.props.navigation.navigate("Yoga")}
                 title={"Yoga"}
-                iconpath={require("../assets/yoga-icon.png")}
+                iconpath={"Yoga"}
               />
               <ViewComp
                 onPress={() => this.props.navigation.navigate("ChatScreen")}
                 title={"Online therapy"}
-                iconpath={require("../assets/chatbox.png")}
+                iconpath={"Onlinetherapy"}
               />
             </View>
-          </ScrollView>
+          <View style={{marginTop:25}}/>
         </SafeAreaView>
       </ImageBackground>
     )
