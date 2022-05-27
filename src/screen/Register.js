@@ -5,7 +5,8 @@ import {
   TouchableOpacity,
   View,
   ScrollView,
-  Keyboard
+  Keyboard,
+Linking
 } from 'react-native'
 import { basecolor } from '../services/constant'
 import InputText from '../customcomponent/InputText'
@@ -22,7 +23,7 @@ import ActivityIndicatorApp from '../customcomponent/ActivityIndicator'
 import CustomeFont from '../CustomeFont'
 
 // import ActivityIndicatorApp from '../customcomponent/ActivityIndicator'
-// import KeyboardSpacer from "react-native-keyboard-spacer";
+import KeyboardSpacer from "react-native-keyboard-spacer";
 
 class Register extends Component {
   constructor() {
@@ -152,11 +153,11 @@ class Register extends Component {
 
   render() {
     return (
-      <SafeAreaView style={{ backgroundColor: basecolor, height: '100%' }}>
+      <SafeAreaView style={{ backgroundColor: basecolor, flex:1}}>
         <Spinner visible={this.state.isLoading} />
         <ScrollView
           keyboardShouldPersistTaps={'handled'}
-          contentContainerStyle={{ backgroundColor: basecolor, height: '100%' }}
+          contentContainerStyle={{ backgroundColor: basecolor, flex:1}}
         >
           <View
             style={{
@@ -166,7 +167,7 @@ class Register extends Component {
               marginTop: 15
             }}
           >
-            <Text
+            <Text allowFontScaling={false}
               style={{
                 color: '#fff',
                 fontSize: 21,
@@ -177,7 +178,7 @@ class Register extends Component {
             >
               Sign up
             </Text>
-            <Text
+            <Text allowFontScaling={false}
               style={{
                 color: '#fff',
                 fontSize: 16,
@@ -222,7 +223,7 @@ class Register extends Component {
               marginTop: Platform.OS === 'ios' ? 25 : 25
             }}
           >
-            <Text
+            <Text allowFontScaling={false}
               style={{
                 color: '#fff',
                 fontSize: 14,
@@ -232,8 +233,8 @@ class Register extends Component {
               }}
             >
               By continuing you are agreeing Relanxie{' '}
-              <Text style={{ color: '#C441FD' }}>terms</Text> of services and{' '}
-              <Text style={{ color: '#C441FD', }}>privacy policy</Text>
+             <Text onPress={()=> Linking.openURL("https://relanxie.com/terms-and-conditions/")}  allowFontScaling={false} style={{ color: '#C441FD' }}>terms</Text> of service and{' '}
+              <Text onPress={()=> Linking.openURL("https://relanxie.com/privacy-policy/")}  allowFontScaling={false} style={{ color: '#C441FD' }}>privacy policy</Text>
             </Text>
           </View>
           <View style={{ marginTop: 15 }}>
@@ -254,7 +255,7 @@ class Register extends Component {
                marginTop:15
             }}
           >
-            <Text
+            <Text allowFontScaling={false}
               style={{
                 color: '#fff',
                 fontSize: 13,
@@ -291,7 +292,7 @@ class Register extends Component {
               marginBottom:20
             }}
           >
-            <Text
+            <Text allowFontScaling={false}
               style={{
                 color: '#fff',
                 fontSize: 16,
@@ -309,7 +310,7 @@ class Register extends Component {
                 marginStart:4
               }}
             >
-              <Text
+              <Text allowFontScaling={false}
                 style={{
                   color: '#C441FD',
                   fontSize: 16,
@@ -320,8 +321,9 @@ class Register extends Component {
                 Login
               </Text>
             </TouchableOpacity>
+       
+
           </View>
-          {/* <KeyboardSpacer /> */}
           <Snackbar
             visible={this.state.visible}
             onDismiss={() => this.onDismissSnackBar()}
@@ -337,6 +339,7 @@ class Register extends Component {
             {this.state.message}
           </Snackbar>
         </ScrollView>
+
       </SafeAreaView>
     )
   }

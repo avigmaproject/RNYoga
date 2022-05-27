@@ -17,37 +17,68 @@ import Detaildiet from "../screen/Detaildiet";
 import FullScreenVideo from "../screen/FullScreenVideo";
 // import lunch from "../screen/lunch";
 import RecipeDetail from "../screen/RecipeDetail";
+import { StyleSheet, View, Image,TouchableOpacity } from 'react-native';
+import CustomeFont from "../CustomeFont"
 
 
 const HomeStack = createStackNavigator();
 
-export default function HomeNavigation() {
+export default function HomeNavigation({navigation}) {
   return (
-    <HomeStack.Navigator
-     screenOptions={{ headerShown: false }}>
-      <HomeStack.Screen name="HomeScreen" component={Home} />
-      <HomeStack.Screen name="NutritionScreen" component={Nutrition} />
-      <HomeStack.Screen name="DetailGuide" component={DetailGuide} />
-      <HomeStack.Screen name="Detaildiet" component={Detaildiet} />
-      <HomeStack.Screen name="Detailbadfood" component={Detailbadfood} />
-      <HomeStack.Screen name="Detailbrainfood" component={Detailbrainfood} />
-      <HomeStack.Screen name="DetailRecipes" component={DetailRecipes} />
-      <HomeStack.Screen name="DetailGroceryList" component={DetailGroceryList} />
-      <HomeStack.Screen name="Yoga" component={Yoga} />
-      <HomeStack.Screen name="ChatScreen" component={ChatScreen} />
-      <HomeStack.Screen name="Meditation" component={Meditation} />
-      <HomeStack.Screen name="musicplayer" component={musicplayer} />
-      <HomeStack.Screen name="FullScreenVideo" component={FullScreenVideo}/>
+    <HomeStack.Navigator 
+   >
+      <HomeStack.Screen name="HomeScreen" component={Home}  options={{ headerShown: false }}/>
+      <HomeStack.Screen name="NutritionScreen" component={Nutrition} 
+      options={{
+          headerTitle: "Nutrition",
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => navigation.goBack()}
+              style={{
+                backgroundColor: "#fff",
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: 7,
+                marginHorizontal: 20
+              }}
+            >
+              <Image
+                resizeMode="contain"
+                style={{ height: 38, width: 38, borderRadius: 3 }}
+                source={require("../assets/backarrow.png")}
+              />
+            </TouchableOpacity>
+          ),
+           headerTransparent: true,
+          headerTitleAlign:"left",
+          headerTitleAllowFontScaling:false,
+          headerTitleStyle:{ color: "#fff", fontWeight: "bold", fontSize: 25, fontFamily: CustomeFont.Poppins_Bold,},  
+        // headerTitleAllowFontScaling
+        }}
+ />
+      <HomeStack.Screen name="DetailGuide" component={DetailGuide} options={{ headerShown: false }} />
+      <HomeStack.Screen name="Detaildiet" component={Detaildiet}  options={{ headerShown: false }} />
+      <HomeStack.Screen name="Detailbadfood" component={Detailbadfood}  options={{ headerShown: false }}/>
+      <HomeStack.Screen name="Detailbrainfood" component={Detailbrainfood} options={{ headerShown: false }} />
+      <HomeStack.Screen name="DetailRecipes" component={DetailRecipes} options={{ headerShown: false }} />
+      <HomeStack.Screen name="DetailGroceryList" component={DetailGroceryList} options={{ headerShown: false }} />
+      <HomeStack.Screen name="Yoga" component={Yoga}  options={{ headerShown: false }}/>
+      <HomeStack.Screen name="ChatScreen" component={ChatScreen} options={{ headerShown: false }} />
+      <HomeStack.Screen name="Meditation" component={Meditation} options={{ headerShown: false }} />
+      <HomeStack.Screen name="musicplayer" component={musicplayer}  options={{ headerShown: false }}/>
+      <HomeStack.Screen name="FullScreenVideo" component={FullScreenVideo}  options={{ headerShown: false }}/>
       {/* <HomeStack.Screen name="lunch" component={lunch}/> */}
-      <HomeStack.Screen name="RecipeDetail" component={RecipeDetail}/>
+      <HomeStack.Screen name="RecipeDetail" component={RecipeDetail}  options={{ headerShown: false }}/>
 
       <HomeStack.Screen
         name="ChatofflineScreen"
         component={ChatofflineScreen}
+options={{ headerShown: false }}
       />
       <HomeStack.Screen
         name="SubscriptionScreen"
         component={SubscriptionScreen}
+options={{ headerShown: false }}
       />
     </HomeStack.Navigator>
   );

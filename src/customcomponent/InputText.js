@@ -8,7 +8,7 @@ export default class InputText extends Component {
   render() {
     return (
       <View style={{ marginTop: '5%' }}>
-        <Text
+        <Text allowFontScaling={false}
           style={{
             alignSelf: 'baseline',
             color: '#fff',
@@ -19,6 +19,7 @@ export default class InputText extends Component {
           {this.props.title}
         </Text>
         <TextInput
+        allowFontScaling={false}
           // label={this.props.title}
           value={this.props.value}
           onChangeText={this.props.onChangeText}
@@ -27,7 +28,7 @@ export default class InputText extends Component {
             width: '100%',
             height: 30,
             fontFamily:CustomeFont.Poppins_Regular,
-            fontSize:15
+            fontSize:15,
           }}
           activeUnderlineColor={'#C441FD'}
           underlineColor={'#574273'}

@@ -54,14 +54,14 @@ export default class DetailGuide extends Component {
     console.log('itemitem', item);
     return (
       <View style={{ padding: 15 }}>
-        <Text style={{
+        <Text allowFontScaling={false} style={{
           fontWeight: "600",
           fontSize: 18,
           color: "#fff",
           lineHeight:30,
           textTransform:"capitalize"
         }}>{item.GU_Name}</Text>
-        <Text style={{ marginTop: 20,color: '#ccc',fontSize:13,lineHeight:20,  textTransform:"capitalize"}}>{item.GU_Description}</Text>
+        <Text allowFontScaling={false}style={{ marginTop: 20,color: '#ccc',fontSize:13,lineHeight:20,  textTransform:"capitalize"}}>{item.GU_Description}</Text>
       </View>
     )
   }

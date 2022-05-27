@@ -4,14 +4,18 @@ import {
   View,
   ImageBackground,
   SafeAreaView,
-  ScrollView
+  ScrollView,
+Dimensions, Platform, PixelRatio 
 } from "react-native"
 import ViewComp from "../customcomponent/ViewComp"
 import { userprofile } from "../services/api.function"
 import { connect } from "react-redux"
 import Spinner from "react-native-loading-spinner-overlay"
 import DeviceInfo from "react-native-device-info"
-
+const {
+  width,
+  height,
+} = Dimensions.get('window');
 
 import CustomeFont from "../CustomeFont"
 let hasNotch = DeviceInfo.hasNotch()
@@ -25,6 +29,13 @@ class Home extends Component {
       time: "Morning"
     }
   }
+  normalize(size, multiplier = 2) {
+  const scale = (width / height) * multiplier;
+
+  const newSize = size * scale;
+
+  return Math.round(PixelRatio.roundToNearestPixel(newSize));
+}
 
   componentDidMount = async () => {
     this._unsubscribe = this.props.navigation.addListener("focus", () => {
@@ -74,13 +85,14 @@ class Home extends Component {
   }
   render() {
     return (
+<View style={{flex:1,backgroundColor:"#2D1350"}}>
       <ImageBackground
-        source={require("../assets/background.png")}
+        source={require("../assets/background1.png")}
         resizeMode="stretch"
         style={{ height: "100%" }}
       >
       <Spinner visible={this.state.isLoading} />
-        <SafeAreaView style={{flex:1,}}>
+        <SafeAreaView style={{flex:1}}>
             <View
               style={{
                 flex: 1,
@@ -90,33 +102,33 @@ class Home extends Component {
             >
               <View>
                 <Text
+                  allowFontScaling={false}
                   style={{
                      color: "rgba(255,255,255,0.8)",
-                    fontSize: 25,
+                    fontSize:27,
                     fontFamily: CustomeFont.Poppins_Medium,
                     textTransform: "capitalize",
-                    
-                    marginTop:3     
+                    marginTop:3,     
                   }}
                 >
                   {this.state.time}, {this.state.firstname}
                 </Text>
-                <Text
+                <Text allowFontScaling={false}
                   style={{
                     color: "rgba(255,255,255,0.5)",
                     fontFamily: CustomeFont.Poppins_Light,
-                    fontSize: 17,
+                    fontSize: this.normalize(17),
                     marginTop: 10,
                     fontWeight:"normal"
                   }}
                 >
                   Let's start this day together properly
                 </Text>
-                <Text
+                <Text allowFontScaling={false}
                   style={{
                     color: "rgba(255,255,255,0.8)",
                     fontFamily: CustomeFont.Poppins_Medium,
-                    fontSize:17,
+                    fontSize:this.normalize(17),
                     marginTop: 30,
                     marginBottom:5
                   }}
@@ -140,16 +152,18 @@ class Home extends Component {
                 onPress={() => this.props.navigation.navigate("Yoga")}
                 title={"Yoga"}
                 iconpath={"Yoga"}
+                margintop={10}
               />
               <ViewComp
                 onPress={() => this.props.navigation.navigate("ChatScreen")}
-                title={"Online therapy"}
+                title={"Online Therapy"}
                 iconpath={"Onlinetherapy"}
               />
             </View>
           <View style={{marginTop:25}}/>
         </SafeAreaView>
       </ImageBackground>
+</View>
     )
   }
 }

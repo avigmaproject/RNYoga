@@ -21,6 +21,7 @@ import { setLoggedIn, setToken } from '../store/action/auth/action'
 import dynamicLinks from '@react-native-firebase/dynamic-links'
 import CustomeFont from '../CustomeFont'
 import GradientButton from '../customcomponent/GradientButton'
+import Header from "../customcomponent/Header";
 
 class Forgotpassword extends Component {
   constructor() {
@@ -155,10 +156,14 @@ class Forgotpassword extends Component {
     console.log(this.state.form)
     return (
       <SafeAreaView style={{ backgroundColor: basecolor }}>
+ <Header
+              title={`Forgot password`}
+               navigation={this.props.navigation}/>
         <ScrollView
           contentContainerStyle={{ backgroundColor: basecolor, height: '100%' }}
         >
-          <View
+
+          {/* <View
             style={{
               alignItems: 'center',
               paddingVertical: 4,
@@ -167,7 +172,7 @@ class Forgotpassword extends Component {
               // backgroundColor: "pink",
             }}
           >
-            <Text
+            <Text allowFontScaling={false}
               style={{
                 color: '#fff',
                 fontSize: 21,
@@ -177,12 +182,14 @@ class Forgotpassword extends Component {
             >
               Forgot password
             </Text>
-          </View>
+          </View> */}
           <View
             style={{
               marginHorizontal: 20,
-              height: '20%'
+              height: '20%',
               // backgroundColor: "red",
+              marginTop:60
+
             }}
           >
             <InputText

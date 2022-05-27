@@ -7,7 +7,8 @@ import {
   Platform,
   ScrollView,
   Keyboard,
-  AppState
+  AppState,
+  Linking
 } from 'react-native'
 import { basecolor } from '../services/constant'
 import InputText from '../customcomponent/InputText'
@@ -200,7 +201,7 @@ class Login extends Component {
               // backgroundColor: "pink",
             }}
           >
-            <Text
+            <Text allowFontScaling={false}
               style={{
                 color: '#fff',
                 fontSize: 21,
@@ -235,7 +236,7 @@ class Login extends Component {
               marginTop:20
             }}
           >
-            <Text
+            <Text allowFontScaling={false}
               style={{
                 color: '#fff',
                 fontSize: 14,
@@ -245,8 +246,8 @@ class Login extends Component {
               }}
             >
               By continuing you are agreeing Relanxie{' '}
-              <Text style={{ color: '#C441FD' }}>terms</Text> of services and{' '}
-              <Text style={{ color: '#C441FD' }}>privacy policy</Text>
+              <Text onPress={()=> Linking.openURL("https://relanxie.com/terms-and-conditions/")}  allowFontScaling={false} style={{ color: '#C441FD' }}>terms</Text> of service and{' '}
+              <Text onPress={()=> Linking.openURL("https://relanxie.com/privacy-policy/")}  allowFontScaling={false} style={{ color: '#C441FD' }}>privacy policy</Text>
             </Text>
           </View>
           <GradientButton
@@ -254,9 +255,7 @@ class Login extends Component {
             title={'Sign in'}
             onPress={() => this._handleLogin()}
           />
-
           {this.state.isLoading && <ActivityIndicatorApp />}
-
           <View
             style={{
               justifyContent: 'center',
@@ -265,7 +264,7 @@ class Login extends Component {
               marginTop:15
             }}
           >
-            <Text
+            <Text allowFontScaling={false}
               style={{
                 color: '#fff',
                 fontSize: 13,
@@ -301,7 +300,7 @@ class Login extends Component {
               // height: "30%",
             }}
           >
-            <Text
+            <Text allowFontScaling={false}
               style={{
                 color: '#fff',
                 fontSize: 16,
@@ -319,7 +318,7 @@ class Login extends Component {
                 // backgroundColor: "pink",
               }}
             >
-              <Text
+              <Text allowFontScaling={false}
                 style={{
                   color: '#C441FD',
                   fontSize: 16,
@@ -342,7 +341,7 @@ class Login extends Component {
               marginTop: 6
             }}
           >
-            <Text
+            <Text allowFontScaling={false}
               style={{
                 color: '#fff',
                 fontSize: 16,
@@ -360,7 +359,7 @@ class Login extends Component {
                 // backgroundColor: "pink",
               }}
             >
-              <Text
+              <Text allowFontScaling={false}
                 style={{
                   color: '#C441FD',
                   fontSize: 16,

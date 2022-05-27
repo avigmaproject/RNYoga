@@ -15,7 +15,7 @@ import BottomSheet from "react-native-simple-bottom-sheet";
 import { basecolor } from "../services/constant";
 import VideoListV from "../customcomponent/VideoListV";
 import { GetUserYoga } from "../services/api.function";
-import Spinner from "react-native-loading-spinner-overlay"
+import RenderModal from "../customcomponent/RenderModal"
 
 const DATA = [
   {
@@ -76,6 +76,9 @@ export default class Yoga extends Component {
               this.setState({ TimerNinty:  [...this.state.TimerNinty ,res[0][i]], isLoading: false })
             }
           }
+          this.setState({
+            isLoading: false,
+          })
        
       })
       .catch((error) => {
@@ -115,17 +118,19 @@ return(
         resizeMode="stretch"
         style={{ height: "100%" }}
       >
-          <Spinner visible={this.state.isLoading}  />
-
+           
+      <RenderModal visible={this.state.isLoading}/>
         <SafeAreaView>
-          <View
+        <View
               style={{ flexDirection: "row", justifyContent: "space-between" ,alignItems:"center"}}
             >
               <Header
                 title={"Set Duration"}
                 navigation={this.props.navigation}
+            
               />
               <ButtomCustom
+                margintop={true}
                 backgroundColor={"#C441FD"}
                 title={this.state.timer}
                 onPress={() => this.panelRef.current.togglePanel()}
@@ -142,7 +147,7 @@ return(
                   borderBottomWidth: 1,
                 }}
               >
-              <Text
+              <Text allowFontScaling={false}
                   style={{
                     fontWeight: "bold",
                     fontSize: 25,
@@ -152,7 +157,7 @@ return(
                 >
                  {"Why yoga is good for anxiety? "}
                 </Text>
-              <Text
+              <Text allowFontScaling={false}
                   style={{
                    fontWeight: "300",
                     fontSize: 15,
@@ -163,7 +168,7 @@ return(
                  {"Anxiety is the body’s response to stress and is part of the natural fight, flight, or freeze reflex.  Anxiety might resemble a feeling of distress, unease, or dread. Its intention is to keep a person alert or aware during times of threat.  Sometimes, anxiety can get in the way of everyday life..."}
                 </Text>
                
-                <Text
+                <Text allowFontScaling={false}
                   style={{
                     fontWeight: "500",
                     fontSize: 15,
@@ -180,6 +185,14 @@ return(
           <View style={{ height: 20 }}></View>
             <ScrollView contentContainerStyle={{paddingBottom:100}}>
               <FlatList
+                ListEmptyComponent={()=>{
+                return(
+
+                <View style={{height:"100%",width:"100%",justifyContent:"center",alignItems:"center",}}>
+                <Text allowFontScaling={false} style={{fontSize:20,color:"#fff"}}>No Video Found</Text>
+                </View>
+
+                )}}
                 renderItem={this.onrender}
                 data={this.state.timer === "30 min" ? this.state.TimerThirty :this.state.timer === "60 min"? this.state.TimerSixty: this.state.TimerNinty }
               />
@@ -207,7 +220,7 @@ return(
 
               }}
             >
-              <Text style={styles.text}>Select Time</Text>
+              <Text allowFontScaling={false} style={styles.text}>Select Time</Text>
             </View>
             {DATA.map((item) => {
               return (
@@ -215,7 +228,7 @@ return(
                   onPress={() => this.onOpenTimer(item)}
                   style={styles.button}
                 >
-                  <Text style={styles.text}>{item.title}</Text>
+                  <Text allowFontScaling={false} style={styles.text}>{item.title}</Text>
                 </TouchableOpacity>
               );
             })}

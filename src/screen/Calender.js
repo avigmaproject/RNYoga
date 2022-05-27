@@ -77,12 +77,12 @@ const Calender = () => {
                 paddingVertical: 5
               }}
             >
-              <Text style={{ color: '#fff' }}>{item.text}</Text>
+              <Text allowFontScaling={false} style={{ color: '#fff' }}>{item.text}</Text>
             </TouchableOpacity>
           </View>
           <View style={{ marginTop: 18 }}>
-            <Text style={{ color: '#fff' }}>{item.title}</Text>
-            <Text style={{ color: '#ccc', marginTop: 5 }}>{item.label}</Text>
+            <Text allowFontScaling={false} style={{ color: '#fff' }}>{item.title}</Text>
+            <Text allowFontScaling={false} style={{ color: '#ccc', marginTop: 5 }}>{item.label}</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -152,7 +152,7 @@ const Calender = () => {
         />
       </View>
       <View style={{ marginTop: 10 }}>
-        <Text style={{ color: '#fff', fontSize: 15 }}>Tracked for today</Text>
+        <Text allowFontScaling={false} style={{ color: '#fff', fontSize: 15 }}>Tracked for today</Text>
       </View>
 
       <View>

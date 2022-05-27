@@ -47,13 +47,13 @@ const {UserRecipes} = this.state
             </View>
           </View>
           <View style={{marginLeft:10,marginTop:20}}>
-          <Text  style={{
+          <Text allowFontScaling={false}  style={{
                 fontSize: 16,
                 color: "#fff",
                 fontFamily: CustomeFont.Poppins_Medium,
                 fontWeight:"600"
               }}>{UserRecipes.UR_Name}</Text>
-              <Text  style={{
+              <Text allowFontScaling={false}  style={{
                 fontSize: 16,
                 color: "#fff",
                 fontFamily: CustomeFont.Poppins_Medium,

@@ -1,7 +1,11 @@
 import React, { Component } from "react";
-import { Text, View, ImageBackground, SafeAreaView, FlatList } from "react-native";
+import { Text, View, ImageBackground, SafeAreaView, FlatList ,StyleSheet} from "react-native";
 import Header from "../customcomponent/Header";
 import { GetGroceryList } from "../services/api.function";
+import CustomeFont from "../CustomeFont"
+import HTMLView from "react-native-htmlview";
+import { ScrollView } from "react-native-gesture-handler";
+import RenderModal from "../customcomponent/RenderModal"
 
 export default class DetailGroceryList extends Component {
     constructor(props) {
@@ -55,13 +59,18 @@ export default class DetailGroceryList extends Component {
         console.log('itemitem', item);
         return (
             <View style={{ padding: 15 }}>
-                <Text style={{
+                <Text allowFontScaling={false}style={{
                     fontWeight: "600",
                     fontSize: 18,
                     color: "#fff",
                     lineHeight: 20,
+                    textTransform:"capitalize"
                 }}>{item.GR_Name}</Text>
-                <Text style={{ marginTop: 20, color: '#ccc', fontSize: 13,lineHeight:20,}}>{item.GR_Description}</Text>
+                <HTMLView
+                    value={item.GR_Description}
+                    stylesheet={styles}
+                  />
+                {/* <Text style={{ marginTop: 20, color: '#ccc', fontSize: 13,lineHeight:20,}}>{item.GR_Description}</Text> */}
             </View>
         )
     }
@@ -72,21 +81,42 @@ export default class DetailGroceryList extends Component {
                 resizeMode="stretch"
                 style={{ height: "100%", flex: 1 }}
             >
+ <RenderModal visible={this.state.isLoading}/>
+
                 <SafeAreaView>
                     <Header
                         title={`${this.props.route.params.title}`}
                         navigation={this.props.navigation}
                     />
 
-                    <View>
+                    <ScrollView contentContainerStyle={{paddingBottom:100}}>
                         <FlatList
                             renderItem={this.onrender}
                             data={this.state.GroceryList}
                         />
-                    </View>
+                    </ScrollView>
 
                 </SafeAreaView>
             </ImageBackground>
         );
     }
 }
+const styles = StyleSheet.create({
+text: {
+    fontSize: 20,
+    color:"white"
+  },
+a: {
+    fontWeight: "300",
+    color: "blue", // make links coloured pink
+  },
+p:{
+    color:"white",  fontFamily: CustomeFont.Poppins_Light,textTransform:"capitalize"
+  },
+ol:{
+color:"white"
+},
+ul:{
+color:"white"
+}
+});

@@ -9,9 +9,9 @@ import LinearGradient from 'react-native-linear-gradient';
 export default class GradientButton extends Component {
   render() {
     return (
-        <LinearGradient start={{x: 0.0, y: 0.0}}
-        end={{x: 0, y: 1.2}}
-        colors={['#D970F5', '#A33AF3']}
+        <LinearGradient start={{x: 0.0, y: 0}}
+        end={{x: 0, y: 1}}
+        colors={['#cc47d8','#bd00ff']}
         style={{
             //  backgroundColor: this.props.backgroundColor, //"#3D265E",
               paddingHorizontal: 10,
@@ -19,7 +19,6 @@ export default class GradientButton extends Component {
               alignItems: 'center',
               marginHorizontal: this.props.margin ? null : 20,
               borderRadius: 10,
-             
               marginTop: 20,
               height: 50,
               marginBottom: this.props.marginBottom
@@ -36,6 +35,7 @@ export default class GradientButton extends Component {
       >
         {/* <AntDesign name={this.props.name} size={25} color='#FFF' /> */}
         <Text
+allowFontScaling={false}
           style={{ marginStart:10,color: '#fff', fontSize: 17, fontFamily:CustomeFont.Poppins_SemiBold,}}
         >
           {this.props.title}

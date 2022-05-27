@@ -4,10 +4,10 @@ import Calender from "../screen/Calender"
 import Profile from "../screen/Profile"
 import HomeStack from "./HomeStack"
 import { basecolor } from "../services/constant"
-import { Image, View } from "react-native"
+import { Image, View ,Dimensions} from "react-native"
 import DeviceInfo from "react-native-device-info"
 let hasNotch = DeviceInfo.hasNotch()
-
+const {width,height} = Dimensions.get('window');
 const Tab = createBottomTabNavigator()
 export default function MyTabs() {
   return (
@@ -30,22 +30,22 @@ export default function MyTabs() {
           }
           return (
             <View style={{
-              marginTop:-13,
+              marginTop:-17,
               borderTopColor: focused ? "#EA68FD" : "", 
               borderTopWidth: focused ? 1 : 0}}>
           {focused &&(
-          <View style={{ position:"absolute",marginTop:-11,marginLeft:-4,}}>
+          <View style={{ position:"absolute",marginLeft:-50,marginTop:-13}}>
             <Image
-                resizeMode="center"
-                style={{ width: 70, height: 100,}}
-                source={require('../assets/hover(circle).png')}
+                resizeMode="contain"
+                style={{ width:160, height: 150,}}
+                source={require('../assets/hover.png')}
              />
            </View>)}
            <View style={{paddingTop:15, height: 54, width: 60,}} >
             <Image
                 resizeMode="contain"
                 source={image}
-                style={{ height: 55, width: 55, marginLeft:2.4 }}
+                style={{ height: 55, width: 55, marginLeft:0.5 }}
               />
           </View>
           </View>

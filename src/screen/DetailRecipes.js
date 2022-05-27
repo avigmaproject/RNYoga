@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, ImageBackground, SafeAreaView, FlatList, TouchableOpacity, Image } from "react-native";
+import { Text, View, ImageBackground, SafeAreaView, FlatList, TouchableOpacity, Image,Alert } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Header from "../customcomponent/Header";
 import CustomeFont from "../CustomeFont";
@@ -9,7 +9,9 @@ import LinearGradient from 'react-native-linear-gradient';
 import ViewComp from "../customcomponent/ViewComp";
 import AntDesign from "react-native-vector-icons/AntDesign"
 import RecipeButton from "../customcomponent/RecipeButton";
-
+import Spinner from "react-native-loading-spinner-overlay"
+import RenderModal from "../customcomponent/RenderModal"
+// import ScrollView from 'rn-faded-scrollview'
 
 export default class DetailRecipes extends Component {
     constructor(props) {
@@ -21,42 +23,43 @@ export default class DetailRecipes extends Component {
             isSnak: false,
             isLunch: false,
             isdinner: false,
+            modalVisible:false,
             UserRecipesSnacks:[],UserRecipesBreakFast:[],UserRecipesLunch:[],UserRecipesDinner:[]
 
         }
     }
-
     componentDidMount() {
         this.onHandleGetUserRecipes()
     }
 
     onHandleGetUserRecipes = async () => {
+    var today = new Date();
+// var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    // Alert.alert("Start Api" , `${time}`)
         let data = {
-            UR_PKeyID: 1,
             Type: 1
         }
-        this.setState({ isLoading: true })
+        // this.setState({ modalVisible: true })
         await GetUserRecipes(data)
             .then((res) => {
-                // console.log('res: ', JSON.stringify(res))
-                console.log('resresresresresres', res[0]);
-                for(let i = 0;i< res[0].length ; i++){
-                    if(res[0][i].UR_TypesName === "Snacks"){
-                         this.setState({ UserRecipesSnacks:  [...this.state.UserRecipesSnacks ,res[0][i]], isLoading: false })
-                    }else  if(res[0][i].UR_TypesName === "BreakFast"){
-                         this.setState({ UserRecipesBreakFast: [...this.state.UserRecipesBreakFast ,res[0][i]], isLoading: false })
-                    }else  if(res[0][i].UR_TypesName === "Lunch"){
-                         this.setState({ UserRecipesLunch:  [...this.state.UserRecipesLunch ,res[0][i]], isLoading: false })
-                    }else  if(res[0][i].UR_TypesName === "Dinner"){
-                         this.setState({ UserRecipesDinner:  [...this.state.UserRecipesDinner ,res[0][i]], isLoading: false })
-                    }
+            if(res)
+            {
+            // var time1 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            // Alert.alert("End Api" , `${time1}`)
+            }
+            console.log('resresresresresres', res[0]);
+            for(let i = 0;i< res[0].length ; i++){
+                if(res[0][i].UR_TypesName === "Snacks"){
+                    this.setState({ UserRecipesSnacks:  [...this.state.UserRecipesSnacks ,res[0][i]], isLoading: false })
+                }else  if(res[0][i].UR_TypesName === "BreakFast"){
+                    this.setState({ UserRecipesBreakFast: [...this.state.UserRecipesBreakFast ,res[0][i]], isLoading: false })
+                }else  if(res[0][i].UR_TypesName === "Lunch"){
+                    this.setState({ UserRecipesLunch:  [...this.state.UserRecipesLunch ,res[0][i]], isLoading: false })
+                }else  if(res[0][i].UR_TypesName === "Dinner"){
+                    this.setState({ UserRecipesDinner:  [...this.state.UserRecipesDinner ,res[0][i]], isLoading: false })
                 }
-                this.setState({ UserRecipes: res[0], isLoading: false })
-                // console.log('onHandleGetDietTips', this.state.UserRecipesSnacks);
-                // console.log('onHandleGetDietTips', this.state.UserRecipesBreakFast);
-                // console.log('onHandleGetDietTips', this.state.UserRecipesLunch);
-                // console.log('onHandleGetDietTips', this.state.UserRecipesDinner);
-
+            }
+            this.setState({ UserRecipes: res[0], modalVisible: false })
             })
             .catch((error) => {
                 if (error.response) {
@@ -159,21 +162,21 @@ render() {
         <ImageBackground
             source={require("../assets/background.png")}
             resizeMode="stretch"
-            style={{ height: "100%", flex: 1 }}
-        >
- 
+            style={{ height: "100%", flex: 1 }}>
+           
+            <RenderModal visible={this.state.modalVisible}/>
             <SafeAreaView>
              <Header
               title={`${this.props.route.params.title}`}
                navigation={this.props.navigation}/>
-                <ScrollView contentContainerStyle={{paddingBottom:100}}>
+                <ScrollView contentContainerStyle={{paddingBottom:100,marginHorizontal: 8, }}>
                         <FlatList
                             renderItem={this.onrender}
                             data={this.state.isLunch ? this.state.UserRecipesLunch : this.state.isBreakFast ? this.state.UserRecipesBreakFast: this.state.isSnak ? this.state.UserRecipesSnacks :this.state.isdinner ? this.state.UserRecipesDinner : []}
                         />
                 </ScrollView>
             </SafeAreaView>
-            <View style={{ position: 'absolute', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 15, bottom: 10, width: '98%', height: 44, alignContent: 'center', backgroundColor: basecolor }}>
+            <View style={{ position: 'absolute', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 15, bottom: 10, width: '98%', height: 44, alignContent: 'center', backgroundColor: basecolor ,paddingVertical:4}}>
                 <RecipeButton  statue={this.state.isBreakFast} title = {"Breakfast"}   
                 onPress={() => {
                     this.setState({
@@ -257,6 +260,7 @@ render() {
                     })
                 }} style={{ padding: 10 }}><Text style={{ color: 'white', fontFamily: CustomeFont.Poppins_Medium, fontSize: 14 }}>Dinner</Text></TouchableOpacity></LinearGradient> */}
             </View>
+{/* {this.RenderModal()} */}
         </ImageBackground>
     );
 }

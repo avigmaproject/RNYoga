@@ -12,17 +12,21 @@ Button
 } from "react-native"
 import { basecolor } from "../services/constant"
 import VideoPlayer from "react-native-video-player"
-import Video from "react-native-video"
+// import Video from "react-native-video"
 import CustomeFont from "../CustomeFont"
 import HTMLView from "react-native-htmlview";
 import Right from "../assets/Right.svg";
 import Play from "../assets/Play.svg";
 import Left from "../assets/Left.svg"
+import RenderModal from "../customcomponent/RenderModal"
+
 export default class FullScreenVideo extends Component {
   constructor() {
     super()
     this.state = {
       data:[],
+      showControl:false,
+      playbutton:true,
       videosArray: ["https://musicsvideosfiles.s3.amazonaws.com/Yoga/1+-+Find+your+Centre.mp4",
         "https://musicsvideosfiles.s3.amazonaws.com/Yoga/1+-+Find+your+Centre.mp4",
         "https://musicsvideosfiles.s3.amazonaws.com/Yoga/1+-+Find+your+Centre.mp4",
@@ -34,38 +38,78 @@ componentDidMount(){
 this.setState({data:this.props.route.params.item})
 console.log("minallll",this.props.route.params.item)
 }
-
+_OnPlayPause (){
+this.setState({playbutton:!this.state.playbutton})
+if(this.state.playbutton){
+this.player.pause()
+}else{
+this.player.resume()
+}
+}
+componentWillUnmount(){
+this.player.stop()
+}
   render() {
 const {data} = this.state
+// console.log("video path",data.YG_File_Path)
     return (
       <View style={{ backgroundColor: basecolor, flex: 1 }}>
         {/* <SafeAreaView> */}
           <View style={{justifyContent:"center",alignItems:"center",}}>
+      <RenderModal height={300} visible={this.state.isLoading}/>
        <View style={{width:"100%"}}>
           <VideoPlayer
             video={{
-              uri:
-                data.YG_File_Path
+              uri:"https://musicsvideosfiles.s3.amazonaws.com/Yoga/1+-+Find+your+Centre.mp4"
+               // data.YG_File_Path
             }}
+            autoplay={true}
             resizeMode={"cover"}
-            showDuration	
-            style={{  height: 300,}}
+            showDuration
+            style={{  height: 300}}
+            playInBackground={false}
+            onVideoLoadStart={()=>this.setState({isLoading:true})}
+            // onVideoLoad={()=>this.setState({isLoading:true})}
+            // onBuffer={()=>this.setState({isLoading:true})}
+            onVideoProgress={()=>this.setState({isLoading:false})}
+            onPlaybackResume={()=>this.setState({isLoading:false})}
             ref={r => this.player = r}
+            thumbnail={require("../assets/yoga.jpg")}
+            endThumbnail={require("../assets/yoga.jpg")}
+              customStyles={{seekBarBackground:{backgroundColor:"#78678f",},
+               seekBarKnob:{backgroundColor:"rgba(254, 189, 250,0.9)"},
+                seekBarProgress:{backgroundColor:"#ED6BFD"},
+                playArrow:{color:"#ED6BFD"},
+                playIcon:{color:"#ED6BFD"},
+                playButton:{backgroundColor:"rgba(254, 189, 250,0.9)"},
+                // playControl:{display:"none",marginLeft:50},
+                seekBarFullWidth:{width:"80%"},
+                // controls:{display:"none"},
+ }}
           />
           </View>
-        {/* <View style={{position:"absolute",zIndex:11,}}>   
-          <View style={{ flexDirection: 'row', alignItems: 'center' ,width:"80%"}}>
+        <TouchableOpacity 
+            onPress={()=>this.setState({showControl:!this.state.showControl})}
+            style={{width:"100%",height: 200,position:"absolute",zIndex:11,justifyContent:"center",alignItems:"center"}}>
+            {this.state.showControl && ( <View>   
+                <View style={{ flexDirection: 'row', alignItems: 'center' ,width:"80%"}}>
                   <TouchableOpacity style={{marginRight:20}} onPress={() => this.player.seek(-10)} >
                       <Left height="50" width="50"/>
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={() => this.player.resume()} style={{marginHorizontal:20}}>
-                      <Play height="70" width="70"/>
+                  <TouchableOpacity onPress={() => this._OnPlayPause()} style={{marginHorizontal:20}}>
+
+                    {this.state.playbutton ?(<Image
+                      style={{ width: 90, height: 70, borderRadius: 10 }}
+                      resizeMode={"cover"}
+                      source={require("../assets/stop.png")}
+                    />  ) :( <Play height="70" width="70"/>) }
+                     
                   </TouchableOpacity>
                   <TouchableOpacity style={{marginLeft:20}}  onPress={() => this.player.seek(10)}>
                       <Right height="50" width="50"/>
                   </TouchableOpacity>
-                </View>
-</View> */}
+                </View></View>)}
+          </TouchableOpacity>
         {/* <Button
           onPress={() => this.player.stop()}
           title="Stop"
@@ -81,7 +125,7 @@ const {data} = this.state
       </View>
 
           <ScrollView style={{}}>
-            <Text
+            <Text allowFontScaling={false}
               style={{
                 fontSize: 15,
                 fontFamily: CustomeFont.Poppins_Medium,
@@ -137,7 +181,7 @@ const {data} = this.state
                         alignItems: "flex-start"
                       }}
                     >
-                      <Text
+                      <Text allowFontScaling={false}
                         style={{
                           fontSize: 15,
                           fontFamily: CustomeFont.Poppins_Medium,
@@ -146,7 +190,7 @@ const {data} = this.state
                       >
                         The name of yoga lessions #1
                       </Text>
-                      <Text
+                      <Text allowFontScaling={false}
                         numberOfLines={2}
                         style={{
                           fontSize: 12,

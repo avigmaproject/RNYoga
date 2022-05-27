@@ -20,6 +20,8 @@ import { Snackbar } from 'react-native-paper'
 import GradientButton from '../customcomponent/GradientButton'
 import CustomeFont from '../CustomeFont'
 import { basecolor } from '../services/constant'
+import RenderModal from "../customcomponent/RenderModal"
+
 class Profile extends Component {
   constructor() {
     super()
@@ -133,6 +135,8 @@ class Profile extends Component {
           isLoading: false,
           userdata: res[0]
         })
+          this.setState({ isLoading: false })
+
       })
       .catch((error) => {
         if (error.response) {
@@ -162,12 +166,13 @@ class Profile extends Component {
         resizeMode='stretch'
         style={{ height: '100%' }}
       >
+ {/* <RenderModal visible={this.state.isLoading}/> */}
         <ScrollView>
           <View style={styles.container1}>
-            <Text style={styles.textheader}>My Profile</Text>
+            <Text allowFontScaling={false} style={styles.textheader}>My Profile</Text>
           </View>
 
-          <Text style={styles.textheader2}>Account</Text>
+          <Text allowFontScaling={false} style={styles.textheader2}>Account</Text>
 
           <View style={styles.container2}>
             <InputText
@@ -193,7 +198,7 @@ class Profile extends Component {
                 title={'Password'}
               /> */}
  <View style={{ marginTop: '5%' }}>
-        <Text
+        <Text allowFontScaling={false}
           style={{
             alignSelf: 'baseline',
             color: '#fff',
@@ -205,6 +210,7 @@ class Profile extends Component {
         </Text>
         <View style={{flexDirection:'row',borderBottomWidth:1,borderBottomColor:'#574273'}}>
         <TextInput
+          allowFontScaling={false}
           // label={this.props.title}
           value={this.state.form.password}
           onChangeText={(text) => this.onHandleChange('password', text)}
@@ -245,7 +251,7 @@ class Profile extends Component {
             </View>
           </View>
 
-          <Text style={styles.textheader2}>Subscription</Text>
+          <Text allowFontScaling={false} style={styles.textheader2}>Subscription</Text>
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate('SubscriptionScreen')}
             style={styles.container3}
@@ -260,8 +266,8 @@ class Profile extends Component {
                 /> */}
               </View>
               <View style={{ marginLeft: 20 }}>
-                <Text style={styles.bottomtext1}>First 14 days free</Text>
-                <Text style={styles.bottomtext2}>49,99$ annualy</Text>
+                <Text allowFontScaling={false} style={styles.bottomtext1}>First 14 days free</Text>
+                <Text allowFontScaling={false} style={styles.bottomtext2}>49,99$ annualy</Text>
               </View>
             </View>
           </TouchableOpacity>

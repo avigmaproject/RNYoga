@@ -108,7 +108,7 @@ class LandingScreen extends Component {
     <View style={{ flexDirection:"column",justifyContent:"space-between",height:"100%"}}>
       <View> 
         <View style={{ alignItems: 'center',paddingVertical: 4}}>
-          <Text
+          <Text allowFontScaling={false}
             style={{
             color: '#fff',
             fontSize: 24,
@@ -121,7 +121,7 @@ class LandingScreen extends Component {
               justifyContent:'center',
               alignItems:'center'
             }}>
-            <Text
+            <Text allowFontScaling={false}
               style={{
                 color: '#fff',
                 fontSize: 16,
@@ -134,7 +134,7 @@ class LandingScreen extends Component {
         <View>
         <View style={{paddingHorizontal: 20,marginTop:20}}>
            <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
-           <Text
+           <Text allowFontScaling={false}
               style={{
                 color: '#fff',
                 fontSize: 16,

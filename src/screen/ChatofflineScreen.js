@@ -39,10 +39,10 @@ class ChatofflineScreen extends Component {
                 source={require('../assets/icon-offline.png')}
               />
               <View style={{ alignItems: 'center' }}>
-                <Text style={styles.text1}>
+                <Text allowFontScaling={false} style={styles.text1}>
                   Our expert currently is offline!
                 </Text>
-                <Text style={styles.text2}>
+                <Text allowFontScaling={false} style={styles.text2}>
                   Feel free to get in touch with him by email!{' '}
                 </Text>
               </View>

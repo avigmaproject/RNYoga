@@ -126,7 +126,7 @@ class ResetPassword extends Component {
               // backgroundColor: "pink",
             }}
           >
-            <Text
+            <Text allowFontScaling={false}
               style={{
                 color: "#fff",
                 fontSize: 25,
@@ -136,7 +136,7 @@ class ResetPassword extends Component {
             >
               Reset Password
             </Text>
-            <Text
+            <Text allowFontScaling={false}
               style={{
                 color: "#fff",
                 fontSize:16,

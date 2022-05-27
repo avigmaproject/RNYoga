@@ -4,7 +4,6 @@ import {
   View,
   ImageBackground,
   SafeAreaView,
-  TouchableOpacity,
   ScrollView,
   StyleSheet,
 
@@ -16,9 +15,10 @@ import Svg, {
   Use,
   Image,
 } from 'react-native-svg';
-import ButtomCustom from "../customcomponent/ButtomCustom";
+import GradientButton from "../customcomponent/GradientButton";
 import Background from "../assets/Background.svg"
-
+import LinearGradient from 'react-native-linear-gradient';
+import CustomeFont from "../CustomeFont"
 
 
 export default class Nutrition extends Component {
@@ -71,53 +71,56 @@ export default class Nutrition extends Component {
 
   render() {
     return (
+    <View style={{flex:1,backgroundColor:"#2D1350"}}>
       <ImageBackground
-        source={require("../assets/background.png")}
+        source={require("../assets/background1.png")}
         resizeMode="stretch"
         style={{ height: "100%" }}
       >
         <SafeAreaView>
-        <Header title={"Nutrition"} navigation={this.props.navigation} />
+        {/* <Header title={"Nutrition"} navigation={this.props.navigation} /> */}
+       
+     
+        {/* <View style={{height:10,width:"100%", backgroundColor:"rgba(255,255,255,0)"}}/> */}
           <ScrollView>
             <View
               style={{
                 marginHorizontal: 10,
-                paddingBottom: 20
+                paddingBottom: 20,marginTop:70
               }}
             >
               <ViewComp
                 onPress={() =>
                   this.props.navigation.navigate("DetailGuide", {
-                    title: "Guide",
+                    title: "Introductory Guide",
                   })
                 }
-                title={"Guide"}
+                title={"Introductory Guide"}
                 iconpath={"Guide"}
-
               />
               <ViewComp
                 onPress={() =>
                   this.props.navigation.navigate("Detaildiet", {
-                    title: "Diet tips",
+                    title: "Food Facts",
                   })
                 }
-                title={"Diet tips"}
-                iconpath={"Diettips"} />
+                title={"Food Facts"}
+                iconpath={"Diettips"}/>
               <ViewComp
                 onPress={() =>
                   this.props.navigation.navigate("Detailbadfood", {
-                    title: "Bad foods",
+                    title: "Unhealthy Food",
                   })
                 }
-                title={"Bad food"}
+                title={"Unhealthy Food"}
                 iconpath={"Badfood"} />
               <ViewComp
                 onPress={() =>
                   this.props.navigation.navigate("Detailbrainfood", {
-                    title: "Brain food",
+                    title: "Brain Food",
                   })
                 }
-                title={"Brain food"}
+                title={"Brain Food"}
                 iconpath={"Brainfood"} />
               <ViewComp
                 onPress={() =>
@@ -130,25 +133,25 @@ export default class Nutrition extends Component {
               <ViewComp
                 onPress={() =>
                   this.props.navigation.navigate("DetailGroceryList", {
-                    title: "Grocery list",
+                    title: "Grocery List",
                   })
                 }
-                title={"Grocery list"}
+                title={"Grocery List"}
                 iconpath={"Grocery"} />
 
             </View>
-            <View style={{ padding: 15 }}>
+            <View style={{  }}>
               <View style={{ alignItems: 'center', marginTop: 20 }}>
                 <Background height={"120"} width={"90%"} />
               </View>
 
-              <View style={{ marginTop: 30 }}>
-                <Text style={styles.calltext}>Do you want to make</Text>
-                <Text style={styles.calltext}>a call with our psychologist?</Text>
+              <View style={{ marginTop: 30 ,padding:20}}>
+                <Text allowFontScaling={false} style={styles.calltext}>Do you want to make</Text>
+                <Text allowFontScaling={false} style={styles.calltext}>a call with our dietician?</Text>
               </View>
 
-              <View style={{ width: '100%', marginTop: 40 }}>
-                <ButtomCustom
+              <View style={{ width: '95%',alignSelf:"center"}}>
+                <GradientButton
                   margin={true}
                   backgroundColor={'#C441FD'}
                   title={'Schedule a call'}
@@ -157,20 +160,20 @@ export default class Nutrition extends Component {
                   }
                 />
               </View>
-              <View style={{marginTop:25}}>
-                <Text  style={styles.calltext2}>
+              <View style={{marginTop:20,padding:20}}>
+                <Text allowFontScaling={false}  style={styles.calltext2}>
                   You cannot book an appointment with our
                 </Text>
-                <Text  style={styles.calltext2}>
+                <Text allowFontScaling={false}  style={styles.calltext2}>
                   dietician beacause you are not a member of our
                 </Text>
-                <Text  style={styles.calltext2}>
+                <Text allowFontScaling={false}  style={styles.calltext2}>
                   membership
                 </Text>
 
                <View style={{marginTop:15}}>
-               <Text  style={styles.calltext2}>
-                  if you want,you can do it right<Text style={{textDecorationLine: 'underline',color:'#fff',marginLeft:10,fontSize:12,marginTop:20}}>  here</Text>
+               <Text allowFontScaling={false}  style={styles.calltext2}>
+                  if you want,you can do it right{" "}<Text style={{textDecorationLine: 'underline',color:'#fff',marginLeft:10,fontSize:12,marginTop:20}}>here.</Text>
                 </Text>
                </View>
 
@@ -179,12 +182,13 @@ export default class Nutrition extends Component {
           </ScrollView>
         </SafeAreaView>
       </ImageBackground>
+    </View>
     );
   }
 }
 const styles = StyleSheet.create({
 
-  calltext: { fontSize: 19, color: '#fff', fontWeight: 'bold', fontFamily: 'Poppins-Medium' },
-  calltext2: { fontSize:12, color: '#ccc',fontFamily: 'Poppins-Medium' }
+  calltext: { color: "#fff", fontWeight: "bold", fontSize: 25, fontFamily: CustomeFont.Poppins_Bold, },
+  calltext2: { fontSize:12,color: "rgba(255,255,255,0.5)",fontFamily: 'Poppins-Medium' }
 
 })

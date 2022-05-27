@@ -1,8 +1,11 @@
 import React, { Component } from "react";
-import { Text, View, ImageBackground, SafeAreaView, FlatList } from "react-native";
+import { Text, View, ImageBackground, SafeAreaView, FlatList,StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Header from "../customcomponent/Header";
 import { GetBrainFood } from "../services/api.function";
+import CustomeFont from "../CustomeFont"
+import HTMLView from "react-native-htmlview";
+import RenderModal from "../customcomponent/RenderModal"
 
 export default class Detailbrainfood extends Component {
     constructor(props) {
@@ -61,10 +64,16 @@ export default class Detailbrainfood extends Component {
                     fontSize: 18,
                     color: "#fff",
                     lineHeight: 20,
-                    textTransform:"capitalize"
+                    textTransform:"capitalize",marginBottom:5
                 }}>{item.BRF_Name}</Text>
-                <Text style={{ marginTop: 20, color: '#ccc', fontSize: 13,lineHeight:20,  
-                     textTransform:"capitalize"}}>{item.BRF_Description}</Text>
+               {/* <Text style={{marginLeft:10}}>  */}
+                    <HTMLView
+                    value={item.BRF_Description}
+                    stylesheet={styles}
+                  />
+                {/* </Text> */}
+                {/* <Text style={{ marginTop: 20, color: '#ccc', fontSize: 13,lineHeight:20,  
+                     textTransform:"capitalize"}}>{item.BRF_Description}</Text> */}
             </View>
         )
     }
@@ -75,13 +84,15 @@ export default class Detailbrainfood extends Component {
                 resizeMode="stretch"
                 style={{ height: "100%", flex: 1 }}
             >
+ <RenderModal visible={this.state.isLoading}/>
+
                 <SafeAreaView>
-                    <ScrollView>
                     <Header
                         title={`${this.props.route.params.title}`}
                         navigation={this.props.navigation}
                     />
-
+                    <ScrollView>
+                   
                     <View>
                         <FlatList
                             renderItem={this.onrender}
@@ -94,3 +105,22 @@ export default class Detailbrainfood extends Component {
         );
     }
 }
+const styles = StyleSheet.create({
+text: {
+    fontSize: 20,
+    color:"white"
+  },
+a: {
+    fontWeight: "300",
+    color: "blue", // make links coloured pink
+  },
+p:{
+    color:"white",  fontFamily: CustomeFont.Poppins_Light,textTransform:"capitalize"
+  },
+ol:{
+color:"white"
+},
+ul:{
+color:"white"
+}
+});

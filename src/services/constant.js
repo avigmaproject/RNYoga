@@ -1,1 +1,1 @@
-export const basecolor = "#2D1350";
+export const basecolor = "#2d1350";

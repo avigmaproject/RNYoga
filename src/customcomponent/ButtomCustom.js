@@ -19,11 +19,12 @@ export default class ButtomCustom extends Component {
           flexDirection: 'row',
           height:40,
           marginBottom: this.props.marginBottom,
-          marginTop:25
+          marginTop:this.props.margintop ? 0: 25
         }}
       >
         <AntDesign name={this.props.name} size={25} color='#FFF' />
         <Text
+          allowFontScaling={false}
           style={{ color: '#fff', fontSize: 17, fontFamily:CustomeFont.Poppins_SemiBold }}
         >
           {this.props.title}

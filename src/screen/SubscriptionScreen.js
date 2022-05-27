@@ -29,13 +29,13 @@ class SubscriptionScreen extends Component {
             />
 
             <View style={styles.container1}>
-              <Text style={styles.headertext1}>Relanxie.</Text>
+              <Text allowFontScaling={false} style={styles.headertext1}>Relanxie.</Text>
 
-              <Text style={styles.headertext2}>
+              <Text allowFontScaling={false} style={styles.headertext2}>
               join relanxie pro to be your best self on
               </Text>
 
-              <Text style={styles.headertext2}>demand</Text>
+              <Text allowFontScaling={false} style={styles.headertext2}>demand</Text>
             </View>
 
             <View style={styles.container2}>
@@ -46,7 +46,7 @@ class SubscriptionScreen extends Component {
                   source={require('../assets/icon-check.png')}
                 />
 
-                <Text style={styles.listtext}>Unlock mental states</Text>
+                <Text allowFontScaling={false} style={styles.listtext}>Unlock mental states</Text>
               </View>
 
               <View style={styles.container3}>
@@ -56,7 +56,7 @@ class SubscriptionScreen extends Component {
                   source={require('../assets/icon-check.png')}
                 />
 
-                <Text style={styles.listtext}>
+                <Text allowFontScaling={false} style={styles.listtext}>
                   Download tracks & listen offline
                 </Text>
               </View>
@@ -68,7 +68,7 @@ class SubscriptionScreen extends Component {
                   source={require('../assets/icon-check.png')}
                 />
 
-                <Text style={styles.listtext}>
+                <Text allowFontScaling={false} style={styles.listtext}>
                   Unlimited listes on all devices
                 </Text>
               </View>
@@ -80,29 +80,29 @@ class SubscriptionScreen extends Component {
                   source={require('../assets/icon-check.png')}
                 />
 
-                <Text style={styles.listtext}>New music added monthly</Text>
+                <Text allowFontScaling={false} style={styles.listtext}>New music added monthly</Text>
               </View>
             </View>
             <View>
               <View style={styles.container4}>
                 <View style={{ marginLeft: 20 }}>
-                  <Text style={styles.bottomtext2}>50,99$ annualy</Text>
-                  <Text style={styles.bottomtext1}>First 14 days free</Text>
+                  <Text allowFontScaling={false} style={styles.bottomtext2}>50,99$ annualy</Text>
+                  <Text allowFontScaling={false} style={styles.bottomtext1}>First 14 days free</Text>
                 </View>
               </View>
 
               <View style={styles.bestvalue}>
-                <Text style={styles.bestvaluetext}>Best value</Text>
+                <Text allowFontScaling={false} style={styles.bestvaluetext}>Best value</Text>
               </View>
             </View>
             <View style={styles.container5}>
               <View style={{ marginLeft: 20 }}>
-                <Text style={styles.bottomtext2}>6,99$ monthly</Text>
-                <Text style={styles.bottomtext1}>First 7 days free</Text>
+                <Text allowFontScaling={false} style={styles.bottomtext2}>6,99$ monthly</Text>
+                <Text allowFontScaling={false} style={styles.bottomtext1}>First 7 days free</Text>
               </View>
             </View>
             <View style={{ height: 50 }}>
-              <Text style={styles.termstext}>Terms & Conditions</Text>
+              <Text allowFontScaling={false} style={styles.termstext}>Terms & Conditions</Text>
             </View>
            <View style={{marginBottom:20}}>
            <ButtomCustom

@@ -24,8 +24,8 @@ const SplashScreen = () => {
         source={require('../assets/background.png')}
       >
         <View style={styles.container}>
-          <Text style={styles.typetext}>Type of meditation</Text>
-          <Text style={styles.nametext}>Name of the music</Text>
+          <Text allowFontScaling={false}  style={styles.typetext}>Type of meditation</Text>
+          <Text allowFontScaling={false} style={styles.nametext}>Name of the music</Text>
           <View style={{}}>
             <Image
               style={styles.centerimg}
@@ -43,7 +43,7 @@ const SplashScreen = () => {
                 </TouchableOpacity>
               </View>
               <View style={styles.heartbox}>
-                <Text style={styles.timetext}>00:30:00</Text>
+                <Text allowFontScaling={false} style={styles.timetext}>00:30:00</Text>
               </View>
               <View style={[styles.heartbox, { alignItems: 'flex-end' }]}>
                 <TouchableOpacity onPress={() => setModalVisible(true)}>
@@ -56,7 +56,7 @@ const SplashScreen = () => {
             </View>
             <View style={styles.lineback}>
               <TouchableOpacity style={styles.holdposition}>
-                <Text style={styles.holdtext}>
+                <Text allowFontScaling={false} style={styles.holdtext}>
                   Hold on the play button to close the player
                 </Text>
               </TouchableOpacity>
@@ -140,11 +140,11 @@ const SplashScreen = () => {
                   </TouchableOpacity>
                 </View>
                 <View style={{ alignItems: 'center' }}>
-                  <Text style={{ color: '#fff', fontSize: 20, marginTop: 20 }}>
+                  <Text allowFontScaling={false} style={{ color: '#fff', fontSize: 20, marginTop: 20 }}>
                     Balance
                   </Text>
 
-                  <Text style={{ color: 'gray', marginTop: 10 }}>
+                  <Text allowFontScaling={false} style={{ color: 'gray', marginTop: 10 }}>
                     Adjust the slider to the volume
                   </Text>
                 </View>

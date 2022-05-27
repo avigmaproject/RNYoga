@@ -55,13 +55,13 @@ export default class Detaildiet extends Component {
     console.log('itemitem', item);
     return (
       <View style={{ padding: 15 }}>
-        <Text style={{
+        <Text allowFontScaling={false} style={{
           fontWeight: "600",
           fontSize: 18,
           color: "#fff",
           lineHeight: 20,
         }}>{item.DT_Name}</Text>
-        <Text style={{ marginTop: 20,color: '#ccc',fontSize:13,lineHeight:20,}}>{item.DT_Description}</Text>
+        <Text allowFontScaling={false} style={{ marginTop: 20,color: '#ccc',fontSize:13,lineHeight:20,}}>{item.DT_Description}</Text>
       </View>
     )
   }

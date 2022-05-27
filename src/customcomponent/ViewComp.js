@@ -39,29 +39,23 @@ export default class ViewComp extends Component {
              flexDirection:"row",
               alignItems:"center",
           }}>
-          <View style={{ width:this.props.recipes ? "30%": "50%", height: 100,}}>
-          {/* <Image
-              resizeMode="cover"
-              style={{ width: "80%", height: "100%",}}
-              source={require('../assets/hover(circle).png')}
-             /> */}
-           </View>
-           <View style={{position:"absolute",marginLeft:this.props.recipes ? "5%":"9%"}}>
-            {this.props.recipes && this.props.filepath ? ( 
+          <View style={{ width:this.props.recipes ? "30%": "45%", height: 100,justifyContent:"center",paddingLeft:30}}>
+          {this.props.recipes && this.props.filepath ? ( 
               <Image
                source={{uri :this.props.filepath}}
               resizeMode="contain"
               style={{
               width: 60,
               height: 60,
-              marginLeft: "10%"
+              borderRadius:30,
+              // marginLeft: "10%"
                }}
               />):(  
             <Text> 
               {this.props.iconpath === "Meditation" ? <Meditationicon height={"60"} width={"60"} /> : null}
-              {this.props.iconpath === "Nutrition" ? <Nutritionicon height={"60"} width={"60"} /> : null}   
-              {this.props.iconpath === "Yoga" ? <Yogaiconn height={"60"} width={"60"} /> : null}
-              {this.props.iconpath === "Onlinetherapy" ? <Chatboxicon height={"50"} width={"50"} /> : null}
+              {this.props.iconpath === "Nutrition" ? <Nutritionicon height={"60"} width={"60"}  /> : null}   
+              {this.props.iconpath === "Yoga" ? <View style={{paddingTop:15}}><Yogaiconn height={"60"} width={"60"}/></View> : null}
+              {this.props.iconpath === "Onlinetherapy" ? <Chatboxicon height={"60"} width={"60"}  /> : null}
               {this.props.iconpath === "Guide" ? <Iconguide height={"60"} width={"60"} /> : null}
               {this.props.iconpath === "Diettips" ? <Icondiettips height={"60"} width={"60"} /> : null}
               {this.props.iconpath === "Badfood" ? <Iconbadfood height={"60"} width={"60"} /> : null}
@@ -70,10 +64,13 @@ export default class ViewComp extends Component {
               {this.props.iconpath === "Grocery" ? <Icongroceryiist height={"60"} width={"60"} /> : null}
             </Text>)}
            
+           </View>
+           {/* <View style={{position:"absolute",marginLeft:this.props.recipes ? "5%":"9%"}}>
+           
           
-          </View>
+          </View> */}
           <View style={{width:this.props.recipes ? "60%":"35%"}}>
-            <Text
+            <Text allowFontScaling={false}
               ellipsizeMode="tail"
               numberOfLines={2}
               style={{

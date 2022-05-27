@@ -1,16 +1,23 @@
 import React, { Component } from "react"
 import { Text, View, TouchableOpacity, Image } from "react-native"
 import { normalize } from "../services/api.function"
+import LinearGradient from 'react-native-linear-gradient';
+import CustomeFont from "../CustomeFont";
 
 export default class Header extends Component {
   render() {
     return (
+<View>
+{/* <LinearGradient start={{x: 0.1, y: 0.2}} end={{  x: 0.1, y: 1  }} colors={['#3e265f','#663b89', ]} style={{
+        width: "100%",
+        justifyContent: "center",
+        height: 100,
+        paddingTop:40.
+      }} > */}
       <View
         style={{
           flexDirection: "row",
           alignItems: "center",
-          // backgroundColor: "pink",
-          height: 50
         }}
       >
         <View
@@ -33,13 +40,13 @@ export default class Header extends Component {
             >
               <Image
                 resizeMode="contain"
-                style={{ height: 30, width: 30, borderRadius: 3 }}
+                style={{ height: 38, width: 38, borderRadius: 3 }}
                 source={require("../assets/backarrow.png")}
               />
             </TouchableOpacity>
           </View>
           <View>
-            <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 25 }}>
+            <Text allowFontScaling={false}style={{ color: "#fff", fontWeight: "bold", fontSize: 25 ,                 fontFamily:CustomeFont.Poppins_Medium}}>
               {this.props.title}
             </Text>
           </View>
@@ -47,16 +54,19 @@ export default class Header extends Component {
         <View
           style={{ alignItems: "center", justifyContent: "center", flex: 1 }}
         >
-          <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 20 }}>
+          <Text allowFontScaling={false} style={{ color: "#fff", fontWeight: "bold", fontSize: 20 ,                 fontFamily:CustomeFont.Poppins_Medium
+}}>
             {this.props.title2}
           </Text>
         </View>
         <View>
           <TouchableOpacity onPress={this.props.onPress}>
-            <Text style={{ color: "#fff" }}>{this.props.title3}</Text>
+            <Text allowFontScaling={false} style={{ color: "#fff" }}>{this.props.title3}</Text>
           </TouchableOpacity>
         </View>
       </View>
+{/* // </LinearGradient> */}
+</View>
     )
   }
 }

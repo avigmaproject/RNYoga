@@ -85,8 +85,8 @@ export default class Meditation extends Component {
                 }}
               >
                 <View>
-                  <Text style={styles.bottomText}>Meditation</Text>
-                  <Text style={styles.bottomText2}>Name of the music</Text>
+                  <Text allowFontScaling={false} style={styles.bottomText}>Meditation</Text>
+                  <Text allowFontScaling={false} style={styles.bottomText2}>Name of the music</Text>
                 </View>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <TouchableOpacity style={styles.Touchableprev}>

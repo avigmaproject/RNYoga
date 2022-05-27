@@ -85,7 +85,7 @@ export default class lunch extends Component {
                         activeOpacity={1}
                     >
                         <View style={{ position: "absolute", zIndex: 1, marginLeft: "25%", }}>
-                            <Text
+                            <Text allowFontScaling={false}
                                 style={{
                                     fontSize: 16,
                                     color: "#fff",
@@ -94,7 +94,7 @@ export default class lunch extends Component {
                             >
                                 {item.UR_TypesName}
                             </Text>
-                            <Text
+                            <Text allowFontScaling={false}
                                 style={{
                                     fontSize: 12,
                                     color: "#fff",

@@ -40,7 +40,7 @@ export default class VideoListV extends Component {
               borderRadius: 20
             }}
           >
-            <Text
+            <Text allowFontScaling={false}
               style={{
                 fontFamily: CustomeFont.Poppins_Regular,
                 fontSize: 12,
@@ -52,7 +52,7 @@ export default class VideoListV extends Component {
             </Text>
           </LinearGradient>
         </View>
-        <Text
+        <Text allowFontScaling={false}
           style={{
             fontSize: 15,
             fontFamily: CustomeFont.Poppins_Medium,
