@@ -31,22 +31,20 @@ export default class Header extends Component {
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
               style={{
-                backgroundColor: "#fff",
                 justifyContent: "center",
                 alignItems: "center",
-                borderRadius: 7,
                 marginHorizontal: 20
               }}
             >
               <Image
                 resizeMode="contain"
-                style={{ height: 38, width: 38, borderRadius: 3 }}
+                style={{ height: 38, width: 38, borderRadius: 10 }}
                 source={require("../assets/backarrow.png")}
               />
             </TouchableOpacity>
           </View>
           <View>
-            <Text allowFontScaling={false}style={{ color: "#fff", fontWeight: "bold", fontSize: 25 ,                 fontFamily:CustomeFont.Poppins_Medium}}>
+            <Text allowFontScaling={false}style={{ color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 25}}>
               {this.props.title}
             </Text>
           </View>
@@ -54,8 +52,7 @@ export default class Header extends Component {
         <View
           style={{ alignItems: "center", justifyContent: "center", flex: 1 }}
         >
-          <Text allowFontScaling={false} style={{ color: "#fff", fontWeight: "bold", fontSize: 20 ,                 fontFamily:CustomeFont.Poppins_Medium
-}}>
+          <Text allowFontScaling={false} style={{  color: "rgba(255,255,255,0.8)",   fontFamily: CustomeFont.Poppins_Light, fontSize: 20 }}>
             {this.props.title2}
           </Text>
         </View>

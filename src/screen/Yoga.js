@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   ScrollView,
   StyleSheet,
-FlatList
+FlatList,Alert,BackHandler
 } from "react-native";
 import Header from "../customcomponent/Header";
 import ButtomCustom from "../customcomponent/ButtomCustom";
@@ -97,6 +97,14 @@ export default class Yoga extends Component {
             visible: true,
             message: 'Some Request Error'
           })
+              Alert.alert("Network issue",`${error.request._response}`,[
+                 {
+                  text: "Cancel",
+                  onPress: () => console.log("Cancel Pressed"),
+                  style: "cancel"
+                },
+                { text: "OK", onPress: () => BackHandler.exitApp() }
+                  ])
           console.log('request error', error.request)
         }
       })

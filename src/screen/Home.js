@@ -5,7 +5,8 @@ import {
   ImageBackground,
   SafeAreaView,
   ScrollView,
-Dimensions, Platform, PixelRatio 
+Alert,
+Dimensions, Platform, PixelRatio ,BackHandler
 } from "react-native"
 import ViewComp from "../customcomponent/ViewComp"
 import { userprofile } from "../services/api.function"
@@ -63,7 +64,15 @@ class Home extends Component {
           console.log("error.response", error.response)
         } else if (error.request) {
           this.setState({ isLoading: false })
-          console.log("request error", error.request)
+          Alert.alert("Network issue",`${error.request._response}`,[
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel"
+        },
+        { text: "OK", onPress: () => BackHandler.exitApp() }
+      ])
+          console.log("request error", error.request._response)
         } else if (error) {
           alert("Server Error")
           this.setState({ isLoading: false })
@@ -104,7 +113,7 @@ class Home extends Component {
                 <Text
                   allowFontScaling={false}
                   style={{
-                     color: "rgba(255,255,255,0.8)",
+                    color: "rgba(255,255,255,0.8)",
                     fontSize:27,
                     fontFamily: CustomeFont.Poppins_Medium,
                     textTransform: "capitalize",
@@ -119,7 +128,6 @@ class Home extends Component {
                     fontFamily: CustomeFont.Poppins_Light,
                     fontSize: this.normalize(17),
                     marginTop: 10,
-                    fontWeight:"normal"
                   }}
                 >
                   Let's start this day together properly

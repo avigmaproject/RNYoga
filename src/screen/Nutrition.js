@@ -6,11 +6,9 @@ import {
   SafeAreaView,
   ScrollView,
   StyleSheet,
-
 } from "react-native";
 import ViewComp from "../customcomponent/ViewComp";
 import Header from "../customcomponent/Header";
-import { getnutrition } from "../services/api.function";
 import Svg, {
   Use,
   Image,
@@ -26,48 +24,8 @@ export default class Nutrition extends Component {
   constructor() {
     super();
     this.state = {
-      nutrition: []
     };
   }
-  componentDidMount() {
-    this.onHandlegetnutrition()
-  }
-
-  onHandlegetnutrition = async () => {
-    let data = {
-      NU_PKeyID: 1,
-      Type: 1,
-    }
-    this.setState({ isLoading: true })
-    await getnutrition(data)
-      .then((res) => {
-        console.log('res', JSON.stringify(res))
-        console.log('resUSRDATA', res)
-        this.setState({ nutrition: res, isLoading: false })
-      })
-      .catch((error) => {
-        if (error.response) {
-          console.log('responce_error', error.response)
-          this.setState({
-            isLoading: false,
-            color: 'red',
-            visible: true,
-            message: 'Some Response Error'
-          })
-        } else if (error.request) {
-          this.setState({
-            isLoading: false,
-            color: 'red',
-            visible: true,
-            message: 'Some Request Error'
-          })
-          console.log('request error', error.request)
-        }
-      })
-  }
-
-
-
 
   render() {
     return (
@@ -79,11 +37,8 @@ export default class Nutrition extends Component {
       >
         <SafeAreaView>
         {/* <Header title={"Nutrition"} navigation={this.props.navigation} /> */}
-       
-     
-        {/* <View style={{height:10,width:"100%", backgroundColor:"rgba(255,255,255,0)"}}/> */}
           <ScrollView>
-            <View
+             <View
               style={{
                 marginHorizontal: 10,
                 paddingBottom: 20,marginTop:70
@@ -139,7 +94,7 @@ export default class Nutrition extends Component {
                 title={"Grocery List"}
                 iconpath={"Grocery"} />
 
-            </View>
+            </View> 
             <View style={{  }}>
               <View style={{ alignItems: 'center', marginTop: 20 }}>
                 <Background height={"120"} width={"90%"} />
@@ -162,18 +117,16 @@ export default class Nutrition extends Component {
               </View>
               <View style={{marginTop:20,padding:20}}>
                 <Text allowFontScaling={false}  style={styles.calltext2}>
+
                   You cannot book an appointment with our
                 </Text>
                 <Text allowFontScaling={false}  style={styles.calltext2}>
-                  dietician beacause you are not a member of our
-                </Text>
-                <Text allowFontScaling={false}  style={styles.calltext2}>
-                  membership
+                  dietician beacause you did not activate the subscription.
                 </Text>
 
                <View style={{marginTop:15}}>
                <Text allowFontScaling={false}  style={styles.calltext2}>
-                  if you want,you can do it right{" "}<Text style={{textDecorationLine: 'underline',color:'#fff',marginLeft:10,fontSize:12,marginTop:20}}>here.</Text>
+                  if you want,you can do it {" "}<Text onPress={()=>alert("Under construction..")} style={{textDecorationLine: 'underline',color:'#fff',marginLeft:10,fontSize:12,marginTop:20}}>right here.</Text>
                 </Text>
                </View>
 
@@ -188,7 +141,7 @@ export default class Nutrition extends Component {
 }
 const styles = StyleSheet.create({
 
-  calltext: { color: "#fff", fontWeight: "bold", fontSize: 25, fontFamily: CustomeFont.Poppins_Bold, },
-  calltext2: { fontSize:12,color: "rgba(255,255,255,0.5)",fontFamily: 'Poppins-Medium' }
+  calltext: { color: "rgba(255,255,255,0.8)", fontSize:27, fontFamily: CustomeFont.Poppins_Medium },
+  calltext2: { color: "rgba(255,255,255,0.5)",  fontFamily: CustomeFont.Poppins_Light,  fontSize: 12,}
 
 })

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, ImageBackground, SafeAreaView, FlatList, TouchableOpacity, Image,Alert } from "react-native";
+import { Text, View, ImageBackground, SafeAreaView, FlatList, TouchableOpacity, Image,Alert,BackHandler } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Header from "../customcomponent/Header";
 import CustomeFont from "../CustomeFont";
@@ -39,7 +39,7 @@ export default class DetailRecipes extends Component {
         let data = {
             Type: 1
         }
-        // this.setState({ modalVisible: true })
+        this.setState({ modalVisible: true })
         await GetUserRecipes(data)
             .then((res) => {
             if(res)
@@ -77,6 +77,15 @@ export default class DetailRecipes extends Component {
                         visible: true,
                         message: 'Some Request Error'
                     })
+                Alert.alert("Network issue",`${error.request._response}`,[
+                 {
+                  text: "Cancel",
+                  onPress: () => console.log("Cancel Pressed"),
+                  style: "cancel"
+                },
+                { text: "OK", onPress: () => BackHandler.exitApp() }
+                  ])
+                   
                     console.log('request error', error.request)
                 }
             })
@@ -176,7 +185,7 @@ render() {
                         />
                 </ScrollView>
             </SafeAreaView>
-            <View style={{ position: 'absolute', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 15, bottom: 10, width: '98%', height: 44, alignContent: 'center', backgroundColor: basecolor ,paddingVertical:4}}>
+            <View style={{ position: 'absolute', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 15, bottom: 10, width: '94%', height: 44, alignContent: 'center', backgroundColor: basecolor ,paddingVertical:4,alignSelf:"center"}}>
                 <RecipeButton  statue={this.state.isBreakFast} title = {"Breakfast"}   
                 onPress={() => {
                     this.setState({
@@ -193,7 +202,7 @@ render() {
                         isSnak: false,
                         isdinner: false
                     })}}/>
-                <RecipeButton statue={this.state.isSnak} title = {"Snaks"}  onPress={() => {
+                <RecipeButton statue={this.state.isSnak} title = {"Snack"}  onPress={() => {
                     this.setState({
                         isBreakFast: false,
                         isLunch: false,

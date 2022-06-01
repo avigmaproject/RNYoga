@@ -1,4 +1,4 @@
-import { Text, View ,ImageBackground,ActivityIndicator,ScrollView,Image,StyleSheet} from 'react-native'
+import { Text, View ,ImageBackground,ActivityIndicator,ScrollView,Image,StyleSheet,Alert,BackHandler} from 'react-native'
 import React, { Component } from 'react'
 import Header from "../customcomponent/Header";
 import CustomeFont from "../CustomeFont"
@@ -15,14 +15,15 @@ export default class RecipeDetail extends Component {
     }
  _onLoadEnd = () => {
     this.setState({
-      isLoading: false
+      isLoading: false,
     })
   }
 _onLoadStart = () => {
     this.setState({
-      isLoading: true
+      isLoading: true,
     })
   }
+
   render() {
 const {UserRecipes} = this.state
     return (
@@ -30,14 +31,13 @@ const {UserRecipes} = this.state
             source={require("../assets/background.png")}
             resizeMode="stretch"
             style={{ height: "100%", flex: 1 }}>
-        <ScrollView contentContainerStyle={{paddingBottom:100}}>
         {this.state.isLoading &&  <View style={{ position:"absolute",height: 300,width:"100%"}}>
           <View style={{ height: 300,width:"100%",justifyContent:"center",alignItems:"center"}}><ActivityIndicator color={"#D970F5"} /></View>
          </View> }
           <Spinner visible={this.state.isLoading}  />
-              <View  style={{ height: 300,  flex: 1 }}>
+              <View  style={{ height: 300, }}>
                 <Image
-                onLoadStart={() =>this._onLoadStart() }
+                onLoadStart={() =>this._onLoadStart()}
                 onLoadEnd={() => this._onLoadEnd()}
                 resizeMode="cover"
                 style={{ width: "100%", height: "100%",}}
@@ -53,24 +53,20 @@ const {UserRecipes} = this.state
                 fontFamily: CustomeFont.Poppins_Medium,
                 fontWeight:"600"
               }}>{UserRecipes.UR_Name}</Text>
-              <Text allowFontScaling={false}  style={{
+            
+              </View>
+        <ScrollView contentContainerStyle={{paddingBottom:100,paddingHorizontal:10}}>
+           {/* <Text allowFontScaling={false}  style={{
                 fontSize: 16,
                 color: "#fff",
                 fontFamily: CustomeFont.Poppins_Medium,
                 fontWeight:"600"
-              }}>Ingredients</Text>
-              <HTMLView
-                    onLinkPress={(url) =>
-                      this.props.navigation.navigate("Faq", {
-                        url,
-                        title: "Product",
-                        routes: "quiz",
-                      })
-                    }
+              }}>{UserRecipes.UR_Description}</Text> */}
+              
+                <HTMLView
                     value={UserRecipes.UR_Description}
                     stylesheet={styles}
                   />
-              </View>
         </ScrollView>
     </ImageBackground>
     )
@@ -78,8 +74,10 @@ const {UserRecipes} = this.state
 }
 const styles = StyleSheet.create({
   text: {
-    fontSize: 20,
-color:"white"
+   color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium
+  },
+b: {
+   color: "rgba(255,255,255,0.9)",fontFamily: CustomeFont.Poppins_Bold
   },
   a: {
     fontWeight: "300",
@@ -88,9 +86,9 @@ color:"white"
 p:{
 color:"white",  fontFamily: CustomeFont.Poppins_Light,
 },ol:{
-color:"white"
+color:"rgb(200, 104, 200)"
 },
 ul:{
-color:"white"
+color:"rgb(200, 104, 200)"
 }
 });

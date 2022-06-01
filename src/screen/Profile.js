@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   Keyboard,
   Image,
-  TextInput
+  TextInput,Alert,BackHandler
 } from 'react-native'
 import InputText from '../customcomponent/InputText'
 import KeyboardSpacer from 'react-native-keyboard-spacer'
@@ -97,6 +97,14 @@ class Profile extends Component {
               console.log('error.response', error.response)
             } else if (error.request) {
               this.setState({ isLoading: false })
+                Alert.alert("Network issue",`${error.request._response}`,[
+                 {
+                  text: "Cancel",
+                  onPress: () => console.log("Cancel Pressed"),
+                  style: "cancel"
+                },
+                { text: "OK", onPress: () => BackHandler.exitApp() }
+                  ])
               console.log('request error', error.request)
             } else if (error) {
               alert('Server Error')
@@ -113,7 +121,9 @@ class Profile extends Component {
     }
   }
   componentDidMount() {
-    this.GetUserProfile()
+ this._unsubscribe = this.props.navigation.addListener("focus", () => {
+      this.GetUserProfile()
+    })
   }
   GetUserProfile = async () => {
     this.setState({ isLoading: true })
@@ -143,8 +153,17 @@ class Profile extends Component {
           this.setState({ isLoading: false })
           console.log('error.response', error.response)
         } else if (error.request) {
+
           this.setState({ isLoading: false })
           console.log('request error', error.request)
+        Alert.alert("Network issue",`${error.request._response}`,[
+                 {
+                  text: "Cancel",
+                  onPress: () => console.log("Cancel Pressed"),
+                  style: "cancel"
+                },
+                { text: "OK", onPress: () => BackHandler.exitApp() }
+                  ])
         } else if (error) {
           alert('Server Error')
           this.setState({ isLoading: false })

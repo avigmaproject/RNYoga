@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   View,
   Platform,
-  ScrollView,
+  ScrollView,Alert,BackHandler
 } from "react-native";
 import { basecolor } from "../services/constant";
 import InputText from "../customcomponent/InputText";
@@ -87,12 +87,21 @@ class ResetPassword extends Component {
               console.log("responce_error", error.response);
               this.setState({ isLoading: false });
             } else if (error.request) {
+
               this.setState({
+                isLoading: false,
                 color: "red",
                 visible: true,
                 message: "Something went wrong!!!",
               });
-              this.setState({ isLoading: false });
+              Alert.alert("Network issue",`${error.request._response}`,[
+                 {
+                  text: "Cancel",
+                  onPress: () => console.log("Cancel Pressed"),
+                  style: "cancel"
+                },
+                { text: "OK", onPress: () => BackHandler.exitApp() }
+                  ])
               console.log("request error", error.request);
             }
           });

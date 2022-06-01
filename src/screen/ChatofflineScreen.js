@@ -8,7 +8,8 @@ import {
   TouchableOpacity,
   ScrollView,
   ImageBackground,
-  SafeAreaView
+  SafeAreaView,Alert,BackHandler
+
 } from 'react-native'
 import ButtomCustom from '../customcomponent/ButtomCustom'
 import Header from '../customcomponent/Header'

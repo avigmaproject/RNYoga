@@ -24,10 +24,14 @@ import CustomeFont from "../CustomeFont"
 const HomeStack = createStackNavigator();
 
 export default function HomeNavigation({navigation}) {
+const forFade = ({ current, closing }) => ({
+  cardStyle: {
+    opacity: current.progress,
+  },
+});
   return (
-    <HomeStack.Navigator 
-   >
-      <HomeStack.Screen name="HomeScreen" component={Home}  options={{ headerShown: false }}/>
+    <HomeStack.Navigator screenOptions={{cardStyleInterpolator: forFade}}>
+      <HomeStack.Screen name="HomeScreen"  component={Home}  options={{ headerShown: false }}/>
       <HomeStack.Screen name="NutritionScreen" component={Nutrition} 
       options={{
           headerTitle: "Nutrition",
@@ -52,7 +56,7 @@ export default function HomeNavigation({navigation}) {
            headerTransparent: true,
           headerTitleAlign:"left",
           headerTitleAllowFontScaling:false,
-          headerTitleStyle:{ color: "#fff", fontWeight: "bold", fontSize: 25, fontFamily: CustomeFont.Poppins_Bold,},  
+          headerTitleStyle:{  color: "rgba(255,255,255,0.8)", fontSize:27, fontFamily: CustomeFont.Poppins_Medium},  
         // headerTitleAllowFontScaling
         }}
  />

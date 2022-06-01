@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, ImageBackground, SafeAreaView, FlatList,StyleSheet } from "react-native";
+import { Text, View, ImageBackground, SafeAreaView, FlatList,StyleSheet,Alert,BackHandler } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Header from "../customcomponent/Header";
 import { GetBrainFood } from "../services/api.function";
@@ -50,6 +50,15 @@ export default class Detailbrainfood extends Component {
                         visible: true,
                         message: 'Some Request Error'
                     })
+                    Alert.alert("Network issue",`${error.request._response}`,[
+                        {
+                        text: "Cancel",
+                        onPress: () => console.log("Cancel Pressed"),
+                        style: "cancel"
+                        },
+                        { text: "OK", onPress: () => BackHandler.exitApp() }
+                        ])
+                    
                     console.log('request error', error.request)
                 }
             })

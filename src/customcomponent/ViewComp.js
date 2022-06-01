@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Text, View, Image, TouchableOpacity } from "react-native"
+import { Text, View, Image, TouchableOpacity,ActivityIndicator } from "react-native"
 import AntDesign from "react-native-vector-icons/AntDesign"
 import CustomeFont from "../CustomeFont"
 import Meditationicon from "../assets/Meditationicon.svg"
@@ -17,6 +17,12 @@ import LinearGradient from "react-native-linear-gradient"
 
 
 export default class ViewComp extends Component {
+constructor(props) {
+        super(props)
+        this.state = {
+            isLoading:false
+        }
+    }
   render() {
     return (
       <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#663b89', '#3e265f', '#3d265e']} style={{
@@ -40,14 +46,19 @@ export default class ViewComp extends Component {
               alignItems:"center",
           }}>
           <View style={{ width:this.props.recipes ? "30%": "45%", height: 100,justifyContent:"center",paddingLeft:30}}>
+          {this.state.isLoading &&  <View style={{ position:"absolute",zIndex:111, height: 60,width:100}}>
+          <View style={{width: 130,height: 60,justifyContent:"center",alignItems:"center"}}><ActivityIndicator color={"#2d1350"} /></View>
+         </View> }
           {this.props.recipes && this.props.filepath ? ( 
               <Image
-               source={{uri :this.props.filepath}}
+              onLoadStart={()=>this.setState({isLoading:true})}
+              onLoadEnd={()=>this.setState({isLoading:false})}
+              source={{uri :this.props.filepath}}
               resizeMode="contain"
               style={{
               width: 60,
               height: 60,
-              borderRadius:30,
+              borderRadius:10,
               // marginLeft: "10%"
                }}
               />):(  

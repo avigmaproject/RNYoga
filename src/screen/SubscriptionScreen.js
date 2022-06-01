@@ -7,7 +7,7 @@ import {
   TextInput,
   SafeAreaView,
   ScrollView,
-  ImageBackground
+  ImageBackground,Alert,BackHandler
 } from 'react-native'
 import ButtomCustom from '../customcomponent/ButtomCustom'
 import CustomeFont from '../CustomeFont'

@@ -5,7 +5,8 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
-  FlatList
+  FlatList,Alert,BackHandler
+
 } from 'react-native'
 import CalendarStrip from 'react-native-calendar-strip'
 import { ScrollView } from 'react-native-gesture-handler'

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, ImageBackground, SafeAreaView, FlatList } from "react-native";
+import { Text, View, ImageBackground, SafeAreaView, FlatList ,Alert,BackHandler} from "react-native";
 import Header from "../customcomponent/Header";
 import { getUserGuide } from "../services/api.function";
 
@@ -39,12 +39,21 @@ export default class DetailGuide extends Component {
             message: 'Some Response Error'
           })
         } else if (error.request) {
-          this.setState({
-            isLoading: false,
-            color: 'red',
-            visible: true,
-            message: 'Some Request Error'
-          })
+            this.setState({
+                isLoading: false,
+                color: 'red',
+                visible: true,
+                message: 'Some Request Error'
+              })
+              Alert.alert("Network issue",`${error.request._response}`,[
+                 {
+                  text: "Cancel",
+                  onPress: () => console.log("Cancel Pressed"),
+                  style: "cancel"
+                },
+                { text: "OK", onPress: () => BackHandler.exitApp() }
+                  ])
+          
           console.log('request error', error.request)
         }
       })

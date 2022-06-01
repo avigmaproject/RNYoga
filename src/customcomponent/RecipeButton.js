@@ -10,7 +10,7 @@ export default class RecipeButton extends Component {
         end={{ x: 0, y: 1.2 }} colors={this.props.statue ? ['#cc47d8','#bd00ff']: ["rgba(0,0,0,0)", "rgba(0,0,0,0)"]}>
          <TouchableOpacity style={{ paddingVertical: 8,paddingHorizontal:10 }} 
             onPress={this.props.onPress}>
-            <Text allowFontScaling={false}style={{ color: 'white', fontFamily: CustomeFont.Poppins_Medium, fontSize: 14 }}>{this.props.title}</Text>
+            <Text allowFontScaling={false}style={{ color:this.props.statue ? 'white' : "rgba(255,255,255,0.5)", fontFamily: CustomeFont.Poppins_Medium, fontSize: 14 }}>{this.props.title}</Text>
         </TouchableOpacity>
     </LinearGradient>
     )

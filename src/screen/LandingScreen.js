@@ -10,7 +10,7 @@ import {
   Keyboard,
   AppState,
   Image,
-  ImageBackground
+  ImageBackground,Alert,BackHandler
 } from 'react-native'
 import { basecolor } from '../services/constant'
 import InputText from '../customcomponent/InputText'

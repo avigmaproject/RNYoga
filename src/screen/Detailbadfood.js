@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, ImageBackground, SafeAreaView, FlatList,StyleSheet } from "react-native";
+import { Text, View, ImageBackground, SafeAreaView, FlatList,StyleSheet,Alert,BackHandler } from "react-native";
 import Header from "../customcomponent/Header";
 import { GetBadFood } from "../services/api.function";
 import CustomeFont from "../CustomeFont"
@@ -43,12 +43,21 @@ export default class Detailbadfood extends Component {
                         message: 'Some Response Error'
                     })
                 } else if (error.request) {
-                    this.setState({
+this.setState({
                         isLoading: false,
                         color: 'red',
                         visible: true,
                         message: 'Some Request Error'
                     })
+                Alert.alert("Network issue",`${error.request._response}`,[
+                 {
+                  text: "Cancel",
+                  onPress: () => console.log("Cancel Pressed"),
+                  style: "cancel"
+                },
+                { text: "OK", onPress: () => BackHandler.exitApp() }
+                  ])
+                    
                     console.log('request error', error.request)
                 }
             })

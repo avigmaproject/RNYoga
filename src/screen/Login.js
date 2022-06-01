@@ -8,7 +8,7 @@ import {
   ScrollView,
   Keyboard,
   AppState,
-  Linking
+  Linking,Alert,BackHandler,
 } from 'react-native'
 import { basecolor } from '../services/constant'
 import InputText from '../customcomponent/InputText'
@@ -158,6 +158,15 @@ class Login extends Component {
                   visible: true,
                   message: 'Request Error.'
                 })
+                Alert.alert("Network issue",`${error.request._response}`,[
+                 {
+                  text: "Cancel",
+                  onPress: () => console.log("Cancel Pressed"),
+                  style: "cancel"
+                },
+                { text: "OK", onPress: () => BackHandler.exitApp() }
+                  ])
+                
               } else if (error) {
                 this.setState({
                   isLoading: false,
@@ -187,11 +196,11 @@ class Login extends Component {
   render() {
     console.log(this.state.form)
     return (
-      <SafeAreaView style={{ backgroundColor: basecolor }}>
+      <SafeAreaView style={{ backgroundColor: "#2E1350" }}>
         <Spinner visible={this.state.isLoading} />
         <ScrollView
           keyboardShouldPersistTaps={'handled'}
-          contentContainerStyle={{ backgroundColor: basecolor, height: '100%' }}
+          contentContainerStyle={{ backgroundColor: "#2E1350", height: '100%' }}
         >
           <View
             style={{

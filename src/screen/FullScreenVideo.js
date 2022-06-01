@@ -7,7 +7,7 @@ import {
   FlatList,
   ScrollView,
   SafeAreaView,
-  StyleSheet,
+  StyleSheet,Alert,BackHandler,
 Button
 } from "react-native"
 import { basecolor } from "../services/constant"

@@ -7,7 +7,7 @@ import {
   Image,
   TouchableOpacity,
   SafeAreaView,
-  ScrollView
+  ScrollView,Alert,BackHandler
 } from 'react-native'
 import Header from '../customcomponent/Header'
 import ViewComp from '../customcomponent/ViewComp'
