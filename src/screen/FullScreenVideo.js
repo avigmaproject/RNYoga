@@ -8,7 +8,7 @@ import {
   ScrollView,
   SafeAreaView,
   StyleSheet,Alert,BackHandler,
-Button
+Button,ActivityIndicator
 } from "react-native"
 import { basecolor } from "../services/constant"
 import VideoPlayer from "react-native-video-player"
@@ -30,13 +30,15 @@ export default class FullScreenVideo extends Component {
       videosArray: ["https://musicsvideosfiles.s3.amazonaws.com/Yoga/1+-+Find+your+Centre.mp4",
         "https://musicsvideosfiles.s3.amazonaws.com/Yoga/1+-+Find+your+Centre.mp4",
         "https://musicsvideosfiles.s3.amazonaws.com/Yoga/1+-+Find+your+Centre.mp4",
-        "https://musicsvideosfiles.s3.amazonaws.com/Yoga/1+-+Find+your+Centre.mp4"]
+        "https://musicsvideosfiles.s3.amazonaws.com/Yoga/1+-+Find+your+Centre.mp4"],
+        isLoading:true
     }
   }
 
 componentDidMount(){
+this._unsubscribe = this.props.navigation.addListener("focus", () => {
 this.setState({data:this.props.route.params.item})
-console.log("minallll",this.props.route.params.item)
+    })
 }
 _OnPlayPause (){
 this.setState({playbutton:!this.state.playbutton})
@@ -49,14 +51,29 @@ this.player.resume()
 componentWillUnmount(){
 this.player.stop()
 }
+_onVideoLoadStart =() =>{
+alert("veo strt")
+this.setState({isLoading:true})
+}
+_onVideoProgress =() =>{
+// alert("_onVideoProgress")
+this.setState({isLoading:false})
+}
+onPlaybackResume =() =>{
+// alert("onPlaybackResume")
+this.setState({isLoading:false})
+}
+_goBack(){
+ this.player.stop()
+this.props.navigation.goBack()}
   render() {
-const {data} = this.state
-// console.log("video path",data.YG_File_Path)
+const {data,isLoading} = this.state
+console.log("video path",isLoading)
     return (
       <View style={{ backgroundColor: basecolor, flex: 1 }}>
         {/* <SafeAreaView> */}
           <View style={{justifyContent:"center",alignItems:"center",}}>
-      <RenderModal height={300} visible={this.state.isLoading}/>
+      {/* <RenderModal visible={this.state.isLoading}/> */}
        <View style={{width:"100%"}}>
           <VideoPlayer
             video={{
@@ -68,11 +85,11 @@ const {data} = this.state
             showDuration
             style={{  height: 300}}
             playInBackground={false}
-            onVideoLoadStart={()=>this.setState({isLoading:true})}
+            onVideoLoadStart={()=>this._onVideoLoadStart()}
             // onVideoLoad={()=>this.setState({isLoading:true})}
             // onBuffer={()=>this.setState({isLoading:true})}
-            onVideoProgress={()=>this.setState({isLoading:false})}
-            onPlaybackResume={()=>this.setState({isLoading:false})}
+            onVideoProgress={()=>this._onVideoProgress()}
+            onPlaybackResume={()=>this.onPlaybackResume()}
             ref={r => this.player = r}
             thumbnail={require("../assets/yoga.jpg")}
             endThumbnail={require("../assets/yoga.jpg")}
@@ -210,22 +227,25 @@ const {data} = this.state
               }}
             />
           </ScrollView>
+ {this.state.isLoading &&  <View style={{ position:"absolute",height: 300,width:"100%",}}>
+          <View style={{ height: 300,width:"100%",justifyContent:"center",alignItems:"center"}}><ActivityIndicator color={"#D970F5"} /></View>
+         </View> }
           <TouchableOpacity
-            onPress={() => this.props.navigation.goBack()}
+            onPress={() =>this._goBack()}
             style={{
-              backgroundColor: "#fff",
               justifyContent: "center",
               alignItems: "center",
               borderRadius: 3,
               marginHorizontal: 20,
               width: 28,
               position: "absolute",
-              top: "5%"
+              top: "7.5%",
+              left:10
             }}
           >
             <Image
               resizeMode="contain"
-              style={{ height: 30, width: 30 }}
+              style={{ height: 35, width: 35 }}
               source={require("../assets/backarrow.png")}
             />
           </TouchableOpacity>

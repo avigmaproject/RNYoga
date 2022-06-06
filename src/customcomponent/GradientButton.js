@@ -34,9 +34,8 @@ export default class GradientButton extends Component {
         }}
       >
         {/* <AntDesign name={this.props.name} size={25} color='#FFF' /> */}
-        <Text
-allowFontScaling={false}
-          style={{ marginStart:10,color: '#fff', fontSize: 17, fontFamily:CustomeFont.Poppins_SemiBold,}}
+        <Text allowFontScaling={false}
+          style={{ color: '#fff', fontSize: 17, fontFamily:CustomeFont.Poppins_SemiBold,}}
         >
           {this.props.title}
         </Text>

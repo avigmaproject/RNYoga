@@ -36,15 +36,20 @@ const {UserRecipes} = this.state
          </View> }
           <Spinner visible={this.state.isLoading}  />
               <View  style={{ height: 300, }}>
+                <View style={{position:"absolute",top:"15%",zIndex:111}}>
+                  <Header navigation={this.props.navigation}/>
+                </View>
                 <Image
                 onLoadStart={() =>this._onLoadStart()}
                 onLoadEnd={() => this._onLoadEnd()}
                 resizeMode="cover"
                 style={{ width: "100%", height: "100%",}}
                 source={{uri:UserRecipes.UR_filePath}} />
-            <View style={{position:"absolute",top:"20%"}}>
-               <Header navigation={this.props.navigation}/>
-            </View>
+              <Image
+                resizeMode="stretch"
+                style={{ width: "270%", height: "50%",marginLeft:"-90%",marginTop:"-8%"}}
+                source={require('../assets/hover.png')}/>
+
           </View>
           <View style={{marginLeft:10,marginTop:20}}>
           <Text allowFontScaling={false}  style={{
@@ -90,5 +95,7 @@ color:"rgb(200, 104, 200)"
 },
 ul:{
 color:"rgb(200, 104, 200)"
-}
+},
+strong:{
+color: "rgba(255,255,255,0.9)",fontFamily: CustomeFont.Poppins_Bold}
 });

@@ -43,23 +43,23 @@ export default class Detailbadfood extends Component {
                         message: 'Some Response Error'
                     })
                 } else if (error.request) {
-this.setState({
+                        this.setState({
                         isLoading: false,
                         color: 'red',
                         visible: true,
                         message: 'Some Request Error'
                     })
-                Alert.alert("Network issue",`${error.request._response}`,[
-                 {
-                  text: "Cancel",
-                  onPress: () => console.log("Cancel Pressed"),
-                  style: "cancel"
-                },
-                { text: "OK", onPress: () => BackHandler.exitApp() }
-                  ])
-                    
-                    console.log('request error', error.request)
-                }
+                        Alert.alert("Network issue",`${error.request._response}`,[
+                        {
+                        text: "Cancel",
+                        onPress: () => console.log("Cancel Pressed"),
+                        style: "cancel"
+                        },
+                        { text: "OK", onPress: () => BackHandler.exitApp() }
+                        ])
+                            
+                            console.log('request error', error.request)
+                        }
             })
     }
 
@@ -93,44 +93,43 @@ this.setState({
             <ImageBackground
                 source={require("../assets/background.png")}
                 resizeMode="stretch"
-                style={{ height: "100%", flex: 1 }}
-            >
- <RenderModal visible={this.state.isLoading}/>
-
+                style={{ height: "100%", flex: 1 }}>
+                <RenderModal visible={this.state.isLoading}/>
                 <SafeAreaView>
                     <Header
                         title={`${this.props.route.params.title}`}
                         navigation={this.props.navigation}
-                    />
-
+                    />        
                     <View>
                         <FlatList
                             renderItem={this.onrender}
                             data={this.state.BadFood}
                         />
                     </View>
-
                 </SafeAreaView>
             </ImageBackground>
         );
     }
 }
 const styles = StyleSheet.create({
-text: {
-    fontSize: 20,
-    color:"white"
+  text: {
+   color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium
   },
-a: {
+b: {
+   color: "rgba(255,255,255,0.9)",fontFamily: CustomeFont.Poppins_Bold
+  },
+  a: {
     fontWeight: "300",
     color: "blue", // make links coloured pink
   },
 p:{
-    color:"white",  fontFamily: CustomeFont.Poppins_Light,textTransform:"capitalize"
-  },
-ol:{
-color:"white"
+color:"white",  fontFamily: CustomeFont.Poppins_Light,
+},ol:{
+color:"rgb(200, 104, 200)"
 },
 ul:{
-color:"white"
+color:"rgb(200, 104, 200)"
+},span:{
+color:"rgba(255,255,255,0.9)",
 }
 });

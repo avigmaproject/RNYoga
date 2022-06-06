@@ -164,20 +164,6 @@ export const GetBadFood = async (data, access_token) => {
       throw error;
     });Detaildiet
 };
-export const GetBrainFood = async (data, access_token) => {
-  return axios(API.GET_BRAIN_FOOD, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + access_token,
-    },
-    data,
-  })
-    .then((response) => response.data)
-    .catch((error) => {
-      throw error;
-    });Detaildiet
-};
 export const GetUserRecipes = async (data, access_token) => {
   return axios(API.GET_USER_RECIPES, {
     method: "POST",

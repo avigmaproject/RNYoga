@@ -45,10 +45,24 @@ constructor(props) {
              flexDirection:"row",
               alignItems:"center",
           }}>
-          <View style={{ width:this.props.recipes ? "30%": "45%", height: 100,justifyContent:"center",paddingLeft:30}}>
+          <View style={{ width:this.props.recipes ? "30%": "30%", height: 100,justifyContent:"center",paddingLeft:30}}>
           {this.state.isLoading &&  <View style={{ position:"absolute",zIndex:111, height: 60,width:100}}>
           <View style={{width: 130,height: 60,justifyContent:"center",alignItems:"center"}}><ActivityIndicator color={"#2d1350"} /></View>
          </View> }
+            {this.props.nutrition && this.props.filepath && ( 
+            <Image
+              onLoadStart={()=>this.setState({isLoading:true})}
+              onLoadEnd={()=>this.setState({isLoading:false})}
+              source={this.props.filepath}
+              resizeMode="contain"
+              style={{
+              width: 60,
+              height: 60,
+              borderRadius:10,
+              marginTop:12
+              // marginLeft: "10%"
+               }}
+              />)}
           {this.props.recipes && this.props.filepath ? ( 
               <Image
               onLoadStart={()=>this.setState({isLoading:true})}
@@ -80,7 +94,7 @@ constructor(props) {
            
           
           </View> */}
-          <View style={{width:this.props.recipes ? "60%":"35%"}}>
+          <View style={{width:"60%",paddingLeft:this.props.recipes ? 0:"10%"}}>
             <Text allowFontScaling={false}
               ellipsizeMode="tail"
               numberOfLines={2}

@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   ScrollView,
   StyleSheet,
+  Dimensions, PixelRatio 
 } from "react-native";
 import ViewComp from "../customcomponent/ViewComp";
 import Header from "../customcomponent/Header";
@@ -15,9 +16,11 @@ import Svg, {
 } from 'react-native-svg';
 import GradientButton from "../customcomponent/GradientButton";
 import Background from "../assets/Background.svg"
-import LinearGradient from 'react-native-linear-gradient';
 import CustomeFont from "../CustomeFont"
-
+const {
+  width,
+  height,
+} = Dimensions.get('window');
 
 export default class Nutrition extends Component {
 
@@ -26,6 +29,13 @@ export default class Nutrition extends Component {
     this.state = {
     };
   }
+  normalize(size, multiplier = 2) {
+  const scale = (width / height) * multiplier;
+
+  const newSize = size * scale;
+
+  return Math.round(PixelRatio.roundToNearestPixel(newSize));
+}
 
   render() {
     return (
@@ -36,12 +46,12 @@ export default class Nutrition extends Component {
         style={{ height: "100%" }}
       >
         <SafeAreaView>
-        {/* <Header title={"Nutrition"} navigation={this.props.navigation} /> */}
-          <ScrollView>
+        <Header title={"Nutrition"} navigation={this.props.navigation} />
+          <ScrollView contentContainerStyle={{paddingBottom:50}}>
              <View
               style={{
                 marginHorizontal: 10,
-                paddingBottom: 20,marginTop:70
+                paddingBottom: 20,marginTop:20
               }}
             >
               <ViewComp
@@ -96,11 +106,11 @@ export default class Nutrition extends Component {
 
             </View> 
             <View style={{  }}>
-              <View style={{ alignItems: 'center', marginTop: 20 }}>
+              <View style={{ alignItems: 'center', marginTop: 15 }}>
                 <Background height={"120"} width={"90%"} />
               </View>
 
-              <View style={{ marginTop: 30 ,padding:20}}>
+              <View style={{ marginTop: 25 ,padding:20}}>
                 <Text allowFontScaling={false} style={styles.calltext}>Do you want to make</Text>
                 <Text allowFontScaling={false} style={styles.calltext}>a call with our dietician?</Text>
               </View>
@@ -116,17 +126,17 @@ export default class Nutrition extends Component {
                 />
               </View>
               <View style={{marginTop:20,padding:20}}>
-                <Text allowFontScaling={false}  style={styles.calltext2}>
+                <Text allowFontScaling={false}  style={{...styles.calltext2,fontSize: this.normalize(17)}}>
 
                   You cannot book an appointment with our
                 </Text>
-                <Text allowFontScaling={false}  style={styles.calltext2}>
+                <Text allowFontScaling={false}  style={{...styles.calltext2,fontSize: this.normalize(17)}}>
                   dietician beacause you did not activate the subscription.
                 </Text>
 
-               <View style={{marginTop:15}}>
-               <Text allowFontScaling={false}  style={styles.calltext2}>
-                  if you want,you can do it {" "}<Text onPress={()=>alert("Under construction..")} style={{textDecorationLine: 'underline',color:'#fff',marginLeft:10,fontSize:12,marginTop:20}}>right here.</Text>
+               <View style={{marginTop:12}}>
+               <Text allowFontScaling={false}  style={{...styles.calltext2,fontSize: this.normalize(17)}}>
+                  if you want, you can do it{" "}<Text onPress={()=>alert("Under construction..")} style={{textDecorationLine: 'underline',color:'#fff',marginLeft:10,fontSize: this.normalize(16),marginTop:20,fontFamily: CustomeFont.Poppins_Light,}}>right here.</Text>
                 </Text>
                </View>
 
@@ -142,6 +152,6 @@ export default class Nutrition extends Component {
 const styles = StyleSheet.create({
 
   calltext: { color: "rgba(255,255,255,0.8)", fontSize:27, fontFamily: CustomeFont.Poppins_Medium },
-  calltext2: { color: "rgba(255,255,255,0.5)",  fontFamily: CustomeFont.Poppins_Light,  fontSize: 12,}
+  calltext2: { color: "rgba(255,255,255,0.5)", fontFamily: CustomeFont.Poppins_Light,}
 
 })

@@ -16,6 +16,8 @@ target 'RNYogaMeditation' do
   pod 'react-native-video', :path => '../node_modules/react-native-video'
 
 
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
   target 'RNYogaMeditationTests' do
     inherit! :complete
     # Pods for testing

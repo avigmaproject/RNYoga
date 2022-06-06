@@ -5,7 +5,7 @@ import Spinner from "react-native-loading-spinner-overlay"
 export default class RenderModal extends Component {
   render() {
     return (
-      <View style>
+      <View>
         <Modal
          animationType="slide"
          transparent={true}

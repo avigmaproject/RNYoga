@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { Text, View, ImageBackground, SafeAreaView, FlatList ,StyleSheet,Alert,BackHandler} from "react-native";
+import { Text, View, ImageBackground, SafeAreaView, FlatList ,StyleSheet,Alert,BackHandler,Image} from "react-native";
 import Header from "../customcomponent/Header";
 import { GetDietTips, getUserGuide } from "../services/api.function";
 import HTMLView from "react-native-htmlview";
 import CustomeFont from "../CustomeFont"
 import RenderModal from "../customcomponent/RenderModal"
+import { ScrollView } from "react-native-gesture-handler";
 
 export default class Detaildiet extends Component {
   constructor(props) {
@@ -19,7 +20,14 @@ export default class Detaildiet extends Component {
   componentDidMount() {
     this.onHandleGetDietTips()
   }
-
+renderNode(node, index, siblings, parent, defaultRenderer) {
+// console.log(node)
+        if (node.name == 'img') {
+console.log("image",node.attribs)
+            const a = node.attribs;
+            return ( <Image style={{width: 300, height: 300}} source={{uri: a.src}}/> );
+        }
+    }
   onHandleGetDietTips = async () => {
     let data = {
         DT_PKeyID:1,
@@ -77,14 +85,11 @@ this.setState({
 
               <HTMLView
                     onLinkPress={(url) =>
-                      this.props.navigation.navigate("Faq", {
-                        url,
-                        title: "Product",
-                        routes: "quiz",
-                      })
+                      alert(url)
                     }
                     value={item.DT_Description}
                     stylesheet={styles}
+renderNode={this.renderNode} 
                   />
         {/* <Text style={{ marginTop: 20,color: '#ccc',fontSize:13,lineHeight:20,}}>{item.DT_Description}</Text> */}
       </View>
@@ -97,7 +102,7 @@ this.setState({
         resizeMode="stretch"
         style={{ height: "100%", flex: 1 }}
       >
- <RenderModal visible={this.state.isLoading}/>
+ {/* <RenderModal visible={this.state.isLoading}/> */}
 
         <SafeAreaView>
           <Header
@@ -105,12 +110,12 @@ this.setState({
             navigation={this.props.navigation}
           />
           
-            <View>
+            <ScrollView contentContainerStyle={{paddingBottom:100}}>
               <FlatList
                 renderItem={this.onrender}
                 data={this.state.dietstips}
               />
-            </View> 
+            </ScrollView> 
         </SafeAreaView>
       </ImageBackground>
     );
@@ -134,7 +139,13 @@ color:"rgb(200, 104, 200)"
 },
 ul:{
 color:"rgb(200, 104, 200)"
-},span:{
+},
+span:
+{
 color:"rgba(255,255,255,0.9)",
+},
+img:
+{
+height:400,width:400
 }
 });

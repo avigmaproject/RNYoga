@@ -14,10 +14,16 @@ export default class Header extends Component {
         height: 100,
         paddingTop:40.
       }} > */}
+          {/* <Image
+                resizeMode="stretch"
+                style={{ width: "270%", height: 150,marginLeft:"-94%",position:"absolute",zIndex:1111,marginTop:"-8%"}}
+                source={require('../assets/hover.png')}/> */}
       <View
         style={{
           flexDirection: "row",
           alignItems: "center",
+          height:50       
+
         }}
       >
         <View
@@ -44,7 +50,7 @@ export default class Header extends Component {
             </TouchableOpacity>
           </View>
           <View>
-            <Text allowFontScaling={false}style={{ color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 25}}>
+            <Text allowFontScaling={false}style={{    color: "rgba(255,255,255,0.8)",fontSize:27,fontFamily: CustomeFont.Poppins_Medium, textTransform: "capitalize",}}>
               {this.props.title}
             </Text>
           </View>

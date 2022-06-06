@@ -85,8 +85,9 @@ export default class DetailGroceryList extends Component {
     }
     render() {
         return (
-            <ImageBackground
-                source={require("../assets/background.png")}
+    <View style={{flex:1,backgroundColor:"#2D1350"}}>
+ <ImageBackground
+                source={require("../assets/background1.png")}
                 resizeMode="stretch"
                 style={{ height: "100%", flex: 1 }}
             >
@@ -103,9 +104,9 @@ export default class DetailGroceryList extends Component {
                             data={this.state.GroceryList}
                         />
                     </ScrollView>
-
                 </SafeAreaView>
             </ImageBackground>
+</View>
         );
     }
 }

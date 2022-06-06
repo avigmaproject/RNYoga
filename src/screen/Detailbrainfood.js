@@ -1,89 +1,87 @@
 import React, { Component } from "react";
-import { Text, View, ImageBackground, SafeAreaView, FlatList,StyleSheet,Alert,BackHandler } from "react-native";
+import { Text, View, ImageBackground, SafeAreaView, FlatList,StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Header from "../customcomponent/Header";
-import { GetBrainFood } from "../services/api.function";
 import CustomeFont from "../CustomeFont"
-import HTMLView from "react-native-htmlview";
-import RenderModal from "../customcomponent/RenderModal"
+import ViewComp from "../customcomponent/ViewComp";
 
 export default class Detailbrainfood extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            BrainFood: [{ 1: 1 }],
+            BrainFood: [
+            {
+            foodid:1,
+            foodname:"Avocado",
+            image1:require("../screen/BrainFoodScence/Avocado/1.jpg"),
+            screen:"AvocadoScene"
+            },
+            {
+            foodid:2,
+            foodname:"Barries",
+            image1:require("../screen/BrainFoodScence/Berries/1.jpg"),
+            screen:"BarriesScene"
+            },
+            {
+            foodid:3,
+            foodname:"Chamomile",
+            image1:require("../screen/BrainFoodScence/Chamomile/1.jpg"),
+            screen:"ChamomileScene"
+            },
+            {
+            foodid:4,
+            foodname:"Curcumin",
+            image1:require("../screen/BrainFoodScence/Curcumin/1.jpg"),
+            screen:"CurcuminScene"
+            },
+            {
+            foodid:5,
+            foodname:"Dark Chocolate",
+            image1:require("./BrainFoodScence/DarkChocolate/1.jpg"),
+            screen:"DarkChocolateScene"
+            },
+            {
+            foodid:6,
+            foodname:"Dark Leafy Greens",
+            image1:require("./BrainFoodScence/DarkLeafyGreens/1.jpg"),
+            screen:"DarkLeafyGreensScene"
+            },
+            {
+            foodid:7,
+            foodname:"Eggs",
+            image1:require("../screen/BrainFoodScence/Eggs/1.jpg"),
+            screen:"EggsScene"
+            },
+            {
+            foodid:8,
+            foodname:"Nuts and Seeds",  
+            image1:require("./BrainFoodScence/NutsandSeeds/1.jpg"),
+            screen:"NutsandSeedsScene"
+
+            },
+            {
+            foodid:9,
+            foodname:"Salmon",
+            image1:require("../screen/BrainFoodScence/Salmon/1.jpg"),
+            screen:"SalmonScene"
+            }
+            ],
             userTitle: this.props.route.params.title
 
         }
     }
-
-    componentDidMount() {
-        this.onHandleGetBrainFood()
-    }
-
-    onHandleGetBrainFood = async () => {
-        let data = {
-            BRF_PKeyID:1,
-            Type:1
-        }
-        this.setState({ isLoading: true })
-        await GetBrainFood(data)
-            .then((res) => {
-                console.log('res: ', JSON.stringify(res))
-                console.log('resresresresresres', res);
-                this.setState({ BrainFood: res[0], isLoading: false })
-                console.log('onHandleGetBrainFood', this.state.BrainFood);
-            })
-            .catch((error) => {
-                if (error.response) {
-                    console.log('responce_error', error.response)
-                    this.setState({
-                        isLoading: false,
-                        color: 'red',
-                        visible: true,
-                        message: 'Some Response Error'
-                    })
-                } else if (error.request) {
-                    this.setState({
-                        isLoading: false,
-                        color: 'red',
-                        visible: true,
-                        message: 'Some Request Error'
-                    })
-                    Alert.alert("Network issue",`${error.request._response}`,[
-                        {
-                        text: "Cancel",
-                        onPress: () => console.log("Cancel Pressed"),
-                        style: "cancel"
-                        },
-                        { text: "OK", onPress: () => BackHandler.exitApp() }
-                        ])
-                    
-                    console.log('request error', error.request)
-                }
-            })
-    }
-
     onrender = ({ item }) => {
         console.log('itemitem', item);
         return (
-            <View style={{ padding: 15 }}>
-                <Text style={{
-                    fontWeight: "600",
-                    fontSize: 18,
-                    color: "#fff",
-                    lineHeight: 20,
-                    textTransform:"capitalize",marginBottom:5
-                }}>{item.BRF_Name}</Text>
-               {/* <Text style={{marginLeft:10}}>  */}
-                    <HTMLView
-                    value={item.BRF_Description}
-                    stylesheet={styles}
-                  />
-                {/* </Text> */}
-                {/* <Text style={{ marginTop: 20, color: '#ccc', fontSize: 13,lineHeight:20,  
-                     textTransform:"capitalize"}}>{item.BRF_Description}</Text> */}
-            </View>
+                <ViewComp
+                onPress={() =>
+                  this.props.navigation.navigate(item.screen, {
+                    title: item.foodname,
+                  })
+                }
+                nutrition={true}
+                title={item.foodname}
+                filepath={item.image1} />
         )
     }
     render() {
@@ -93,15 +91,12 @@ export default class Detailbrainfood extends Component {
                 resizeMode="stretch"
                 style={{ height: "100%", flex: 1 }}
             >
- <RenderModal visible={this.state.isLoading}/>
-
                 <SafeAreaView>
                     <Header
                         title={`${this.props.route.params.title}`}
                         navigation={this.props.navigation}
                     />
-                    <ScrollView>
-                   
+                    <ScrollView contentContainerStyle={{paddingBottom:50}}>
                     <View>
                         <FlatList
                             renderItem={this.onrender}
@@ -114,22 +109,3 @@ export default class Detailbrainfood extends Component {
         );
     }
 }
-const styles = StyleSheet.create({
-text: {
-    fontSize: 20,
-    color:"white"
-  },
-a: {
-    fontWeight: "300",
-    color: "blue", // make links coloured pink
-  },
-p:{
-    color:"white",  fontFamily: CustomeFont.Poppins_Light,textTransform:"capitalize"
-  },
-ol:{
-color:"white"
-},
-ul:{
-color:"white"
-}
-});

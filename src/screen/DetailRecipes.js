@@ -185,7 +185,7 @@ render() {
                         />
                 </ScrollView>
             </SafeAreaView>
-            <View style={{ position: 'absolute', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 15, bottom: 10, width: '94%', height: 44, alignContent: 'center', backgroundColor: basecolor ,paddingVertical:4,alignSelf:"center"}}>
+            <View style={{ position: 'absolute', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 15, bottom: 10, width: '94%', height: 45, alignContent: 'center', backgroundColor: basecolor ,paddingVertical:3,alignSelf:"center",borderRadius:10}}>
                 <RecipeButton  statue={this.state.isBreakFast} title = {"Breakfast"}   
                 onPress={() => {
                     this.setState({
