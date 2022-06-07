@@ -6,80 +6,70 @@ import CustomeFont from "../CustomeFont"
 import HTMLView from "react-native-htmlview";
 import { ScrollView } from "react-native-gesture-handler";
 import RenderModal from "../customcomponent/RenderModal"
+import DiteView from "../customcomponent/DiteView"
 
 export default class DetailGroceryList extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            GroceryList: [],
+            GroceryList: [
+            {
+            "id":1,
+            "title":"MEAT, POULTRY, SEAFOOD:",
+            "data":["Salmon","Trout","Mackerel","Anchovies","Sardines","Albacore Tuna","Yellowfin Tuna","Cod","Clams","Chicken","Turkey","Grass-fed Beef (small amounts)","Grass-fed Lamb (small amounts)"]
+            },
+            {
+            "id":2,
+            "title":"DAIRY:",
+            "data":["Eggs","Milk (Vitamin D fortifed)","Non-Processed chees"]
+            },
+             {
+            "id":3,
+            "title":"GRAINS:",
+            "data":["Whole Oats/Whole Grain Oatmeal","Whole Grain Bread (Rye, Spelt or Whole-Wheat)","Quinoa","Brown Rice","Barley","Buckwheat","Bulgar","Unsweetened","Whole Grain","Breakfast Cereals (e.g. muesli)"]
+            },
+             {
+            "id":4,
+            "title":"BEANS AND LEGUMES:",
+            "data":["Lentils","Chickpeas/Garbanzo Beans","Soybeans/Edamame","Kidney", "Beans","Peas","Black-eyed Peas","Lima Beans","Black Beans"]
+            },
+            {
+            "id":5,
+            "title":"NUTS AND SEEDS:",
+            "data":["Walnuts","Almonds","Pistachios","Chia Seeds","Flax Seeds", "Sesame Seeds", "Pumpkin Seeds","Sunflower Seeds", "Peanuts",]
+            },
+             {
+            "id":6,
+            "title":"FRUITS:",
+            "data":[,"Orange","Strawberries","Raspberries","Avocado","Bananas","Tomatoes","Apples","Mangos"]
+            },
+            {
+            "id":7,
+            "title":"VEGETABLES:",
+            "data":["Spinach","Brussels Sprouts","Mustard Greens","Collard Greens","Kale","Chard","Cabbage","Pumpkin","Sweet Potatoes","Asparagus","Squash","Onions","Romaine Lettuce","Broccoli","Cauliflower","Celery"]
+            },
+             {
+            "id":8,
+            "title":"DRESSING/SEASONING:",
+            "data":["Fresh Herbs","Extra Virgin Olive Oil" ,"Apple Cider Vinegar","Balsamic Vinegar","Garlic"]
+            },
+             {
+            "id":9,
+            "title":"PROBIOTICS:",
+            "data":["Kombucha","Tempeh","Sauerkraut (unpasteurized)","Kimchi (unpasteurized)","Non-sweetened Yogurt"]
+            }
+            ],
             userTitle: this.props.route.params.title
 
         }
     }
-
-    componentDidMount() {
-        this.onHandleGetGroceryList()
-    }
-
-    onHandleGetGroceryList = async () => {
-        let data = {
-            GR_PKeyID: 1,
-            Type:1
-        }
-        this.setState({ isLoading: true })
-        await GetGroceryList(data)
-            .then((res) => {
-                console.log('res: ', JSON.stringify(res))
-                console.log('resresresresresres', res);
-                this.setState({ GroceryList: res[0], isLoading: false })
-                console.log('onHandleGetGroceryList', this.state.GroceryList);
-            })
-            .catch((error) => {
-                if (error.response) {
-                    console.log('responce_error', error.response)
-                    this.setState({
-                        isLoading: false,
-                        color: 'red',
-                        visible: true,
-                        message: 'Some Response Error'
-                    })
-                } else if (error.request) {
-                this.setState({
-                        isLoading: false,
-                        color: 'red',
-                        visible: true,
-                        message: 'Some Request Error'
-                    })
-                    Alert.alert("Network issue",`${error.request._response}`,[
-                    {
-                    text: "Cancel",
-                    onPress: () => console.log("Cancel Pressed"),
-                    style: "cancel"
-                    },
-                    { text: "OK", onPress: () => BackHandler.exitApp() }
-                    ])
-                   
-                    console.log('request error', error.request)
-                }
-            })
-    }
-
     onrender = ({ item }) => {
-        console.log('itemitem', item);
         return (
-            <View style={{ padding: 15 }}>
-                <Text allowFontScaling={false}style={{
-                    fontWeight: "600",
-                    fontSize: 18,
-                    color: "#fff",
-                    lineHeight: 20,
-                    textTransform:"capitalize"
-                }}>{item.GR_Name}</Text>
-                <HTMLView
-                    value={item.GR_Description}
-                    stylesheet={styles}
-                  />
-                {/* <Text style={{ marginTop: 20, color: '#ccc', fontSize: 13,lineHeight:20,}}>{item.GR_Description}</Text> */}
+            <View key ={item.id} style={{paddingTop:20}}>
+                <Text allowFontScaling={false}style={styles.text1}>{item.title}</Text>
+               {item.data.map((item)=>{
+                    return(<Text style={styles.text}><Text style={styles.textcolor}>{'\u25CF'}</Text> {item}</Text>)
+                })}
             </View>
         )
     }
@@ -91,14 +81,12 @@ export default class DetailGroceryList extends Component {
                 resizeMode="stretch"
                 style={{ height: "100%", flex: 1 }}
             >
-                <RenderModal visible={this.state.isLoading}/>
                 <SafeAreaView>
                     <Header
                         title={`${this.props.route.params.title}`}
                         navigation={this.props.navigation}
                     />
-
-                    <ScrollView contentContainerStyle={{paddingBottom:100}}>
+                     <ScrollView contentContainerStyle={{paddingHorizontal:15,paddingTop:20,paddingBottom:100}}>
                         <FlatList
                             renderItem={this.onrender}
                             data={this.state.GroceryList}
@@ -112,21 +100,15 @@ export default class DetailGroceryList extends Component {
 }
 const styles = StyleSheet.create({
   text: {
-   color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium
+   color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 13,lineHeight:25
   },
-b: {
-   color: "rgba(255,255,255,0.9)",fontFamily: CustomeFont.Poppins_Bold
+text1: {
+  color:"rgb(200, 104, 200)",fontFamily: CustomeFont.Poppins_Bold,fontSize: 15,marginBottom:10
   },
-  a: {
-    fontWeight: "300",
-    color: "blue", // make links coloured pink
-  },
-p:{
-color:"white",  fontFamily: CustomeFont.Poppins_Light,
-},ol:{
-color:"rgb(200, 104, 200)"
+img:
+{
+height:400,width:400
 },
-ul:{
-color:"rgb(200, 104, 200)"
-}
+textcolor:{color:"rgb(200, 104, 200)"}
+
 });

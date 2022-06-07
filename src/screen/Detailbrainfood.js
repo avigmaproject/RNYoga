@@ -96,7 +96,7 @@ export default class Detailbrainfood extends Component {
                         title={`${this.props.route.params.title}`}
                         navigation={this.props.navigation}
                     />
-                    <ScrollView contentContainerStyle={{paddingBottom:50}}>
+                    <ScrollView contentContainerStyle={{paddingBottom:50, marginHorizontal: 10, }}>
                     <View>
                         <FlatList
                             renderItem={this.onrender}

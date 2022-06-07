@@ -103,7 +103,8 @@ export default class BarriesScene extends Component {
             </ImageBackground>
     )
   }
-}const styles = StyleSheet.create({
+}
+const styles = StyleSheet.create({
 text:{ color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 15,marginTop:10},
 textcolor:{color:"rgb(200, 104, 200)"}
 })

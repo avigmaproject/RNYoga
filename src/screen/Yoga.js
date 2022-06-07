@@ -127,7 +127,7 @@ return(
         style={{ height: "100%" }}
       >
            
-      <RenderModal visible={this.state.isLoading}/>
+      {/* <RenderModal visible={this.state.isLoading}/> */}
         <SafeAreaView>
         <View
               style={{ flexDirection: "row", justifyContent: "space-between" ,alignItems:"center"}}
