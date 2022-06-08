@@ -26,7 +26,7 @@ export default class CurcuminScene extends Component {
                     />
               <ScrollView>
               <View style={{paddingHorizontal:15,paddingTop:20,paddingBottom:100}}>
-                <Text allowFontScaling={false}style={styles.text}>Curcumin is a spice containing curcumin, a component designed to
+                <Text   style={styles.text}>Curcumin is a spice containing curcumin, a component designed to
                     promote brain health and prevent anxiety disorders.</Text>
                 <View>
                 {this.state.isLoading &&  <View style={{ position:"absolute",zIndex:111, height: 160,width:160,marginLeft:100}}>
@@ -38,13 +38,13 @@ export default class CurcuminScene extends Component {
                   source={require("./1.jpg")}
                   resizeMode="contain"
                   style={{
-                  width: 150,
-                  height: 150,
+                  width: 300,
+                  height: 300,
                   borderRadius:10,
                   alignSelf:"center",marginVertical:10
                   }}
                   /></View>
-                   <Text allowFontScaling={false}style={styles.text}>
+                   <Text   style={styles.text}>
                     Curcumin has shown promising efficacy in studies of major depression.
                     Being one of the most powerful natural antioxidants - according to
                     medical research - and the most potent natural anti-inflammatory,
@@ -90,14 +90,14 @@ export default class CurcuminScene extends Component {
                   source={require("./2.jpg")}
                   resizeMode="contain"
                   style={{
-                  width: 150,
-                  height: 150,
+                  width: 300,
+                  height: 300,
                   borderRadius:10,
                   alignSelf:"center",marginVertical:10
                   }}
                   /></View>
-                <Text allowFontScaling={false}style={{...styles.text,fontFamily: CustomeFont.Poppins_Bold,fontSize: 20,alignSelf:"center"}}>How to consume</Text>
-                <Text allowFontScaling={false}style={styles.text}>
+                <Text   style={styles.text1}>How to consume</Text>
+                <Text   style={styles.text}>
                   You can buy turmeric alone or in curry powder in the baking section of your
                   grocery store. Curry powders are popular in Asian and Indian cooking.{"\n\n"}
                   Different curries vary in ingredients. All curries are well-seasoned, and
@@ -112,7 +112,10 @@ export default class CurcuminScene extends Component {
             </ImageBackground>
     )
   }
-}const styles = StyleSheet.create({
-text:{ color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 15,marginTop:10},
-textcolor:{color:"rgb(200, 104, 200)"}
-})
+}
+const styles = StyleSheet.create({
+text:{ color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 13,marginTop:10},
+textcolor:{color:"#ad29f9"},
+text1: {
+   color: "#ad29f9",fontFamily: CustomeFont.Poppins_Bold,fontSize: 13,alignSelf:"center"
+  }})

@@ -7,7 +7,6 @@ import { basecolor } from "../services/constant"
 import { Image, View ,Dimensions} from "react-native"
 import DeviceInfo from "react-native-device-info"
 let hasNotch = DeviceInfo.hasNotch()
-const {width,height} = Dimensions.get('window');
 const Tab = createBottomTabNavigator()
 export default function MyTabs() {
   return (
@@ -30,22 +29,23 @@ export default function MyTabs() {
           }
           return (
             <View style={{
+              // backgroundColor:"pink",
               marginTop:-17,
-              borderTopColor: focused ? "#EA68FD" : "", 
+              borderTopColor: focused ? "#ad29f9" : "", 
               borderTopWidth: focused ? 1 : 0}}>
           {focused &&(
-          <View style={{ position:"absolute",marginLeft:-50,marginTop:-13}}>
+          <View style={{ position:"absolute",marginLeft:-50,marginTop:-25}}>
             <Image
                 resizeMode="contain"
                 style={{ width:160, height: 150,}}
-                source={require('../assets/hover.png')}
+                source={require('../assets/hovernew.png')}
              />
            </View>)}
-           <View style={{paddingTop:15, height: 54, width: 60,}} >
+           <View style={{ paddingTop:15, height: 55, width: 55,justifyContent:"center",alignItems:"center"}} >
             <Image
                 resizeMode="contain"
                 source={image}
-                style={{ height: 55, width: 55, marginLeft:0.5 }}
+                style={{ height: 55, width: 55,}}
               />
           </View>
           </View>

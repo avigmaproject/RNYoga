@@ -8,6 +8,21 @@ import RenderModal from "../customcomponent/RenderModal"
 import { ScrollView } from "react-native-gesture-handler";
 import DiteView from "../customcomponent/DiteView"
 export default class Detaildiet extends Component {
+constructor(props) {
+    super(props)
+    this.state = {
+    isLoading:false
+    }
+  }
+
+ViewRender = (number,boldtext,text) =>{
+  return(
+  <View style={{flexDirection:"row"}}>  
+    <View style={{paddingTop:1}}><Text  style={styles.text}>{number}</Text></View>
+      <View style={{paddingLeft:20,width:"95%"}}><Text  style={styles.text}>
+        <Text style={styles.text1}>{boldtext}{"  "}</Text>{text}{"\n"}</Text></View>
+  </View>
+  )}
   render() {
     return (
       <ImageBackground
@@ -22,20 +37,41 @@ export default class Detaildiet extends Component {
           />
           
           <ScrollView contentContainerStyle={{paddingHorizontal:15,paddingTop:20,paddingBottom:100}}>
-                <Text allowFontScaling={false}style={{...styles.text,fontFamily: CustomeFont.Poppins_Bold,fontSize: 20,}}>Nutrition and Mental Health Connection{"\n"}</Text>
-                  <Text allowFontScaling={false}style={styles.text}>
-                     Most of us know that healthy eating is good for our health as it keeps our weight in check and can help protect us from diseases like diabetes or even heart disease.
-                     But did you know healthy eating can also support your mental health? There are no magic foods, quick-fix supplements, or special diets needed - it&#39;s 
-                     about making healthy choices throughout the day, every day. 
-                     This is what nutritionists call a &#39;healthy dietary pattern!&#39;{"\n"}
+                <Text  style={{...styles.text,fontFamily: CustomeFont.Poppins_Bold,fontSize: 20,}}></Text>
+                  <Text  style={styles.text}>
+                    Most of us know that healthy eating is good for our health as it keeps our weight in check and can help protect us from diseases like diabetes or even heart disease. But did you know healthy eating can also support your mental health? There are no magic foods, quick-fix supplements, or special diets needed - it&#39;s about making healthy choices throughout the day, every day. This is what nutritionists call a “healthy dietary pattern”!{"\n"}
                     </Text>
-                      <Text allowFontScaling={false}style={styles.text}>See the 5 top tips to work towards your own healthy dietary pattern:{"\n"}</Text>
-                      <Text allowFontScaling={false}style={styles.text}>
-                      <Text style={styles.text1}> 1.  Eat more: </Text> Vegetables and fruit, legumes, fish{"\n"}
-                      <Text style={styles.text1}> 2.  Choose: </Text>Wholegrain bread and cereals, healthy fats{"\n"}
-                      <Text style={styles.text1}> 3.  Enjoy in moderation: </Text> Poultry, dairy products, eggs{"\n"}
-                      <Text style={styles.text1}> 4.  Eat less: </Text>Red meat, sugar added products, junk food{"\n"}
-                      <Text style={styles.text1}> 5.  Take small steps towards positive changes every day {"\n"}</Text></Text>
+                        <View>
+                {this.state.isLoading &&  <View style={{ position:"absolute",zIndex:111, height: 160,width:160,marginLeft:100}}>
+                  <View style={{width: 150,height: 150,justifyContent:"center",alignItems:"center"}}><ActivityIndicator color={"#2d1350"} /></View>
+                </View> }
+                    <Image
+                      onLoadStart={()=>this.state.isLoading}
+                      onLoadEnd={()=>this.state.isLoading}
+                      source={require("../../src/assets/Imagesfoodfacts/1.png")}
+                      resizeMode="stretch"
+                      style={{
+                      width: 300,
+                      height: 300,
+                      borderRadius:10,
+                      alignSelf:"center",marginVertical:10
+                      }}
+                      />
+                    </View>          
+                      <Text  style={styles.text}>See the 5 top tips to work towards your own healthy dietary pattern:{"\n"}</Text>
+                      {/* <Text  style={styles.text}></Text> */}
+                    {this.ViewRender("1)","Eat more:","Vegetables and fruit, legumes, fish.")}
+                    {this.ViewRender("2)","Choose:","Wholegrain bread and cereals, healthy fats.")}
+                    {this.ViewRender("3)","Enjoy in moderation:","Poultry, dairy products, eggs.")}
+                    {this.ViewRender("4)","Eat less:","Red meat, sugar added products, junk food.")}
+                    {this.ViewRender("5)","Take small steps towards positive changes every day.","")}
+
+
+                      {/* <Text> 1.  <Text style={styles.text1}>Eat more: </Text> Vegetables and fruit, legumes, fish{"\n"}</Text>
+                      <Text> 2.  <Text style={styles.text1}>Choose: </Text>Wholegrain bread and cereals, healthy fats{"\n"}</Text>
+                      <Text> 3.  <Text style={styles.text1}>Enjoy in moderation: </Text> Poultry, dairy products, eggs{"\n"}</Text>
+                      <Text> 4.  <Text style={styles.text1}>Eat less: </Text>Red meat, sugar added products, junk food{"\n"}</Text>
+                      <Text> 5.  <Text style={styles.text1}>Take small steps towards positive changes every day {"\n"}</Text></Text> */}
 
                   <DiteView 
                      title="Tip 1. Eat more…" 
@@ -124,7 +160,7 @@ export default class Detaildiet extends Component {
 
          {/* -------------------------------------------------------------------------------------------------------------------------------------------------- */}
      {/* <Text  style={{...styles.text1,alignSelf:"center",textDecorationLine:"underline"}}>Tip 1. Eat more…</Text>
-                   <Text allowFontScaling={false}style={styles.text}>
+                   <Text  style={styles.text}>
                     Vegetables, fruits, legumes, and fish are all essential parts of a healthy dietary pattern which we should focus on eating more of.{"\n"}
                    </Text>
                   <Text  style={styles.text1}><Text style={styles.textcolor}>{'\u25CF'}</Text> Vegetables</Text>
@@ -143,7 +179,7 @@ export default class Detaildiet extends Component {
                       alignSelf:"center",marginVertical:10
                       }}
                       />
-                    <Text allowFontScaling={false}style={styles.text}>
+                    <Text  style={styles.text}>
                    Any vegetable is a good vegetable - the more you eat, the better! Vegetables are very low in calories and high in vitamins, making them the top choice for a mood- boosting dietary pattern. {"\n\n"}
                     </Text>
                     <Text  style={styles.text1}><Text style={styles.textcolor}>{'\u25CF'}</Text> Fruit</Text>
@@ -163,7 +199,7 @@ export default class Detaildiet extends Component {
                       }}
                       />
 
-                    <Text allowFontScaling={false}style={styles.text}>
+                    <Text  style={styles.text}>
                    Sweeten up your day with fruit! It’s packed with fiber and vitamins and makes a great snack. When we’re anxious and stressed, our bodies crave vitamin C to help repair and protect our cells, and blueberries are packed full of it.{"\n\n"}
                     </Text>
                     <Text  style={styles.text1}><Text style={styles.textcolor}>{'\u25CF'}</Text> Fish</Text>
@@ -183,7 +219,7 @@ export default class Detaildiet extends Component {
                       }}
                       />
 
-                    <Text allowFontScaling={false}style={styles.text}>
+                    <Text  style={styles.text}>
                    Fish is an excellent source of protein and vitamins. Its healthy fats mean eating just one serving of fish a week can improve your heart health. Oily fish like salmon, tuna, mackerel, herring, and sardines are a great choice as they are packed with healthy omega-3 fats. Aim for at least one serving a week of sustainably sourced fish.{"\n\n"}</Text>
 
 
@@ -206,13 +242,13 @@ export default class Detaildiet extends Component {
                       />
                       </View>
 
-                  <Text allowFontScaling={false}style={styles.text}>
+                  <Text  style={styles.text}>
                   Many people struggle with eating more legumes, but there are many reasons to try. They are cheap, versatile, full of fiber and vitamins, make an excellent meat substitute, great for heart and gut health, and essential for a healthy dietary pattern.{"\n\n"}</Text> */}
          {/* -------------------------------------------------------------------------------------------------------------------------------------------------- */}
 
 
                     {/* <Text  style={{...styles.text1,alignSelf:"center",textDecorationLine:"underline"}}>Tip 2. Make the healthy choice</Text>
-                   <Text allowFontScaling={false}style={styles.text}>
+                   <Text  style={styles.text}>
                       Choosing and eating wholegrain breads and cereals and healthy oils every day is an important part of a healthy dietary pattern. 
   {"\n"}                </Text>
                   <Text  style={styles.text1}><Text style={styles.textcolor}>{'\u25CF'}</Text>Wholegrain bread and cereals</Text>
@@ -233,7 +269,7 @@ export default class Detaildiet extends Component {
                       }}
                       />
                     </View>
-                    <Text allowFontScaling={false}style={styles.text}>
+                    <Text  style={styles.text}>
                       You’ve probably heard about whole grains before, so why is everyone recommending them? Wholegrain options contain the healthy fiber and nutrients from grains which keeps us feeling full and energized through the day. Here are some easy swaps:
 {"\n"}</Text>
 
@@ -256,14 +292,14 @@ export default class Detaildiet extends Component {
                       }}
                       />
                       </View>
-                    <Text allowFontScaling={false}style={styles.text}>
+                    <Text  style={styles.text}>
                       A healthful, high-quality diet requires dietary fats. Oils provide beneficial fatty acids. Choosing oils with a higher level of unsaturated fatty acids may provide the best health benefits. Extra-virgin olive oil, avocado oil, or flaxseed oil are excellent choices when it comes to healthy vegetable oils.{"\n"}
                     </Text>
                     */}
          {/* -------------------------------------------------------------------------------------------------------------------------------------------------- */}
 
                     {/* <Text  style={{...styles.text1,alignSelf:"center",textDecorationLine:"underline"}}>Tip 3. Enjoy in moderation</Text>
-                    <Text allowFontScaling={false}style={styles.text}>
+                    <Text  style={styles.text}>
                     Eaten in the right amounts these foods can be part of a healthy dietary pattern.   
                     {"\n"}</Text>
                   <Text  style={styles.text1}><Text style={styles.textcolor}>{'\u25CF'}</Text>Poultry</Text>
@@ -284,7 +320,7 @@ export default class Detaildiet extends Component {
                       }}
                       />
                     </View>
-                    <Text allowFontScaling={false}style={styles.text}>
+                    <Text  style={styles.text}>
                     Poultry like chicken and turkey can make a great alternative to red meat. Choose lean cuts and try to serve poultry with lots of vegetables and legumes.{"\n"}</Text>
 
 
@@ -306,7 +342,7 @@ export default class Detaildiet extends Component {
                       }}
                       />
                       </View>
-                    <Text allowFontScaling={false}style={styles.text}>
+                    <Text  style={styles.text}>
                       Dairy products include milk, cheese, and yogurt and make up an important part of a healthy diet. Most dietary guidelines recommend 2 servings of dairy products a day.
                         {"\n"}
                     </Text>
@@ -330,7 +366,7 @@ export default class Detaildiet extends Component {
                       }}
                       />
                       </View>
-                    <Text allowFontScaling={false}style={styles.text}>
+                    <Text  style={styles.text}>
                     Delicious and nutritious nuts are full of protein, healthy fats, fiber, and nutrients. A small amount each day is an excellent addition to a healthy dietary pattern.
                     {"\n"}
                     </Text> */}
@@ -346,16 +382,16 @@ export default class Detaildiet extends Component {
 }
 const styles = StyleSheet.create({
   text: {
-   color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 13,
+   color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 13,textAlign:"justify"
   },
 text1: {
-   color: "rgb(200, 104, 200)",fontFamily: CustomeFont.Poppins_Bold,fontSize: 15,
+   color: "#ad29f9",fontFamily: CustomeFont.Poppins_Bold,fontSize: 13,
   },
 img:
 {
 height:400,width:400
 },
-textcolor:{color:"rgb(200, 104, 200)"}
+textcolor:{color:"#ad29f9"}
 
 });
 

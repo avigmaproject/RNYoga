@@ -7,14 +7,15 @@ import LandingScreen from "../screen/LandingScreen";
 
 import { createStackNavigator } from "@react-navigation/stack";
 const AuthStack = createStackNavigator();
-
+const forFade = ({ current, closing }) => ({
+  cardStyle: {
+    opacity: current.progress,
+  },
+});
 export default function AuthNavigation() {
   return (
     <AuthStack.Navigator
-      screenOptions={{
-        headerShown: false,
-        
-      }}
+     screenOptions={{cardStyleInterpolator: forFade,headerShown:false}}
     >
       <AuthStack.Screen name="LandingScreen" component={LandingScreen} />
       <AuthStack.Screen name="Login" component={Login} />

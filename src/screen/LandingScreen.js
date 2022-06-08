@@ -99,21 +99,22 @@ class LandingScreen extends Component {
   render() {
     console.log(this.state.form)
     return (
- <ImageBackground
-        source={require("../assets/backgroundillustration.jpg")}
-        resizeMode="stretch"
+ <View style={{flex:1,backgroundColor:"#2e1350"}}>
+<ImageBackground
+        source={require("../assets/homeLogo.png")}
+        resizeMode="contain"
         style={{ height: "100%" }}
       >
   <SafeAreaView>
     <View style={{ flexDirection:"column",justifyContent:"space-between",height:"100%"}}>
       <View> 
         <View style={{ alignItems: 'center',paddingVertical: 4}}>
-          <Text allowFontScaling={false}
+          {/* <Text allowFontScaling={false}
             style={{
             color: '#fff',
             fontSize: 24,
             fontFamily:CustomeFont.Poppins_SemiBold,
-            lineHeight: 30, marginTop: 20 }}>Relieve Anxiety</Text>
+            lineHeight: 30, marginTop: 20 }}>Relieve Anxiety</Text> */}
         </View>
           <View style={{
               paddingHorizontal: 25,
@@ -155,6 +156,7 @@ class LandingScreen extends Component {
       </View>
     </SafeAreaView>
       </ImageBackground>
+</View>
     )
   }
 }

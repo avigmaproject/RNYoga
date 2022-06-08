@@ -26,7 +26,7 @@ export default class BarriesScene extends Component {
                     />
               <ScrollView>
               <View style={{paddingHorizontal:15,paddingTop:20,paddingBottom:100}}>
-                <Text allowFontScaling={false}style={styles.text}>Berries stimulate the production of serotonin, also known as the &quot;happiness
+                <Text   style={styles.text}>Berries stimulate the production of serotonin, also known as the &quot;happiness
                     hormone,&quot; and they are effectively fighting depression. In addition, they are
                     full of antioxidants, which help the brain function properly. Their antioxidant
                     content is explained by the abundant compounds called flavonoids.
@@ -42,13 +42,13 @@ export default class BarriesScene extends Component {
                   source={require("./1.jpg")}
                   resizeMode="contain"
                   style={{
-                  width: 150,
-                  height: 150,
+                  width: 300,
+                  height: 300,
                   borderRadius:10,
                   alignSelf:"center",marginVertical:10
                   }}
                   /></View>
-                   <Text allowFontScaling={false}style={styles.text}>Blueberries are a real treasure in mental health. Still, currants, raspberries,
+                   <Text   style={styles.text}>Blueberries are a real treasure in mental health. Still, currants, raspberries,
                         blackberries, strawberries, strawberries contain impressive amounts of vital
                         nutrients: vitamin C, polyphenols, flavonoids, potassium, water-soluble
                         fiber, extremely useful when fighting against anxiety and depression. {"\n\n"}
@@ -82,18 +82,18 @@ export default class BarriesScene extends Component {
                   source={require("./2.jpg")}
                   resizeMode="contain"
                   style={{
-                  width: 150,
-                  height: 150,
+                  width: 300,
+                  height: 300,
                   borderRadius:10,
                   alignSelf:"center",marginVertical:10
                   }}
                   /></View>
-                <Text allowFontScaling={false}style={{...styles.text,fontFamily: CustomeFont.Poppins_Bold,fontSize: 20,alignSelf:"center"}}>{" "} How to buy and eat</Text>
-                <Text allowFontScaling={false}style={styles.text}>Fresh blueberries are great, but you don&#39;t have to be afraid to buy frozen
+                <Text   style={styles.text1}>{" "} How to buy and eat</Text>
+                <Text   style={styles.text}>Fresh blueberries are great, but you don&#39;t have to be afraid to buy frozen
                     blueberries. They are much cheaper (and more widely available) than the
                     fresh ones. Blueberries are great in smoothies and salads or eaten as a
                     snack.</Text>
-                <Text allowFontScaling={false}style={styles.text}><Text style={{...styles.text,fontFamily: CustomeFont.Poppins_Bold,fontSize: 18,}}>Pro tip: </Text>All berries are likely helpful to the Brain, though they vary in terms
+                <Text   style={styles.text}><Text style={styles.text1}>Pro tip: </Text>All berries are likely helpful to the Brain, though they vary in terms
                   of the specific beneficial compounds found in each. When mixing things
                   up, choose blackberries, raspberries, and strawberries to replace
                   blueberries.</Text>
@@ -105,6 +105,9 @@ export default class BarriesScene extends Component {
   }
 }
 const styles = StyleSheet.create({
-text:{ color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 15,marginTop:10},
-textcolor:{color:"rgb(200, 104, 200)"}
+text:{ color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 13,marginTop:10,textAlign:"justify"},
+textcolor:{color:"#ad29f9"},
+text1: {
+   color: "#ad29f9",fontFamily: CustomeFont.Poppins_Bold,fontSize: 13,alignSelf:"center"
+  },
 })

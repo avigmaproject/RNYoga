@@ -1,9 +1,13 @@
-import { Text, View ,ImageBackground,ActivityIndicator,ScrollView,Image,StyleSheet,Alert,BackHandler} from 'react-native'
+import { Text, View ,ImageBackground,ActivityIndicator,ScrollView,Image,StyleSheet,PixelRatio,Dimensions} from 'react-native'
 import React, { Component } from 'react'
 import Header from "../customcomponent/Header";
 import CustomeFont from "../CustomeFont"
 import HTMLView from "react-native-htmlview";
 import Spinner from "react-native-loading-spinner-overlay"
+const {
+  width,
+  height,
+} = Dimensions.get('window');
 
 export default class RecipeDetail extends Component {
  constructor(props) {
@@ -23,16 +27,25 @@ _onLoadStart = () => {
       isLoading: true,
     })
   }
+  normalize(size, multiplier = 2) {
+  const scale = (width / height) * multiplier;
+
+  const newSize = size * scale;
+
+  return Math.round(PixelRatio.roundToNearestPixel(newSize));
+}
+
 
   render() {
 const {UserRecipes} = this.state
     return (
-       <ImageBackground
-            source={require("../assets/background.png")}
+       <View style={{flex:1,backgroundColor:"#2D1350"}}>
+         <ImageBackground
+            source={require("../assets/background2.png")}
             resizeMode="stretch"
             style={{ height: "100%", flex: 1 }}>
         {this.state.isLoading &&  <View style={{ position:"absolute",height: 300,width:"100%"}}>
-          <View style={{ height: 300,width:"100%",justifyContent:"center",alignItems:"center"}}><ActivityIndicator color={"#D970F5"} /></View>
+          <View style={{ height: 300,width:"100%",justifyContent:"center",alignItems:"center"}}><ActivityIndicator color={"#ad29f9"} /></View>
          </View> }
           <Spinner visible={this.state.isLoading}  />
               <View  style={{ height: 300, }}>
@@ -52,50 +65,55 @@ const {UserRecipes} = this.state
 
           </View>
           <View style={{marginLeft:10,marginTop:20}}>
-          <Text allowFontScaling={false}  style={{
+          <Text   style={{
                 fontSize: 16,
                 color: "#fff",
                 fontFamily: CustomeFont.Poppins_Medium,
                 fontWeight:"600"
               }}>{UserRecipes.UR_Name}</Text>
-            
+              <Text   style={{
+                    color: "rgba(255,255,255,0.5)",
+                    fontFamily: CustomeFont.Poppins_Light,
+                    fontSize: this.normalize(14),
+                    marginTop: 10,   
+                  
+              }}>{"Breakfast"}</Text>
               </View>
+                <View
+                  style={{
+                  marginHorizontal: 10,
+                  borderBottomColor: "#472f67",
+                  borderBottomWidth: 1,marginTop:20
+                  }}/>
         <ScrollView contentContainerStyle={{paddingBottom:100,paddingHorizontal:10}}>
-           {/* <Text allowFontScaling={false}  style={{
-                fontSize: 16,
-                color: "#fff",
-                fontFamily: CustomeFont.Poppins_Medium,
-                fontWeight:"600"
-              }}>{UserRecipes.UR_Description}</Text> */}
-              
-                <HTMLView
-                    value={UserRecipes.UR_Description}
-                    stylesheet={styles}
-                  />
+          <HTMLView
+            value={UserRecipes.UR_Description}
+            stylesheet={styles}
+            />
         </ScrollView>
     </ImageBackground>
+</View>
     )
   }
 }
 const styles = StyleSheet.create({
-  text: {
-   color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium
-  },
+
+text:{ color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 13,textAlign:"justify"},
 b: {
-   color: "rgba(255,255,255,0.9)",fontFamily: CustomeFont.Poppins_Bold
+   color: "#ad29f9",fontFamily: CustomeFont.Poppins_Bold
   },
   a: {
     fontWeight: "300",
-    color: "blue", // make links coloured pink
+    color: "blue",
   },
 p:{
-color:"white",  fontFamily: CustomeFont.Poppins_Light,
+ color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 13,textAlign:"justify",
 },ol:{
-color:"rgb(200, 104, 200)"
+color:"#ad29f9"
 },
 ul:{
-color:"rgb(200, 104, 200)"
+color:"#ad29f9"
 },
 strong:{
-color: "rgba(255,255,255,0.9)",fontFamily: CustomeFont.Poppins_Bold}
+color: "#ad29f9",fontFamily: CustomeFont.Poppins_Bold}
 });

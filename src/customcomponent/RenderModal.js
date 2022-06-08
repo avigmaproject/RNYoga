@@ -10,7 +10,7 @@ export default class RenderModal extends Component {
          animationType="slide"
          transparent={true}
          visible={this.props.visible}>
-          <Spinner color='rgb(200, 104, 200)' visible={true}  />
+          <Spinner color='#ad29f9' visible={true}  />
         </Modal>
      </View>
     )

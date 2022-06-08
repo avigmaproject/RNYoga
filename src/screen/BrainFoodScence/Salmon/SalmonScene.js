@@ -26,7 +26,7 @@ export default class SalmonScene extends Component {
                     />
               <ScrollView>
               <View style={{paddingHorizontal:15,paddingTop:20,paddingBottom:100}}>
-                <Text allowFontScaling={false}style={styles.text}>Salmon, tuna, herring, and sardines are rich in omega-3 fatty acids, which
+                <Text   style={styles.text}>Salmon, tuna, herring, and sardines are rich in omega-3 fatty acids, which
                     have been shown to soothe anxiety. A 2014 study found that women who
                     ate Atlantic salmon three times a week showed a reduction in self-
                     reported anxiety. In a survey conducted on Brain, Behavior, and Immunity,
@@ -42,13 +42,13 @@ export default class SalmonScene extends Component {
                   source={require("./1.jpg")}
                   resizeMode="contain"
                   style={{
-                  width: 150,
-                  height: 150,
+                  width: 300,
+                  height: 300,
                   borderRadius:10,
                   alignSelf:"center",marginVertical:10
                   }}
                   /></View>
-                   <Text allowFontScaling={false}style={styles.text}>
+                   <Text   style={styles.text}>
                      Salmon is a superfood offering several impressive health benefits. Salmon
                       is one of the best sources of EPA and DHA long-chain omega-3 fatty acids.
                       A 100-gram serving of farmed salmon contains 2.3 grams of long-chain
@@ -83,14 +83,14 @@ export default class SalmonScene extends Component {
                   source={require("./2.jpg")}
                   resizeMode="contain"
                   style={{
-                  width: 150,
-                  height: 150,
+                 width: 300,
+                  height: 300,
                   borderRadius:10,
                   alignSelf:"center",marginVertical:10
                   }}
                   /></View>
-                <Text allowFontScaling={false}style={{...styles.text,fontFamily: CustomeFont.Poppins_Bold,fontSize: 20,alignSelf:"center"}}>How to consume</Text>
-                <Text allowFontScaling={false}style={styles.text}>
+                <Text   style={styles.text1}>How to consume</Text>
+                <Text   style={styles.text}>
                   Salmon is a fish that can be eaten for lunch or dinner and breakfast. Pan-
                   fried or baked with vegetables or salad, this fish is easy to prepare and eat.
                   Salmon goes well with freshly ground pepper mix, rosemary, coriander,
@@ -105,7 +105,11 @@ export default class SalmonScene extends Component {
             </ImageBackground>
     )
   }
-}const styles = StyleSheet.create({
-text:{ color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 15,marginTop:10},
-textcolor:{color:"rgb(200, 104, 200)"}
+}
+const styles = StyleSheet.create({
+text:{ color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 13,marginTop:10},
+textcolor:{color:"#ad29f9"},
+text1: {
+   color: "#ad29f9",fontFamily: CustomeFont.Poppins_Bold,fontSize: 13,alignSelf:"center"
+  },
 })

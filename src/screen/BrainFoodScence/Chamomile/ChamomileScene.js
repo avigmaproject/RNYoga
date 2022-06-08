@@ -26,7 +26,7 @@ export default class ChamomileScene extends Component {
                     />
               <ScrollView>
               <View style={{paddingHorizontal:15,paddingTop:20,paddingBottom:100}}>
-                <Text allowFontScaling={false}style={styles.text}>Chamomile is a plant that can have extraordinary effects on anxiety
+                <Text   style={styles.text}>Chamomile is a plant that can have extraordinary effects on anxiety
                   symptoms. It contains a generous amount of antioxidants that have been
                   shown to help reduce inflammation, which could lower the risk of anxiety.</Text>
                 <View>
@@ -39,13 +39,13 @@ export default class ChamomileScene extends Component {
                   source={require("./1.jpg")}
                   resizeMode="contain"
                   style={{
-                  width: 150,
-                  height: 150,
+                 width: 300,
+                  height: 300,
                   borderRadius:10,
                   alignSelf:"center",marginVertical:10
                   }}
                   /></View>
-                   <Text allowFontScaling={false}style={styles.text}>Although traditional healers have long recommended chamomile as a
+                   <Text   style={styles.text}>Although traditional healers have long recommended chamomile as a
               remedy for anxiety, researchers at the University of Pennsylvania have
               been the first to examine this relationship scientifically. In a 2009 study, the
               authors compared dozens of standardized tests designed to measure
@@ -84,14 +84,14 @@ export default class ChamomileScene extends Component {
                   source={require("./2.jpg")}
                   resizeMode="contain"
                   style={{
-                  width: 150,
-                  height: 150,
+                  width: 300,
+                  height: 300,
                   borderRadius:10,
                   alignSelf:"center",marginVertical:10
                   }}
                   /></View>
-                <Text allowFontScaling={false}style={{...styles.text,fontFamily: CustomeFont.Poppins_Bold,fontSize: 20,alignSelf:"center"}}>How to consume</Text>
-                <Text allowFontScaling={false}style={styles.text}>Drinking 1-2 cups of chamomile tea every day is completely safe. In fact,
+                <Text   style={styles.text1}>How to consume</Text>
+                <Text   style={styles.text}>Drinking 1-2 cups of chamomile tea every day is completely safe. In fact,
                   studies have shown that it is OK to drink up to 4 cups of chamomile tea a
                   day.</Text>         
               </View>
@@ -100,7 +100,10 @@ export default class ChamomileScene extends Component {
             </ImageBackground>
     )
   }
-}const styles = StyleSheet.create({
-text:{ color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 15,marginTop:10},
-textcolor:{color:"rgb(200, 104, 200)"}
-})
+}
+const styles = StyleSheet.create({
+text:{ color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 13,marginTop:10,textAlign:"justify"},
+textcolor:{color:"#ad29f9"},
+text1: {
+   color: "#ad29f9",fontFamily: CustomeFont.Poppins_Bold,fontSize: 13,alignSelf:"center"
+  }})

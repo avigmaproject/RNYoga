@@ -26,7 +26,7 @@ export default class EggsScene extends Component {
                     />
               <ScrollView>
               <View style={{paddingHorizontal:15,paddingTop:20,paddingBottom:100}}>
-                <Text allowFontScaling={false}style={styles.text}>The egg is a complete food, containing all the necessary substances for
+                <Text   style={styles.text}>The egg is a complete food, containing all the necessary substances for
                   the body. It is rich in high biological value proteins, fats, vitamins, and
                   minerals. In addition, the ratio between bad and good cholesterol in eggs
                   is perfectly balanced.</Text>
@@ -40,13 +40,13 @@ export default class EggsScene extends Component {
                   source={require("./1.jpg")}
                   resizeMode="contain"
                   style={{
-                  width: 150,
-                  height: 150,
+                  width: 300,
+                  height: 300,
                   borderRadius:10,
                   alignSelf:"center",marginVertical:10
                   }}
                   /></View>
-                   <Text allowFontScaling={false}style={styles.text}>
+                   <Text   style={styles.text}>
                      With only 70 calories, an egg provides 12% of the daily value of protein. Eggs
                     have one of the highest biological values, 93.8%. This means that it
                     provides amino acids in a pattern that is almost precisely what the body
@@ -69,14 +69,14 @@ export default class EggsScene extends Component {
                   source={require("./2.jpg")}
                   resizeMode="contain"
                   style={{
-                  width: 150,
-                  height: 150,
+                  width: 300,
+                  height: 300,
                   borderRadius:10,
                   alignSelf:"center",marginVertical:10
                   }}
                   /></View>
-                <Text allowFontScaling={false}style={{...styles.text,fontFamily: CustomeFont.Poppins_Bold,fontSize: 20,alignSelf:"center"}}>How to consume</Text>
-                <Text allowFontScaling={false}style={styles.text}>
+                <Text   style={styles.text1}>How to consume</Text>
+                <Text   style={styles.text}>
                   A single chicken egg contains 140-170 mg of choline, making them one of
                   the richest sources of this nutrient. Choline belongs to nutraceuticals -
                   substances that improve cognitive function. Acetylcholine is a key element
@@ -94,7 +94,11 @@ export default class EggsScene extends Component {
             </ImageBackground>
     )
   }
-}const styles = StyleSheet.create({
-text:{ color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 15,marginTop:10},
-textcolor:{color:"rgb(200, 104, 200)"}
+}
+const styles = StyleSheet.create({
+text:{ color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 13,marginTop:10},
+textcolor:{color:"#ad29f9"},
+text1: {
+   color: "#ad29f9",fontFamily: CustomeFont.Poppins_Bold,fontSize: 13,alignSelf:"center"
+  },
 })

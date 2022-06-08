@@ -148,6 +148,7 @@ class Home extends Component {
                 onPress={() => this.props.navigation.navigate("Meditation")}
                 title={"Meditation"}
                 iconpath={"Meditation"}
+                home={true}
               />
               <ViewComp
                 onPress={() =>
@@ -155,17 +156,23 @@ class Home extends Component {
                 }
                 title={"Nutrition"}
                 iconpath={"Nutrition"}
+                home={true}
+
               />
               <ViewComp
                 onPress={() => this.props.navigation.navigate("Yoga")}
                 title={"Yoga"}
                 iconpath={"Yoga"}
                 margintop={10}
+                home={true}
+
               />
               <ViewComp
                 onPress={() => this.props.navigation.navigate("ChatScreen")}
                 title={"Online Therapy"}
                 iconpath={"Onlinetherapy"}
+                home={true}
+
               />
             </View>
           <View style={{marginTop:25}}/>

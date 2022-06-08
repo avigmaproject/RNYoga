@@ -15,7 +15,7 @@ constructor(props) {
     return (
       <View>
             {this.props.title && ( <Text  style={{...styles.text1,alignSelf:"center",textDecorationLine:"underline"}}>{this.props.title}</Text>)}
-            {this.props.headertext && ( <Text allowFontScaling={false}style={styles.text}>{this.props.headertext} {"\n"}</Text>)}  
+            {this.props.headertext && ( <Text   style={styles.text}>{this.props.headertext} {"\n"}</Text>)}  
                 <Text  style={styles.text1}><Text style={styles.textcolor}>{'\u25CF'}</Text> {this.props.title2}</Text>
                 {this.props.image && (<View>
                 {this.state.isLoading &&  <View style={{ position:"absolute",zIndex:111, height: 160,width:160,marginLeft:100}}>
@@ -35,7 +35,7 @@ constructor(props) {
                       />
                     </View>)}           
  
-                    <Text allowFontScaling={false}style={styles.text}>
+                    <Text   style={styles.text}>
                     {this.props.text}{"\n"}</Text>
       </View>
     )
@@ -43,15 +43,15 @@ constructor(props) {
 }
 const styles = StyleSheet.create({
   text: {
-   color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 13,marginTop:5,lineHeight:20
+   color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 13,marginTop:5,lineHeight:20,textAlign:"justify"
   },
 text1: {
-  color:"rgb(200, 104, 200)",fontFamily: CustomeFont.Poppins_Bold,fontSize: 15,
+  color:"#ad29f9",fontFamily: CustomeFont.Poppins_Bold,fontSize: 13,
   },
 img:
 {
 height:400,width:400
 },
-textcolor:{color:"rgb(200, 104, 200)"}
+textcolor:{color:"#ad29f9"}
 
 });

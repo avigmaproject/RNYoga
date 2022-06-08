@@ -26,7 +26,7 @@ export default class NutsandSeedsScene extends Component {
                     />
               <ScrollView>
               <View style={{paddingHorizontal:15,paddingTop:20,paddingBottom:100}}>
-                <Text allowFontScaling={false}style={styles.text}>Walnuts, hazelnuts, and almonds, in turn, help fight depression, especially
+                <Text   style={styles.text}>Walnuts, hazelnuts, and almonds, in turn, help fight depression, especially
                   with the high amount of vitamin E in these foods. Researchers have found a
                   decrease in depression in people on a Mediterranean diet, which adds 30
                   grams of nuts, hazelnuts, or almonds per day. Nuts are omega-3 rich food,
@@ -41,13 +41,13 @@ export default class NutsandSeedsScene extends Component {
                   source={require("./1.jpg")}
                   resizeMode="contain"
                   style={{
-                  width: 150,
-                  height: 150,
+                  width: 300,
+                  height: 300,
                   borderRadius:10,
                   alignSelf:"center",marginVertical:10
                   }}
                   /></View>
-                   <Text allowFontScaling={false}style={styles.text}>
+                   <Text   style={styles.text}>
                      Especially good for brain health, nuts and foods high in vitamin E, alpha-
                       linolenic acid, and phenolic compounds help prevent mental decline as
                       you age and are even recommended as an adjunct in treating mild
@@ -75,8 +75,8 @@ export default class NutsandSeedsScene extends Component {
                     </Text>
                   
                   <View>
-                {this.state.isLoading1 &&  <View style={{ position:"absolute",zIndex:111, height: 160,width:160,marginLeft:100}}>
-                  <View style={{width: 150,height: 150,justifyContent:"center",alignItems:"center"}}><ActivityIndicator color={"#2d1350"} /></View>
+                {this.state.isLoading1 &&  <View style={{ position:"absolute",zIndex:111, height: 300,width:300,marginLeft:100}}>
+                  <View style={{width: 300,height: 300,justifyContent:"center",alignItems:"center"}}><ActivityIndicator color={"#2d1350"} /></View>
                 </View> }
                 <Image
                   onLoadStart={()=>this.setState({isLoading1:true})}
@@ -84,14 +84,14 @@ export default class NutsandSeedsScene extends Component {
                   source={require("./2.jpg")}
                   resizeMode="contain"
                   style={{
-                  width: 150,
-                  height: 150,
+                  width: 300,
+                  height: 300,
                   borderRadius:10,
                   alignSelf:"center",marginVertical:10
                   }}
                   /></View>
-                <Text allowFontScaling={false}style={{...styles.text,fontFamily: CustomeFont.Poppins_Bold,fontSize: 20,alignSelf:"center"}}>How to consume</Text>
-                <Text allowFontScaling={false}style={styles.text}>
+                <Text   style={styles.text1}>How to consume</Text>
+                <Text   style={styles.text}>
                 Eat raw as a snack, combine dark chocolate or berries for a nice “trail mix,”
                 or throw in a salad. Just be mindful that nuts contain many calories
                 because of their fat content, which can add up fast. Try to stick to a handful
@@ -114,7 +114,11 @@ export default class NutsandSeedsScene extends Component {
             </ImageBackground>
     )
   }
-}const styles = StyleSheet.create({
-text:{ color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 15,marginTop:10},
-textcolor:{color:"rgb(200, 104, 200)"}
+}
+const styles = StyleSheet.create({
+text:{ color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 13,marginTop:10},
+textcolor:{color:"#ad29f9"},
+text1: {
+   color: "#ad29f9",fontFamily: CustomeFont.Poppins_Bold,fontSize: 13,alignSelf:"center"
+  },
 })

@@ -66,7 +66,7 @@ export default class DetailGroceryList extends Component {
     onrender = ({ item }) => {
         return (
             <View key ={item.id} style={{paddingTop:20}}>
-                <Text allowFontScaling={false}style={styles.text1}>{item.title}</Text>
+                <Text style={styles.text1}>{item.title}</Text>
                {item.data.map((item)=>{
                     return(<Text style={styles.text}><Text style={styles.textcolor}>{'\u25CF'}</Text> {item}</Text>)
                 })}
@@ -77,9 +77,9 @@ export default class DetailGroceryList extends Component {
         return (
     <View style={{flex:1,backgroundColor:"#2D1350"}}>
  <ImageBackground
-                source={require("../assets/background1.png")}
+                source={require("../assets/background2.png")}
                 resizeMode="stretch"
-                style={{ height: "100%", flex: 1 }}
+                style={{ height: "100%", }}
             >
                 <SafeAreaView>
                     <Header
@@ -103,12 +103,12 @@ const styles = StyleSheet.create({
    color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 13,lineHeight:25
   },
 text1: {
-  color:"rgb(200, 104, 200)",fontFamily: CustomeFont.Poppins_Bold,fontSize: 15,marginBottom:10
+  color:"#ad29f9",fontFamily: CustomeFont.Poppins_Bold,fontSize: 13,marginBottom:10
   },
 img:
 {
 height:400,width:400
 },
-textcolor:{color:"rgb(200, 104, 200)"}
+textcolor:{color:"#ad29f9"}
 
 });

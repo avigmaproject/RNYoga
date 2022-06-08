@@ -31,7 +31,7 @@ export default class Detailbadfood extends Component {
                     navigation={this.props.navigation}
                         />
                      <ScrollView contentContainerStyle={{paddingHorizontal:15,paddingTop:20,paddingBottom:100}}>
-                  <Text allowFontScaling={false}style={styles.text}>
+                  <Text   style={styles.text}>
                     Treatment for depression may include therapy, medication, exercise, and a proper diet. Studies have shown that food choices can exacerbate specific symptoms or minimize negative emotions.{"\n\n"}
                     Although you can't cure yourself only by using a specific diet, you can certainly keep the manifestations under control, reducing the frequency and duration of depressive episodes. In addition, as soon as you eliminate the foods that endanger your emotional balance, you will begin to have more confidence in yourself, and you will lay the foundations for quick reactions regardless of the situations you face.{"\n\n"}
                     Here's what you should avoid to prevent anxiety and depression from getting worse:{"\n\n"}
@@ -66,7 +66,7 @@ export default class Detailbadfood extends Component {
                     />
                     <DiteView  
                     title2="Dairy products:" 
-                    text={"Some studies have shown casein, a dairy protein, as a trigger for inflammation and depression. It's not a generic issue, but you can eliminate dairy products for 30 days to see if you get a positive ef"}
+                    text={"Some studies have shown casein, a dairy protein, as a trigger for inflammation and depression. It's not a generic issue, but you can eliminate dairy products for 30 days to see if you get a positive effect."}
                     />
             </ScrollView> 
         </SafeAreaView>
@@ -76,10 +76,10 @@ export default class Detailbadfood extends Component {
 }
 const styles = StyleSheet.create({
   text: {
-   color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium
+   color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 13,textAlign:"justify"
   },
 text1: {
-   color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Bold,fontSize: 18,
+   color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Bold,fontSize: 13,
   },
 img:
 {

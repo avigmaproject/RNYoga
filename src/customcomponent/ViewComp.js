@@ -94,7 +94,7 @@ constructor(props) {
            
           
           </View> */}
-          <View style={{width:"60%",paddingLeft:this.props.recipes ? 0:"10%"}}>
+          <View style={{width:this.props.recipes || this.props.home ?"65%":"50%"}}>
             <Text allowFontScaling={false}
               ellipsizeMode="tail"
               numberOfLines={2}
@@ -102,6 +102,8 @@ constructor(props) {
                 fontSize: 17,
                 color: "rgba(255,255,255,0.8)",
                 fontFamily: CustomeFont.Poppins_Medium,
+                // alignSelf:"center",
+                marginLeft:this.props.recipes  ?"20%":this.props.home ? "20%" : "25%"
                 // fontWeight:"400"
               }}
             >
@@ -115,9 +117,10 @@ constructor(props) {
               }}>30 minutes</Text>)}
             */}
           </View>
-          <View style={{width:"10%" ,justifyContent:"center",alignItems:"center"}}>
+{!this.props.recipes && ( <View style={{width:"20%" ,justifyContent:"center", marginLeft:this.props.home ? -40 :20}}>
             <AntDesign name={"right"} size={18}  color= "rgba(255,255,255,0.5)" />
-          </View>
+          </View>)}
+         
           {/* <Image
           resizeMode='stretch'
           style={{ width: '100%', height: 90, borderRadius: 12 }}

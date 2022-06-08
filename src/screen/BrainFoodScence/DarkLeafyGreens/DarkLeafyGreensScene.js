@@ -26,7 +26,7 @@ export default class DarkLeafyGreensScene extends Component {
                     />
               <ScrollView>
               <View style={{paddingHorizontal:15,paddingTop:20,paddingBottom:100}}>
-                <Text allowFontScaling={false}style={styles.text}>Vegetables are your brain’s best friend. There are no ifs, and, or buts about
+                <Text   style={styles.text}>Vegetables are your brain’s best friend. There are no ifs, and, or buts about
               it, especially when talking about the non-starchy varieties, including
               spinach and romaine lettuce, and the cruciferous veggies cabbage, kale,
               mustard greens, arugula, and bok choy. These dark leafy greens are low in
@@ -42,13 +42,13 @@ export default class DarkLeafyGreensScene extends Component {
                   source={require("./1.jpg")}
                   resizeMode="contain"
                   style={{
-                  width: 150,
-                  height: 150,
+                  width: 300,
+                  height: 300,
                   borderRadius:10,
                   alignSelf:"center",marginVertical:10
                   }}
                   /></View>
-                   <Text allowFontScaling={false}style={styles.text}>
+                   <Text   style={styles.text}>
                       These dark green leaves are great for improving your body&#39;s response to
                       stress and for helping your internal systems function optimally. Not to
                       mention, they are rich in vitamins (vitamins A, C, E, and K) and the content
@@ -75,14 +75,14 @@ export default class DarkLeafyGreensScene extends Component {
                   source={require("./2.jpg")}
                   resizeMode="contain"
                   style={{
-                  width: 150,
-                  height: 150,
+                  width: 300,
+                  height: 300,
                   borderRadius:10,
                   alignSelf:"center",marginVertical:10
                   }}
                   /></View>
-                <Text allowFontScaling={false}style={{...styles.text,fontFamily: CustomeFont.Poppins_Bold,fontSize: 20,alignSelf:"center"}}>How to consume</Text>
-                <Text allowFontScaling={false}style={styles.text}>
+                <Text   style={styles.text1}>How to consume</Text>
+                <Text   style={styles.text}>
                 Eat one huge “fatty salad” daily, a salad filled with organic dark leafy
                 greens like kale, arugula, romaine lettuce, or spinach, and doused with
                 extra-virgin olive oil. Avoid nutrient-poor varieties like iceberg lettuce,
@@ -94,7 +94,11 @@ export default class DarkLeafyGreensScene extends Component {
             </ImageBackground>
     )
   }
-}const styles = StyleSheet.create({
-text:{ color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 15,marginTop:10},
-textcolor:{color:"rgb(200, 104, 200)"}
+}
+const styles = StyleSheet.create({
+text:{ color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 13,marginTop:10},
+textcolor:{color:"#ad29f9"},
+text1: {
+   color: "#ad29f9",fontFamily: CustomeFont.Poppins_Bold,fontSize: 13,alignSelf:"center"
+  },
 })

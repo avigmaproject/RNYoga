@@ -18,7 +18,7 @@ export default class Detailbrainfood extends Component {
             },
             {
             foodid:2,
-            foodname:"Barries",
+            foodname:"Berries",
             image1:require("../screen/BrainFoodScence/Berries/1.jpg"),
             screen:"BarriesScene"
             },

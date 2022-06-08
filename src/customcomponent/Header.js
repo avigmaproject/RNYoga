@@ -50,7 +50,7 @@ export default class Header extends Component {
             </TouchableOpacity>
           </View>
           <View>
-            <Text allowFontScaling={false}style={{    color: "rgba(255,255,255,0.8)",fontSize:27,fontFamily: CustomeFont.Poppins_Medium, textTransform: "capitalize",}}>
+            <Text allowFontScaling={false}style={{    color: "rgba(255,255,255,0.8)",fontSize:27,fontFamily: CustomeFont.Poppins_Medium,}}>
               {this.props.title}
             </Text>
           </View>

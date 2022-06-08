@@ -26,7 +26,7 @@ export default class DarkChocolateScene extends Component {
                     />
               <ScrollView>
               <View style={{paddingHorizontal:15,paddingTop:20,paddingBottom:100}}>
-                <Text allowFontScaling={false}style={styles.text}>Dark chocolate and cocoa powder contain several brain-stimulating
+                <Text   style={styles.text}>Dark chocolate and cocoa powder contain several brain-stimulating
                   compounds, including flavonoids, caffeine, and antioxidants.</Text>
                 <View>
                 {this.state.isLoading &&  <View style={{ position:"absolute",zIndex:111, height: 160,width:160,marginLeft:100}}>
@@ -38,13 +38,13 @@ export default class DarkChocolateScene extends Component {
                   source={require("./1.jpg")}
                   resizeMode="contain"
                   style={{
-                  width: 150,
-                  height: 150,
+                  width: 300,
+                  height: 300,
                   borderRadius:10,
                   alignSelf:"center",marginVertical:10
                   }}
                   /></View>
-                   <Text allowFontScaling={false}style={styles.text}>
+                   <Text   style={styles.text}>
                         Chocolate flavonoids accumulate in areas of the brain that deal with
                         learning and memory. Researchers say that these compounds can
                         improve memory and help slow down age-related mental decline.{"\n\n"}
@@ -79,14 +79,14 @@ export default class DarkChocolateScene extends Component {
                   source={require("./2.jpg")}
                   resizeMode="contain"
                   style={{
-                  width: 150,
-                  height: 150,
+                 width: 300,
+                  height: 300,
                   borderRadius:10,
                   alignSelf:"center",marginVertical:10
                   }}
                   /></View>
-                <Text allowFontScaling={false}style={{...styles.text,fontFamily: CustomeFont.Poppins_Bold,fontSize: 20,alignSelf:"center"}}>How to buy and consume</Text>
-                <Text allowFontScaling={false}style={styles.text}>
+                <Text   style={styles.text1}>How to buy and consume</Text>
+                <Text   style={styles.text}>
                 The sweet-bitter taste is comforting and has a positive effect on your
                 mood. Focus on chocolate with a minimum of 70% cocoa content and as
                 little added sugar as possible. However, it should be noted that high
@@ -98,7 +98,11 @@ export default class DarkChocolateScene extends Component {
             </ImageBackground>
     )
   }
-}const styles = StyleSheet.create({
-text:{ color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 15,marginTop:10},
-textcolor:{color:"rgb(200, 104, 200)"}
+}
+const styles = StyleSheet.create({
+text:{ color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 13,marginTop:10},
+textcolor:{color:"#ad29f9"},
+text1: {
+   color: "#ad29f9",fontFamily: CustomeFont.Poppins_Bold,fontSize: 13,alignSelf:"center"
+  },
 })

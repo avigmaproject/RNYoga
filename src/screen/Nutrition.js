@@ -51,7 +51,7 @@ export default class Nutrition extends Component {
              <View
               style={{
                 marginHorizontal: 10,
-                paddingBottom: 20,marginTop:20
+                paddingBottom: 20,
               }}
             >
               <ViewComp
@@ -130,7 +130,7 @@ export default class Nutrition extends Component {
 
                   You cannot book an appointment with our
                 </Text>
-                <Text allowFontScaling={false}  style={{...styles.calltext2,fontSize: this.normalize(17)}}>
+                <Text allowFontScaling={false}  style={{...styles.calltext2,fontSize: this.normalize(17),textAlign:"justify"}}>
                   dietician beacause you did not activate the subscription.
                 </Text>
 

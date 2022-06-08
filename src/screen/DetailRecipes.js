@@ -168,8 +168,9 @@ onrender = ({ item }) => {
 
 render() {
     return (
-        <ImageBackground
-            source={require("../assets/background.png")}
+       <View style={{flex:1,backgroundColor:"#2D1350"}}>
+         <ImageBackground
+            source={require("../assets/background2.png")}
             resizeMode="stretch"
             style={{ height: "100%", flex: 1 }}>
            
@@ -219,58 +220,9 @@ render() {
                         isdinner: true
                     })
                 }}  />
-
-
-                {/* <LinearGradient style={{ borderRadius: 6 }} start={{ x: 0.0, y: 0.0 }}
-                    end={{ x: 0, y: 1.2 }} colors={this.state.isBreakFast ? ['#D970F5', '#A33AF3'] : ["rgba(0,0,0,0)", "rgba(0,0,0,0)"]}>
-                    <TouchableOpacity style={{ padding: 10 }} 
-                     onPress={() => {
-                        this.setState({
-                            isBreakFast: true,
-                            isLunch: false,
-                            isSnak: false,
-                            isdinner: false
-                        })
-                     }}>
-                <Text style={{ color: 'white', fontFamily: CustomeFont.Poppins_Medium, fontSize: 14 }}>Breakfast</Text>
-                </TouchableOpacity>
-                </LinearGradient> */}
-                {/* <LinearGradient style={{ borderRadius: 6 }} start={{ x: 0.0, y: 0.0 }}
-                    end={{ x: 0, y: 1.2 }}
-                    colors={this.state.isLunch ? ['#D970F5', '#A33AF3'] : ["rgba(0,0,0,0)", "rgba(0,0,0,0)"]}
-                ><TouchableOpacity onPress={() => {
-                    this.setState({
-                        isBreakFast: false,
-                        isLunch: true,
-                        isSnak: false,
-                        isdinner: false
-                    })
-                }} style={{ padding: 10 }}><Text style={{ color: 'white', fontFamily: CustomeFont.Poppins_Medium, fontSize: 14 }}>Lunch</Text></TouchableOpacity></LinearGradient> */}
-                {/* <LinearGradient style={{ borderRadius: 6 }} start={{ x: 0.0, y: 0.0 }}
-                    end={{ x: 0, y: 1.2 }}
-                    colors={this.state.isSnak ? ['#D970F5', '#A33AF3'] : ["rgba(0,0,0,0)", "rgba(0,0,0,0)"]}
-                ><TouchableOpacity onPress={() => {
-                    this.setState({
-                        isBreakFast: false,
-                        isLunch: false,
-                        isSnak: true,
-                        isdinner: false
-                    })
-                }} style={{ padding: 10 }}><Text style={{ color: 'white', fontFamily: CustomeFont.Poppins_Medium, fontSize: 14 }}>Snaks</Text></TouchableOpacity></LinearGradient>
-                <LinearGradient style={{ borderRadius: 6 }} start={{ x: 0.0, y: 0.0 }}
-                    end={{ x: 0, y: 1.2 }}
-                    colors={this.state.isdinner ? ['#D970F5', '#A33AF3'] : ["rgba(0,0,0,0)", "rgba(0,0,0,0)"]}
-                ><TouchableOpacity onPress={() => {
-                    this.setState({
-                        isBreakFast: false,
-                        isLunch: false,
-                        isSnak: false,
-                        isdinner: true
-                    })
-                }} style={{ padding: 10 }}><Text style={{ color: 'white', fontFamily: CustomeFont.Poppins_Medium, fontSize: 14 }}>Dinner</Text></TouchableOpacity></LinearGradient> */}
             </View>
-{/* {this.RenderModal()} */}
         </ImageBackground>
+</View>
     );
 }
 }
