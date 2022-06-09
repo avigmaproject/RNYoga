@@ -96,7 +96,7 @@ export default class EggsScene extends Component {
   }
 }
 const styles = StyleSheet.create({
-text:{ color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 13,marginTop:10},
+text:{ color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 13,marginTop:10,textAlign:"justify"},
 textcolor:{color:"#ad29f9"},
 text1: {
    color: "#ad29f9",fontFamily: CustomeFont.Poppins_Bold,fontSize: 13,alignSelf:"center"
