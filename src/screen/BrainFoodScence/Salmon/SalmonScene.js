@@ -58,7 +58,7 @@ export default class SalmonScene extends Component {
                       fatty acids have been shown to balance inflammatory polyunsaturated
                       fats and reduce excessive cortisol levels. Unlike most other fats, omega 3
                       fats are considered &quot;essential&quot;. You need to get them out of your diet
-                      because your body can&#39;t create them.
+                      because your body can&#39;t create them.{"\n\n"}
                       Cortisol is a hormone associated with physical and psychological stress,
                       but a good intake of omega-3 fats can help maintain control. Salmon is
                       also a good source of vitamin D to improve mood and stress
@@ -91,8 +91,7 @@ export default class SalmonScene extends Component {
                   /></View>
                 <Text   style={styles.text1}>How to consume</Text>
                 <Text   style={styles.text}>
-                  Salmon is a fish that can be eaten for lunch or dinner and breakfast. Pan-
-                  fried or baked with vegetables or salad, this fish is easy to prepare and eat.
+                  Salmon is a fish that can be eaten for lunch or dinner and breakfast. Pan-fried or baked with vegetables or salad, this fish is easy to prepare and eat.
                   Salmon goes well with freshly ground pepper mix, rosemary, coriander,
                   oregano, mint, sage, turmeric, curry, but used sparingly so that you can
                   enjoy its pleasant aroma!{"\n\n"}

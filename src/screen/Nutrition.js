@@ -41,8 +41,8 @@ export default class Nutrition extends Component {
     return (
     <View style={{flex:1,backgroundColor:"#2D1350"}}>
       <ImageBackground
-        source={require("../assets/background1.png")}
-        resizeMode="stretch"
+        source={require("../assets/background2.png")}
+        resizeMode="contain"
         style={{ height: "100%" }}
       >
         <SafeAreaView>
@@ -130,12 +130,12 @@ export default class Nutrition extends Component {
 
                   You cannot book an appointment with our
                 </Text>
-                <Text allowFontScaling={false}  style={{...styles.calltext2,fontSize: this.normalize(17),textAlign:"justify"}}>
+                <Text style={{...styles.calltext2,fontSize: this.normalize(17),textAlign:"justify"}}>
                   dietician beacause you did not activate the subscription.
                 </Text>
 
                <View style={{marginTop:12}}>
-               <Text allowFontScaling={false}  style={{...styles.calltext2,fontSize: this.normalize(17)}}>
+               <Text style={{...styles.calltext2,fontSize: this.normalize(17)}}>
                   if you want, you can do it{" "}<Text onPress={()=>alert("Under construction..")} style={{textDecorationLine: 'underline',color:'#fff',marginLeft:10,fontSize: this.normalize(16),marginTop:20,fontFamily: CustomeFont.Poppins_Light,}}>right here.</Text>
                 </Text>
                </View>

@@ -16,6 +16,7 @@ import { basecolor } from "../services/constant";
 import VideoListV from "../customcomponent/VideoListV";
 import { GetUserYoga } from "../services/api.function";
 import RenderModal from "../customcomponent/RenderModal"
+import CustomeFont from "../CustomeFont";
 
 const DATA = [
   {
@@ -43,6 +44,7 @@ export default class Yoga extends Component {
       visible: false,
       message: "",
       timer: "30 min",
+      showtext:true,
       videosArray: ["https://musicsvideosfiles.s3.amazonaws.com/Yoga/1+-+Find+your+Centre.mp4",
         "https://musicsvideosfiles.s3.amazonaws.com/Yoga/1+-+Find+your+Centre.mp4",
         "https://musicsvideosfiles.s3.amazonaws.com/Yoga/1+-+Find+your+Centre.mp4",
@@ -66,18 +68,20 @@ export default class Yoga extends Component {
     this.setState({ isLoading: true })
     await GetUserYoga(data)
       .then((res) => {
-        console.log('res', res)
-          for(let i = 0; i < res[0].length ; i++){
-            if(res[0][i].YG_Timer === 30){
-              this.setState({TimerThirty:  [...this.state.TimerThirty ,res[0][i]], isLoading: false })
-            }else  if(res[0][i].YG_Timer === 60){
-              this.setState({ TimerSixty: [...this.state.TimerSixty ,res[0][i]], isLoading: false })
-            }else  if(res[0][i].YG_Timer === 90){
-              this.setState({ TimerNinty:  [...this.state.TimerNinty ,res[0][i]], isLoading: false })
-            }
-          }
+        console.log('res', res[0])
+
+          // for(let i = 0; i < res[0].length ; i++){
+          //   if(res[0][i].YG_Timer === 30){
+          //     this.setState({TimerThirty:  [...this.state.TimerThirty ,res[0][i]], isLoading: false })
+          //   }else  if(res[0][i].YG_Timer === 60){
+          //     this.setState({ TimerSixty: [...this.state.TimerSixty ,res[0][i]], isLoading: false })
+          //   }else  if(res[0][i].YG_Timer === 90){
+          //     this.setState({ TimerNinty:  [...this.state.TimerNinty ,res[0][i]], isLoading: false })
+          //   }
+          // }
           this.setState({
             isLoading: false,
+          TimerThirty:res[0]
           })
        
       })
@@ -129,21 +133,21 @@ return(
            
       {/* <RenderModal visible={this.state.isLoading}/> */}
         <SafeAreaView>
-        <View
+        {/* <View
               style={{ flexDirection: "row", justifyContent: "space-between" ,alignItems:"center"}}
-            >
+            > */}
               <Header
-                title={"Set Duration"}
+                title={"Yoga"}
                 navigation={this.props.navigation}
             
               />
-              <ButtomCustom
+              {/* <ButtomCustom
                 margintop={true}
                 backgroundColor={"#C441FD"}
                 title={this.state.timer}
                 onPress={() => this.panelRef.current.togglePanel()}
-              />
-            </View>
+              /> */}
+            {/* </View> */}
           <ScrollView>
             
             <View>
@@ -155,28 +159,19 @@ return(
                   borderBottomWidth: 1,
                 }}
               >
-              <Text allowFontScaling={false}
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: 25,
-                    color: "#fff",
-                    marginVertical: 20,
-                  }}
+              {this.state.showtext ? (<Text allowFontScaling={false}
+                  style={styles.text1}
                 >
-                 {"Why yoga is good for anxiety? "}
-                </Text>
-              <Text allowFontScaling={false}
-                  style={{
-                   fontWeight: "300",
-                    fontSize: 15,
-                    color: "#fff",
-                    lineHeight: 20,
-                  }}
+                Yoga is a Sanskrit word that means union – union of the breath and the body, the mind and the heart, so that you can be in a state of harmony within yourself. Moving toward this place of inner peace is a perfect solution for anxiety. With yoga, you will bring yourself into the present moment, where no fears or worries can exist. You will breathe deeply which activates....
+                </Text>) :(<Text allowFontScaling={false}
+                  style={styles.text1}
                 >
-                 {"Anxiety is the body’s response to stress and is part of the natural fight, flight, or freeze reflex.  Anxiety might resemble a feeling of distress, unease, or dread. Its intention is to keep a person alert or aware during times of threat.  Sometimes, anxiety can get in the way of everyday life..."}
-                </Text>
+                Yoga is a Sanskrit word that means union – union of the breath and the body, the mind and the heart, so that you can be in a state of harmony within yourself. Moving toward this place of inner peace is a perfect solution for anxiety. With yoga, you will bring yourself into the present moment, where no fears or worries can exist. You will breathe deeply which activates your parasympathetic nervous system (the rest and digest mode). You will also challenge your body to move and flow in new ways which begins to rewire the neural pathways in your brain to create a happier and healthier body and mind. 19.1% of adults in the US experience anxiety and related symptoms each year. Throughout many studies, yoga is a consistent treatment, either as a stand alone therapy or as adjunctive treatment to reduce the incidence of anxiety in women. The more frequently you practice, the more beneficial the results are. That is why our Yoga Instructor Chelsea created 20-minute sessions for you to include into your daily routine so that you can experience the benefits for yourself!
+                </Text>)}
+              
                
-                <Text allowFontScaling={false}
+
+                <Text onPress={()=> this.setState({showtext:!this.state.showtext})} allowFontScaling={false}
                   style={{
                     fontWeight: "500",
                     fontSize: 15,
@@ -186,7 +181,7 @@ return(
                     marginTop: 20
                   }}
                 >
-                  Learn more
+                  {this.state.showtext ?  "Learn more" : "Show less"}
                 </Text>
               </View>
             </View>
@@ -202,13 +197,13 @@ return(
 
                 )}}
                 renderItem={this.onrender}
-                data={this.state.timer === "30 min" ? this.state.TimerThirty :this.state.timer === "60 min"? this.state.TimerSixty: this.state.TimerNinty }
+                data={ this.state.TimerThirty}
               />
             </ScrollView>
             
           </ScrollView>
         </SafeAreaView>
-        <BottomSheet
+        {/* <BottomSheet
           ref={(ref) => (this.panelRef.current = ref)}
           wrapperStyle={{
             backgroundColor: basecolor,
@@ -241,7 +236,7 @@ return(
               );
             })}
           </View>
-        </BottomSheet>
+        </BottomSheet> */}
       </ImageBackground>
     );
   }
@@ -256,5 +251,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
 
   },
+text1:{ color: "rgba(255,255,255,0.8)",fontFamily: CustomeFont.Poppins_Medium,fontSize: 13,marginTop:10,textAlign:"justify"},
+
   text: { color: "#fff", fontWeight: "bold", fontSize: 20 },
 });

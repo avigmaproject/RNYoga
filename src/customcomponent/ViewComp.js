@@ -117,7 +117,7 @@ constructor(props) {
               }}>30 minutes</Text>)}
             */}
           </View>
-{!this.props.recipes && ( <View style={{width:"20%" ,justifyContent:"center", marginLeft:this.props.home ? -40 :20}}>
+{!this.props.recipes && ( <View style={{width:"20%" ,justifyContent:"center", marginLeft:this.props.home ? -30 :20}}>
             <AntDesign name={"right"} size={18}  color= "rgba(255,255,255,0.5)" />
           </View>)}
          

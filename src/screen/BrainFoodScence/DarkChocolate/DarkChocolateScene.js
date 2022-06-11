@@ -56,7 +56,7 @@ export default class DarkChocolateScene extends Component {
                         the stress that leads to anxiety. {"\n\n"}
                         In addition to bringing an exceptionally high intake of magnesium (which
                         reduces stress), dark chocolate contains l-theanine, a natural physical and
-                        mental relaxant that leads to alertness without drowsiness.
+                        mental relaxant that leads to alertness without drowsiness.{"\n\n"}
                         The idea of ​​how healthy the chocolate you eat is directly related to the
                         amount of sugar. Ordinary milk chocolate is so full of unhealthy sugars,
                         and vegetable oils that chocolate&#39;s recently praised health benefits are

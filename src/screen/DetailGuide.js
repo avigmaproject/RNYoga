@@ -42,9 +42,9 @@ ViewRender = (number,status,boldtext,text) =>{
             <ScrollView contentContainerStyle={{paddingHorizontal:15,paddingTop:20,paddingBottom:100}}>
                 <Text allowFontScaling={false}style={{...styles.text,fontFamily: CustomeFont.Poppins_Bold,fontSize: 20,}}></Text>
                   <Text style={styles.text}>
-                  Daily habits, especially eating habits, cause mood, thinking, and mental health changes. 
-                  There is no specific diet for treating depression, but eating certain foods should 
-                  be avoided if you want to relieve the symptoms of depression and anxiety.{"\n\n"}
+                  Daily habits, especially eating habits, cause changes in mood, thinking and mental health. 
+                  There is no specific diet for treating depression, but the consumption of certain foods should be avoided 
+                  if you want to relieve the symptoms of depression and anxiety.{"\n\n"}
                   A recent study in the American Journal of Psychiatry compared a whole diet of 
                   fruits, vegetables grains, and fish to a diet rich in processed meat, grains, and 
                   fast food. The researchers found that study participants who ate whole foods 
@@ -56,7 +56,7 @@ ViewRender = (number,status,boldtext,text) =>{
                     <Image
                       onLoadStart={()=>this.state.isLoading}
                       onLoadEnd={()=>this.state.isLoading}
-                      source={require("../assets/Imagesfoodfacts/Introductoryguideimage.png")}
+                      source={require("../assets/firstguide.png")}
                       resizeMode="stretch"
                       style={{
                       width: 300,
@@ -66,14 +66,14 @@ ViewRender = (number,status,boldtext,text) =>{
                       }}
                       />
                     </View> 
-
+                  <Text  style={styles.text}>Here is a small sneak peek of what you will find in the next categories:{"\n"}</Text>
                   {this.ViewRender("1)",false,"Food Facts:","You will find out what are the top 5 tips that science has shown to be effective for a healthy eating pattern.")}
                   {this.ViewRender("2)",false,"Unhealthy Food:","A detailed list of foods that drastically worsen anxiety and depression (and which you should trash right away if you want to get more positive energy throughout the day).")}
-                  {this.ViewRender("3)",false,"Brain Food:","Nine comprehensive articles presenting the benefits on mental health for each type of food(including pictures).")}
+                  {this.ViewRender("3)",false,"Brain Food:","9 comprehensive articles presenting the benefits on mental health for each type of food (including pictures).")}
                   {this.ViewRender("4)",false,"Recipes:","Tasty recipes with step-by-step explanations containing the brain foods to live better and reduce anxiety and depression (each recipe includes: detailed instructions, pictures and nutritional calculations).")}
                   {this.ViewRender("5)",false,"Grocery List:","Quickly open this category and take a look at the list while you are doing groceries. You have everything you need at your fingertips to feed yourself properly (this list will save you lots of time!).")}
                   {/* {this.ViewRender("",true,"BONUS:","We know how important it is to have an experienced nutritionist who can guide you step by step in implementing your personalized meal plan (as in the case if you are allergic to certain foods). That's why at the end of this section you have the opportunity to schedule a 10-15 minute video call with Florentina, our certified nutritionist, who will help you understand your situation and provide you with valuable dietary advice.")} */}
-                <Text style={styles.text}><Text style={styles.text1}>BONUS:</Text> We know how important it is to have an experienced nutritionist who can guide you step by step in the implementation of your personalized meal plan. That's why at the end of this section you have the opportunity to schedule a 10-15 minute video call with Florentina, our certified nutritionist, who will help you understand your situation and provide you with valuable dietary advice.</Text> 
+                <Text style={styles.text}><Text style={styles.text1}>BONUS:</Text> We know how important it is to have an experienced nutritionist who can guide you step by step in implementing your personalized meal plan (as in the case if you are allergic to certain foods). That's why at the end of this section you have the opportunity to schedule a 10-15 minute video call with Florentina, our certified nutritionist, who will help you understand your situation and provide you with valuable dietary advice.</Text> 
 
                   {/* Here is a small sneak peek of what you will find in the next categories:{"\n\n"}
                   1)            Food Facts: You will find out what are the top 5 tips that science has shown to be effective for a healthy eating pattern.{"\n\n"}

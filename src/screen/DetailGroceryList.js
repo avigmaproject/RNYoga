@@ -31,7 +31,7 @@ export default class DetailGroceryList extends Component {
              {
             "id":4,
             "title":"BEANS AND LEGUMES:",
-            "data":["Lentils","Chickpeas/Garbanzo Beans","Soybeans/Edamame","Kidney", "Beans","Peas","Black-eyed Peas","Lima Beans","Black Beans"]
+            "data":["Lentils","Chickpeas/Garbanzo Beans","Soybeans/Edamame","Kidney Beans","Peas","Black-eyed Peas","Lima Beans","Black Beans"]
             },
             {
             "id":5,

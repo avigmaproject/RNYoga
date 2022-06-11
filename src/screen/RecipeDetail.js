@@ -38,6 +38,7 @@ _onLoadStart = () => {
 
   render() {
 const {UserRecipes} = this.state
+console.log("UserRecipes",UserRecipes)
     return (
        <View style={{flex:1,backgroundColor:"#2D1350"}}>
          <ImageBackground
@@ -77,7 +78,7 @@ const {UserRecipes} = this.state
                     fontSize: this.normalize(14),
                     marginTop: 10,   
                   
-              }}>{"Breakfast"}</Text>
+              }}>{UserRecipes.UR_TypesName}</Text>
               </View>
                 <View
                   style={{

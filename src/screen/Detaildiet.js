@@ -58,7 +58,7 @@ ViewRender = (number,boldtext,text) =>{
                       }}
                       />
                     </View>          
-                      <Text  style={styles.text}>See the 5 top tips to work towards your own healthy dietary pattern:{"\n"}</Text>
+                      <Text  style={styles.text}>Here are the 5 top tips to work towards your own healthy dietary pattern:{"\n"}</Text>
                       {/* <Text  style={styles.text}></Text> */}
                     {this.ViewRender("1)","Eat more:","Vegetables and fruit, legumes, fish.")}
                     {this.ViewRender("2)","Choose:","Wholegrain bread and cereals, healthy fats.")}
@@ -77,7 +77,7 @@ ViewRender = (number,boldtext,text) =>{
                      title="Tip 1. Eat more…" 
                     headertext="Vegetables, fruits, legumes, and fish are all essential parts of a healthy dietary pattern which we should focus on eating more of." 
                      title2="Vegetables" 
-                     text = "Any vegetable is a good vegetable - the more you eat, the better! Vegetables are very low in calories and high in vitamins, making them the top choice for a mood- boosting dietary pattern." 
+                     text = "Any vegetable is a good vegetable - the more you eat, the better! Vegetables are very low in calories and high in vitamins, making them the top choice for a mood-boosting dietary pattern." 
                      image={require("../../src/assets/Imagesfoodfacts/2.png")}/>
                   <DiteView 
                      title2="Fruit" 
@@ -96,8 +96,8 @@ ViewRender = (number,boldtext,text) =>{
                     title="Tip 2. Make the healthy choice" 
                     headertext="Choosing and eating wholegrain breads and cereals and healthy oils every day is an important part of a healthy dietary pattern. " 
                     title2="Wholegrain bread and cereals" 
-                    text = "You’ve probably heard about whole grains before, so why is everyone recommending them? Wholegrain options contain the healthy fiber and nutrients from grains which keeps us feeling full and energized through the day. Here are some easy swaps:" 
-                     image={require("../../src/assets/Imagesfoodfacts/6.png")}/>
+                    text = "You’ve probably heard about whole grains before, so why is everyone recommending them? Wholegrain options contain the healthy fiber and nutrients from grains which keeps us feeling full and energized through the day." 
+                    image={require("../../src/assets/Imagesfoodfacts/6.png")}/>
                 <DiteView 
                     title2="Healthy vegetable oils" 
                     text = "A healthful, high-quality diet requires dietary fats. Oils provide beneficial fatty acids. Choosing oils with a higher level of unsaturated fatty acids may provide the best health benefits. Extra-virgin olive oil, avocado oil, or flaxseed oil are excellent choices when it comes to healthy vegetable oils." 

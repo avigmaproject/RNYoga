@@ -96,7 +96,7 @@ class Home extends Component {
     return (
 <View style={{flex:1,backgroundColor:"#2D1350"}}>
       <ImageBackground
-        source={require("../assets/background1.png")}
+        source={require("../assets/background2.png")}
         resizeMode="stretch"
         style={{ height: "100%" }}
       >

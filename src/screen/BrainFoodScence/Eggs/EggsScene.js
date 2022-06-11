@@ -75,7 +75,7 @@ export default class EggsScene extends Component {
                   alignSelf:"center",marginVertical:10
                   }}
                   /></View>
-                <Text   style={styles.text1}>How to consume</Text>
+                {/* <Text   style={styles.text1}>How to consume</Text> */}
                 <Text   style={styles.text}>
                   A single chicken egg contains 140-170 mg of choline, making them one of
                   the richest sources of this nutrient. Choline belongs to nutraceuticals -

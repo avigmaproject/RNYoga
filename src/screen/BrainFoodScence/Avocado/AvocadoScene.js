@@ -45,13 +45,13 @@ constructor(props) {
                   alignSelf:"center",marginVertical:10
                   }}
                   /></View>
-                   <Text   style={styles.text}>The delicious avocado is surprisingly good for you and has valuable nutritional properties for reducing stress, anxiety and fighting against depression.</Text>
+                  <Text   style={styles.text}>Avocado is considered a superfood due to the mix of monounsaturated fats, proteins and carbohydrates, necessary for a balanced diet.</Text>
                   <Text   style={styles.text}>With antioxidants such as vitamins E and C, which help reduce inflammation, folate, and other B vitamins for proper brain function, and good levels of dietary fiber for the digestive system, avocado is one of the best foods for relieving stress and anxiety.</Text>
                   <Text   style={styles.text}>Here are some of the most important benefits of this superfood:</Text>
                   <Text   style={styles.text}><Text style={styles.textcolor}>{'\u25CF'}</Text>{" "}Avocado contains vitamins A, C, B6, B12, and K. They protect the immune, cognitive and nervous systems.</Text>
                   <Text   style={styles.text}><Text style={styles.textcolor}>{'\u25CF'}</Text>{" "}It contains large amounts of vitamin D, essential for bone health.</Text>
                   <Text   style={styles.text}><Text style={styles.textcolor}>{'\u25CF'}</Text>{" "}It contains vitamin E, which is essential for the proper functioning of thenervous system.</Text>
-                  <Text   style={styles.text}><Text style={styles.textcolor}>{'\u25CF'}</Text>{" "}It contains large amounts of vitamin D, essential for bone health. </Text>
+                  {/* <Text   style={styles.text}><Text style={styles.textcolor}>{'\u25CF'}</Text>{" "}It contains large amounts of vitamin D, essential for bone health. </Text> */}
                   <Text   style={styles.text}><Text style={styles.textcolor}>{'\u25CF'}</Text>{" "}Controls cholesterol levels by regulating triglyceride levels. It alsocontains Omega 3, which lowers harmful cholesterol levels. Omega 3 is very beneficial for the eyes and brain.</Text>
                   <Text   style={styles.text}><Text style={styles.textcolor}>{'\u25CF'}</Text>{" "}Due to the vitamins in its composition, avocado fruit is one of the foods that prevent the development of cancer cells. </Text>
                   <Text   style={styles.text}><Text style={styles.textcolor}>{'\u25CF'}</Text>{" "}Improves memory due to fatty acids that benefit the brain. </Text>

@@ -33,20 +33,15 @@ export default class DetailRecipes extends Component {
     }
 
     onHandleGetUserRecipes = async () => {
-    var today = new Date();
-// var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    // Alert.alert("Start Api" , `${time}`)
+   
         let data = {
             Type: 1
         }
         this.setState({ modalVisible: true })
+            console.log("im inside function==>",data)
         await GetUserRecipes(data)
             .then((res) => {
-            if(res)
-            {
-            // var time1 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-            // Alert.alert("End Api" , `${time1}`)
-            }
+           
             console.log('resresresresresres', res[0]);
             for(let i = 0;i< res[0].length ; i++){
                 if(res[0][i].UR_TypesName === "Snacks"){
@@ -94,6 +89,7 @@ export default class DetailRecipes extends Component {
 
 
 onrender = ({ item }) => {
+console.log("im inside render",item)
     return (
         <View style={{ padding: 5 }}>
             <ViewComp
@@ -186,7 +182,7 @@ render() {
                         />
                 </ScrollView>
             </SafeAreaView>
-            <View style={{ position: 'absolute', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 15, bottom: 10, width: '94%', height: 45, alignContent: 'center', backgroundColor: basecolor ,paddingVertical:3,alignSelf:"center",borderRadius:10}}>
+            <View style={{ position: 'absolute', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 15, bottom: 40, width: '94%', height: 45, alignContent: 'center', backgroundColor: basecolor ,paddingVertical:3,alignSelf:"center",borderRadius:10}}>
                 <RecipeButton  statue={this.state.isBreakFast} title = {"Breakfast"}   
                 onPress={() => {
                     this.setState({
